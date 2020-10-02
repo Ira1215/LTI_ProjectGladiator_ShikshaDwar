@@ -1,0 +1,22 @@
+
+<form [formGroup]="form" (submit)="onLogin()">
+  <h1 class="h3 mb-3 font-weight-normal">Institute Sign in</h1>
+  <div class="form-group">
+  <label for="diseCode" class="sr-only">Dise Code</label>
+  <input formControlName="diseCode" type="text" id="diseCode" class="form-control" placeholder="Enter Dise Code">
+  
+  <div *ngIf="form.get('diseCode').touched && form.get('diseCode').invalid " class="alert alert-danger">Dise Code is Required</div>
+  </div>
+
+  <div class="form-group">
+  <label for="institutePassword" class="sr-only">Password</label>
+  <input formControlName="institutePassword" type="password" id="institutePassword" class="form-control" placeholder="Password">
+  <div *ngIf="form.get('institutePassword').touched && form.get('institutePassword').invalid " class="alert alert-danger">Password is Required</div>
+  </div>
+  
+
+  <p class="my-3">Forgot Password! Click on <a href="#">Reset</a></p>
+  <p class="alert alert-danger" *ngIf="error" >Register Yourself ! <a href="instituteSignUp">SignUp</a></p>
+  <button class="btn btn-lg btn-primary btn-block"  [disabled]="form.invalid" type="submit"  >Login</button>
+</form>
+

@@ -1,0 +1,239 @@
+<app-navbar-landing-page></app-navbar-landing-page>
+
+<div class="jumbotron">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm mx-2 my-2">
+        <h1 class="display-4" style="font-family: monospace;">Welcome to ShikshaDwaar</h1>
+        <p class="lead display-5" style="font-size: 24px;">
+          A Single page application to apply for Scholarships for 10th and
+          12th students who aims for <strong>higher education</strong>.
+          #DiscountOnEducation
+        </p>
+        <hr class="my-4" />
+        <p style="font-size: 24px;">
+          Here, Students can apply for scholarships based on the marks obtained in 9th and 12th class.*
+        </p>
+      </div>
+
+      <div class="col-sm mx-2 my-2">
+        <div class="card">
+          <div class="card-header">
+            <h1 class="display-5 text-center" style="font-size: 32px; font-family: monospace;">Login</h1>
+          </div>
+          <!-- Login Form -->
+          <div class="card-body">
+            <ul class="nav nav-pills nav-justified mb-3" id="pills-tab" role="tablist">
+              <li class="nav-item" role="presentation">
+                <a class="nav-link active" id="pills-student-tab" data-toggle="pill" href="#pills-student" role="tab"
+                  aria-controls="pills-student" aria-selected="true">Student</a>
+              </li>
+              <li class="nav-item" role="presentation">
+                <a class="nav-link" id="pills-institute-tab" data-toggle="pill" href="#pills-institute" role="tab"
+                  aria-controls="pills-institute" aria-selected="false">Institute</a>
+              </li>
+              <li class="nav-item" role="presentation">
+                <a class="nav-link" id="pills-officer-tab" data-toggle="pill" href="#pills-officer" role="tab"
+                  aria-controls="pills-officer" aria-selected="false">Officer</a>
+              </li>
+              <li class="nav-item" role="presentation">
+                <a class="nav-link" id="pills-ministry-tab" data-toggle="pill" href="#pills-ministry" role="tab"
+                  aria-controls="pills-ministry" aria-selected="false">Ministry</a>
+              </li>
+            </ul>
+            <div class="tab-content" id="pills-tabContent">
+              <div class="tab-pane fade show active text-center" id="pills-student" role="tabpanel"
+                aria-labelledby="pills-student-tab">
+                <app-student-login></app-student-login>
+              </div>
+              <div class="tab-pane fade text-center" id="pills-institute" role="tabpanel"
+                aria-labelledby="pills-institute-tab">
+                <app-institute-login></app-institute-login>
+              </div>
+              <div class="tab-pane fade text-center" id="pills-officer" role="tabpanel"
+                aria-labelledby="pills-officer-tab">
+                <app-nodal-login></app-nodal-login>
+              </div>
+              <div class="tab-pane fade text-center" id="pills-ministry" role="tabpanel"
+                aria-labelledby="pills-ministry-tab">
+                <app-ministry-login></app-ministry-login>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Scholarship Details -->
+<div class="container" style="margin-bottom: 32px;">
+  <div class="card">
+    <h2 class="text-center" style="margin-top: 24px; font-family: monospace; font-size: 24px;">
+      <strong>Scholarships Details</strong>
+    </h2>
+    <div class="card-body">
+      <div class="accordion" id="accordionExample">
+        <div class="card">
+          <div class="card-header" id="headingOne">
+            <h2 class="mb-0">
+              <button class="btn btn-link btn-block text-center" type="button" data-toggle="collapse"
+                data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                Merit-cum-Means Based Scholarship
+              </button>
+            </h2>
+          </div>
+
+          <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+            <div class="card-body">
+              <p class="text-justify" style="font-size: 18px;">
+                Those applicants who are belonging to the economically backward caste/category such as SC/ ST/ OBC or
+                other minorities’ categories are required to check if they come under the eligibility criteria provided
+                by the Directorate of Technical education, Maharashtra Government.
+              </p>
+              <ul style="font-size: 18px;">
+                <li>The candidates applying for the Maharashtra Merit cum Means Scholarship 2017-2018 must have
+                  completed 10th and 12th from a recognized board with a minimum of 60% marks in aggregate.</li>
+                <li>Maximum two members of a family belonging to the minority category can apply for the scholarship.
+                </li>
+                <li>Students applying for the Maharashtra Merit cum Means Scholarship 2017-2018 must have Aadhaar Card
+                  enrolled in the State.</li>
+                <li>The applicant must produce all the documents prescribed by the state.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header" id="headingTwo">
+            <h2 class="mb-0">
+              <button class="btn btn-link btn-block text-center collapsed" type="button" data-toggle="collapse"
+                data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                Pragati Scholarship
+              </button>
+            </h2>
+          </div>
+          <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+            <div class="card-body">
+              <ul style="font-size: 18px;">
+                <li>‘One Girl’ per family and it can be extended for Two Girl Child per family where the family income
+                  is less than Rs. 8 Lakh /annum (In case of married girl child, the income of parents/ in laws
+                  whichever is higher is to be considered).
+                </li>
+                <li>
+                  The selection of candidate will be made on merit based on qualifying examination to peruse the
+                  respective Technical Degree/Diploma course from any of the AICTE approved institution. Amount of
+                  scholarship: Tuition Fee of Rs. 30,000/-.
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header" id="headingThree">
+            <h2 class="mb-0">
+              <button class="btn btn-link btn-block text-center collapsed" type="button" data-toggle="collapse"
+                data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                Merit-Based Scholarship
+              </button>
+            </h2>
+          </div>
+          <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+            <div class="card-body">
+              <h4 style="font-size: 18px;">NTSE (National Talent Search Examination)</h4>
+              <p><strong>Eligibility</strong></p>
+              <ul style="font-size: 18px;">
+                <li>Candidates must be an Indian national.</li>
+                <li>A minimum of <strong>60% marks</strong> Class IX is required. SC, ST and PH candidates will need
+                  <strong>55% marks</strong> in Class IX.</li>
+                <li>Candidate must be studying in a recognized school in their respective State .</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+<!-- Latest Updates and Helpdesk -->
+
+<div class="jumbotron">
+  <div class="container">
+    <div class="row text-center">
+      <div class="card col-sm mx-2 my-2 px-4 py-4">
+        <h1 style="font-family: monospace;">
+          <span>
+            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-clipboard-check" fill="currentColor"
+              xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd"
+                d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z" />
+              <path fill-rule="evenodd"
+                d="M9.5 1h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3zm4.354 7.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 9.793l2.646-2.647a.5.5 0 0 1 .708 0z" />
+            </svg>
+          </span> Latest Updates
+        </h1>
+        <div class="container">
+          <marquee direction="up" onmouseover="stop()" onmouseout="start()" scrollamount="3" loop="">
+            <ol>
+              <li class="primary" style="font-weight: bold;">
+                <span>For NMMS scheme please register as Scholarship Scheme.</span>
+              </li>
+              <hr>
+              <li style="font-weight: bold;"><strong>Attention Institutes</strong><br>
+                The Institutes which are registered on NSP 2.0 are required to submit
+                Institute Registration Form for AY 2020-21. The Form is available in Institute Login.
+              </li>
+              <hr>
+            </ol>
+          </marquee>
+        </div>
+      </div>
+
+      <div class="card col-sm mx-2 my-2 px-4 py-4">
+        <h1 style="font-family: monospace;">
+          <span>
+            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-headset" fill="currentColor"
+              xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd" d="M8 1a5 5 0 0 0-5 5v4.5H2V6a6 6 0 1 1 12 0v4.5h-1V6a5 5 0 0 0-5-5z" />
+              <path
+                d="M11 8a1 1 0 0 1 1-1h2v4a1 1 0 0 1-1 1h-1a1 1 0 0 1-1-1V8zM5 8a1 1 0 0 0-1-1H2v4a1 1 0 0 0 1 1h1a1 1 0 0 0 1-1V8z" />
+              <path fill-rule="evenodd"
+                d="M13.5 8.5a.5.5 0 0 1 .5.5v3a2.5 2.5 0 0 1-2.5 2.5H8a.5.5 0 0 1 0-1h3.5A1.5 1.5 0 0 0 13 12V9a.5.5 0 0 1 .5-.5z" />
+              <path d="M6.5 14a1 1 0 0 1 1-1h1a1 1 0 1 1 0 2h-1a1 1 0 0 1-1-1z" />
+            </svg>
+          </span> HelpDesk
+        </h1>
+        <div class="container">
+          <p class="px-2 py-2" style="font-size: 18px;">Candidates can contact the Help Desk for resolution of the
+            technical problems</p>
+          <hr>
+          <span style="font-size: 18px;">
+            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-telephone-fill" fill="currentColor"
+              xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd"
+                d="M2.267.98a1.636 1.636 0 0 1 2.448.152l1.681 2.162c.309.396.418.913.296 1.4l-.513 2.053a.636.636 0 0 0 .167.604L8.65 9.654a.636.636 0 0 0 .604.167l2.052-.513a1.636 1.636 0 0 1 1.401.296l2.162 1.681c.777.604.849 1.753.153 2.448l-.97.97c-.693.693-1.73.998-2.697.658a17.47 17.47 0 0 1-6.571-4.144A17.47 17.47 0 0 1 .639 4.646c-.34-.967-.035-2.004.658-2.698l.97-.969z" />
+            </svg>
+          </span>
+          <a href="tel:0120-6619540" style="font-size: 18px;">
+            0120-6619540
+          </a>
+          <hr>
+          <p class="px-2 py-2" style="font-size: 18px;">
+            <span>
+              <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-envelope" fill="currentColor"
+                xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd"
+                  d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2zm13 2.383l-4.758 2.855L15 11.114v-5.73zm-.034 6.878L9.271 8.82 8 9.583 6.728 8.82l-5.694 3.44A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.739zM1 11.114l4.758-2.876L1 5.383v5.73z" />
+              </svg>
+            </span>
+            <a href="mailto:helpdesk@nsp.gov.in"> helpdesk@nsp.gov.in </a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

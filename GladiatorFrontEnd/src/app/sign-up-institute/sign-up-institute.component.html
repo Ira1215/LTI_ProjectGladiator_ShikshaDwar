@@ -1,0 +1,98 @@
+<app-navbar-landing-page></app-navbar-landing-page>
+<div class="container">
+  <div class="row">
+    <div class="col-sm text-center">
+      <figure class="figure">
+        <img
+          style="margin-top: 90px; height: 240px; width: auto"
+          class="figure-img img-fluid rounded"
+          src="assets/svg/undraw_quite_town_mg2q.svg"
+        />
+      </figure>
+    </div>
+    <div class="col-sm">
+      <div class="card mt-5">
+        <div class="card-body">
+          <!-- Student sign Up form -->
+
+          <form [formGroup]="signUpInstituteForm" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+              <label for="diseCode">DISE Code</label>
+              <input
+                type="text"
+                class="form-control"
+                name="diseCode"
+                id="diseCode"
+                formControlName="diseCode"
+                [ngClass]="{
+                  'is-invalid': submitted && signUp.diseCode.errors
+                }"
+              />
+
+              <div
+                style="color: red"
+                *ngIf="
+                  signUp.diseCode.errors &&
+                  (signUp.diseCode.touched || signUp.diseCode.dirty)
+                "
+              >
+                <p>DISE Code is required</p>
+              </div>
+
+              <label for="institutePassword">Password</label>
+              <input
+                type="password"
+                class="form-control"
+                name="institutePassword"
+                id="institutePassword"
+                formControlName="institutePassword"
+                [ngClass]="{
+                  'is-invalid': submitted && signUp.institutePassword.errors
+                }"
+              />
+
+              <div
+                style="color: red"
+                *ngIf="
+                  signUp.institutePassword.errors &&
+                  (signUp.institutePassword.touched ||
+                    signUp.institutePassword.dirty)
+                "
+              >
+                <p>Password is required</p>
+              </div>
+
+              <label for="cPassword">Confirm Password</label>
+              <input
+                type="password"
+                class="form-control"
+                id="cPassword"
+                formControlName="cPassword"
+                [ngClass]="{
+                  'is-invalid': submitted && signUp.cPassword.errors
+                }"
+              />
+
+              <div
+                style="color: red"
+                *ngIf="
+                  signUp.cPassword.errors &&
+                  (signUp.cPassword.touched || signUp.cPassword.dirty)
+                "
+              >
+                <p>Password does not match</p>
+              </div>
+              <p class="alert alert-danger" style="text-align: center;" *ngIf="isExisting">You have Already Signed Up</p>
+            </div>
+            
+          <button class="btn btn-block btn-success" type="submit">
+            Submit
+          </button>
+          </form>
+        
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

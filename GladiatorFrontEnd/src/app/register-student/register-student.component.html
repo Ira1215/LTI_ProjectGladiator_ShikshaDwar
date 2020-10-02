@@ -1,0 +1,67 @@
+<form [formGroup]="studentRegisterForm" (ngSubmit)="onSubmit()">
+  <div class="form-group">
+    <div class="row">
+      <div class="col-sm">
+        <label for="studentName">Name</label>
+        <input class="form-control" name="studentName" id="studentName" type="text" formControlName="studentName">
+
+        <div style="color: red;" *ngIf="reg.studentName.errors && (reg.studentName.touched || reg.studentName.dirty)">
+          Name is required
+        </div>
+
+      </div>
+      <div class="form-group">
+        <label for="studentAadhar">Aadhar No</label>
+        <input  class="form-control" name="studentAadhar" id="studentAadharNo" type="text" formControlName="studentAadharNo">
+
+        <div style="color: red;" *ngIf="reg.studentAadharNo.errors && (reg.studentAadharNo.touched || reg.studentAadharNo.dirty)">
+          Aadhar Number is required
+        </div>
+
+      </div>
+    </div>
+   <!--  <label for="studentEmail">Email</label>
+    <input class="form-control" id="studentEmail" type="email" formControlName="studentEmail">
+    
+    <div style="color: red;" *ngIf="reg.studentEmail.errors && (reg.studentEmail.touched || reg.studentEmail.dirty)">
+      Email is required
+    </div> -->
+    
+    <label for="studentMobileNo">Mobile No</label>
+    <input class="form-control" id="studentMobileNo" type="text" formControlName="studentMobileNo">
+    <div style="color: red;" *ngIf="reg.studentMobileNo.errors && (reg.studentMobileNo.touched || reg.studentMobileNo.dirty)">
+      Mobile No is required
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <label for="studentGender">Gender</label>
+        <select class="form-control" id="studentGender" formControlName="studentGender">
+          <option>Male</option>
+          <option>Female</option>
+          <option>Other</option>
+        </select>
+
+        <div style="color: red;" *ngIf="reg.studentGender.errors && (reg.studentGender.touched || reg.studentGender.dirty)">
+          Gender is required
+        </div>
+
+      </div>
+      <div class="col">
+        <label for="studentDob">Birth date</label>
+        <input type="date" id="studentDob" class="form-control" formControlName="studentDob">
+
+        <div style="color: red;" *ngIf="reg.studentDob.errors && (reg.studentDob.touched || reg.studentDob.dirty)">
+          Date of Birth is required
+        </div>
+      </div>
+    </div>
+    <label for="studentInstitution">Institute Name</label>
+    <input id="studentInstitution" type="text" class="form-control" formControlName="studentInstitution">
+
+    <div style="color: red;" *ngIf="reg.studentInstitution.errors && (reg.studentInstitution.touched || reg.studentInstitution.dirty)">
+      Institute Name is required
+    </div>
+  </div>
+  <button type="submit" class="btn btn-block btn-primary" >Register</button>
+</form>

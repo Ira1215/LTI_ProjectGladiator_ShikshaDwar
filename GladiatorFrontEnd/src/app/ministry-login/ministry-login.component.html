@@ -1,0 +1,37 @@
+<form [formGroup]="ministryLoginForm" (ngSubmit)="onSubmit()">
+  <h1 class="h3 mb-3 font-weight-normal">Ministry Sign in</h1>
+  <label for="username" class="sr-only">Email address</label>
+  <input
+    type="email"
+    id="username"
+    class="form-control my-2"
+    formControlName="username"
+    placeholder="Email address"
+    [ngClass]="{'is-invalid': submitted && f.username.errors}"
+  />
+  <div style="color: red" *ngIf="f.username.errors && (f.username.touched || f.username.dirty)">
+    <p>Email is Required</p>
+  </div>
+  <label for="password" class="sr-only">Password</label>
+  <input
+    type="password"
+    id="password"
+    class="form-control my-2"
+    placeholder="Password"
+    formControlName="password"
+    [ngClass]="{'is-invalid': submitted && f.password.errors}"
+  />
+
+  <div style="color: red;" *ngIf="f.password.errors && (f.password.touched || f.password.dirty)">
+    <p>Password is Required</p>
+  </div>
+
+  <p class="my-3">Forgot Password! Click on <a href="#">Reset</a></p>
+  <button
+    class="btn btn-lg btn-primary btn-block"
+    [disabled]="ministryLoginForm.invalid"
+   
+  >
+    Sign in
+  </button>
+</form>

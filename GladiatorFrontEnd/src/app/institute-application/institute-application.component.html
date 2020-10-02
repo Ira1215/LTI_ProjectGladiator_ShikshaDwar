@@ -1,0 +1,611 @@
+<app-institute-dashboard-nav-bar></app-institute-dashboard-nav-bar>
+
+<div class="container">
+  <h1 class="text-center my-3" style="font-style: monospace">
+    Institute Application Form
+  </h1>
+  <p class="alert alert-danger" style="text-align: center" *ngIf="exists">
+    You have Already Registered yourself On the Portal
+  </p>
+</div>
+
+<div class="container">
+  <div class="card mb-4">
+    <div class="card-body">
+      <form
+        [formGroup]="instituteApplicationForm"
+        (submit)="onSubmit()"
+        action=""
+      >
+        <h4 style="font-family: monospace">
+          <span
+            ><svg
+              width="1em"
+              height="1em"
+              viewBox="0 0 16 16"
+              class="bi bi-arrow-right"
+              fill="currentColor"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"
+              />
+            </svg>
+          </span>
+          Basic Details
+        </h4>
+        <hr />
+        <div class="form-row">
+          <div class="form-group col-md-8">
+            <label for="instituteName">Institute Name</label>
+            <input
+              type="text"
+              class="form-control"
+              id="instituteName"
+              formControlName="instituteName"
+              [ngClass]="{
+                'is-invalid': submitted && instApp.instituteName.errors
+              }"
+            />
+
+            <div
+              style="color: red"
+              *ngIf="
+                instApp.instituteName.errors &&
+                (instApp.instituteName.touched || instApp.instituteName.dirty)
+              "
+            >
+              <p>Institute Name is required</p>
+            </div>
+          </div>
+          <div class="form-group col-md-4">
+            <label for="instituteCategory">Institute Category</label>
+            <select
+              id="instituteCategory"
+              class="form-control"
+              formControlName="instituteCategory"
+              [ngClass]="{
+                'is-invalid': submitted && instApp.instituteCategory.errors
+              }"
+            >
+              <option selected>Government</option>
+              <option>Private</option>
+              <option>Autonomous</option>
+            </select>
+            <div
+              style="color: red"
+              *ngIf="
+                instApp.instituteCategory.errors &&
+                (instApp.instituteCategory.touched ||
+                  instApp.instituteCategory.dirty)
+              "
+            >
+              <p>Select Institute Category</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="instituteCode">Institute Code</label>
+            <input
+              type="text"
+              id="instituteCode"
+              class="form-control"
+              formControlName="instituteCode"
+              [ngClass]="{
+                'is-invalid': submitted && instApp.instituteCode.errors
+              }"
+            />
+            <div
+              style="color: red"
+              *ngIf="
+                instApp.instituteCode.errors &&
+                (instApp.instituteCode.touched || instApp.instituteCode.dirty)
+              "
+            >
+              <p>Institute Code is required</p>
+            </div>
+          </div>
+          <div class="form-group col-md-6">
+            <label for="diseCode">DISE Code</label>
+            <input
+              type="text"
+              id="diseCode"
+              class="form-control"
+              formControlName="diseCode"
+              [ngClass]="{ 'is-invalid': submitted && instApp.diseCode.errors }"
+            />
+            <div
+              style="color: red"
+              *ngIf="
+                instApp.diseCode.errors &&
+                (instApp.diseCode.touched || instApp.diseCode.dirty)
+              "
+            >
+              <p>DISE Code is mandatory</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-md-4">
+            <label for="instituteLocation">Institute Location</label>
+            <select
+              id="instituteLocation"
+              class="form-control"
+              formControlName="instituteLocation"
+              [ngClass]="{
+                'is-invalid': submitted && instApp.instituteLocation.errors
+              }"
+            >
+              <option selected>Urban</option>
+              <option>Rural</option>
+            </select>
+            <div
+              style="color: red"
+              *ngIf="
+                instApp.instituteLocation.errors &&
+                (instApp.instituteLocation.touched ||
+                  instApp.instituteLocation.dirty)
+              "
+            >
+              <p>Select Institute location</p>
+            </div>
+          </div>
+          <div class="form-group col-md-4">
+            <label for="instituteType">Institute Type</label>
+            <select
+              id="instituteType"
+              class="form-control"
+              formControlName="instituteType"
+              [ngClass]="{
+                'is-invalid': submitted && instApp.instituteType.errors
+              }"
+            >
+              <option selected>Medical</option>
+              <option>Engineering</option>
+              <option>Arts</option>
+            </select>
+            <div
+              style="color: red"
+              *ngIf="
+                instApp.instituteType.errors &&
+                (instApp.instituteType.touched || instApp.instituteType.dirty)
+              "
+            >
+              <p>Select Institute Type</p>
+            </div>
+          </div>
+          <div class="form-group col-md-4">
+            <label for="affiliatedUniState">Affiliated University State</label>
+            <input
+              id="affiliatedUniState"
+              type="text"
+              class="form-control"
+              formControlName="affiliatedUniState"
+              [ngClass]="{
+                'is-invalid': submitted && instApp.affiliatedUniState.errors
+              }"
+            />
+            <div
+              style="color: red"
+              *ngIf="
+                instApp.affiliatedUniState.errors &&
+                (instApp.affiliatedUniState.touched ||
+                  instApp.affiliatedUniState.dirty)
+              "
+            >
+              <p>Enter Affiliated State</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col">
+            <label for="affiliatedUniboard"
+              >Affiliated University/Board Name</label
+            >
+            <input
+              type="text"
+              id="affiliatedUniboard"
+              class="form-control"
+              formControlName="affiliatedUniboard"
+              [ngClass]="{
+                'is-invalid': submitted && instApp.affiliatedUniboard.errors
+              }"
+            />
+
+            <div
+              style="color: red"
+              *ngIf="
+                instApp.affiliatedUniboard.errors &&
+                (instApp.affiliatedUniboard.touched ||
+                  instApp.affiliatedUniboard.dirty)
+              "
+            >
+              <p>Enter Affiliated Board Name</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="yearAdmissionStarted"
+              >Year from which Admission Started</label
+            >
+            <input
+              type="date"
+              id="yearAdmissionStarted"
+              class="form-control"
+              formControlName="yearAdmissionStarted"
+              [ngClass]="{
+                'is-invalid': submitted && instApp.yearAdmissionStarted.errors
+              }"
+            />
+
+            <div
+              style="color: red"
+              *ngIf="
+                instApp.yearAdmissionStarted.errors &&
+                (instApp.yearAdmissionStarted.touched ||
+                  instApp.yearAdmissionStarted.dirty)
+              "
+            >
+              <p>This field is Required</p>
+            </div>
+          </div>
+        </div>
+
+        <h4 style="font-family: monospace">
+          <span
+            ><svg
+              width="1em"
+              height="1em"
+              viewBox="0 0 16 16"
+              class="bi bi-arrow-right"
+              fill="currentColor"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"
+              />
+            </svg>
+          </span>
+          Proof of Existence of Institute
+        </h4>
+        <hr />
+
+        <div class="custom-file mb-3">
+          <input
+            type="file"
+            class="custom-file-input"
+            id="instituteEstbCerti"
+            formControlName="instituteEstbCerti"
+            [ngClass]="{
+              'is-invalid': submitted && instApp.instituteEstbCerti.errors
+            }"
+          />
+          <label class="custom-file-label" for="instituteEstbCerti"
+            >Institute Establishment/Existence Certificate</label
+          >
+
+          <div
+            style="color: red"
+            *ngIf="
+              instApp.instituteEstbCerti.errors &&
+              (instApp.instituteEstbCerti.touched ||
+                instApp.instituteEstbCerti.dirty)
+            "
+          >
+            <p>Upload Institute Establishment Certificate</p>
+          </div>
+        </div>
+
+        <h4 style="font-family: monospace">
+          <span
+            ><svg
+              width="1em"
+              height="1em"
+              viewBox="0 0 16 16"
+              class="bi bi-arrow-right"
+              fill="currentColor"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"
+              />
+            </svg>
+          </span>
+          Affiliated to
+        </h4>
+        <hr />
+
+        <div class="custom-file mb-3">
+          <input
+            type="file"
+            class="custom-file-input"
+            id="uniAffiliationCerti"
+            formControlName="uniAffiliationCerti"
+            [ngClass]="submitted && instApp.uniAffiliationCerti.errors"
+          />
+          <label class="custom-file-label" for="uniAffiliationCerti"
+            >University/Board Affiliation Certificate</label
+          >
+          <div
+            style="color: red"
+            *ngIf="
+              instApp.uniAffiliationCerti.errors &&
+              (instApp.uniAffiliationCerti.touched ||
+                instApp.uniAffiliationCerti.dirty)
+            "
+          >
+            <p>Upload Institute Affiliation Certificate</p>
+          </div>
+        </div>
+
+        <h4 style="font-family: monospace">
+          <span
+            ><svg
+              width="1em"
+              height="1em"
+              viewBox="0 0 16 16"
+              class="bi bi-arrow-right"
+              fill="currentColor"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"
+              />
+            </svg>
+          </span>
+          Address
+        </h4>
+        <hr />
+
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="addressLine1">Address Line 1</label>
+            <input
+              type="text"
+              id="addressLine1"
+              class="form-control"
+              formControlName="addressLine1"
+              [ngClass]="{
+                'is-invalid': submitted && instApp.addressLine1.errors
+              }"
+            />
+            <div
+              style="color: red"
+              *ngIf="
+                instApp.addressLine1.errors &&
+                (instApp.addressLine1.touched || instApp.addressLine1.dirty)
+              "
+            >
+              <p>Address Line 1 is required</p>
+            </div>
+          </div>
+          <div class="form-group col-md-6">
+            <label for="addressLine2">Address Line 2</label>
+            <input
+              type="text"
+              id="addressLine2"
+              class="form-control"
+              formControlName="addressLine2"
+              [ngClass]="{
+                'is-invalid': submitted && instApp.addressLine2.errors
+              }"
+            />
+            <div
+              style="color: red"
+              *ngIf="
+                instApp.addressLine2.errors &&
+                (instApp.addressLine2.touched || instApp.addressLine2.dirty)
+              "
+            >
+              <p>Address Line 2 is required</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="instituteState">State</label>
+            <input
+              type="text"
+              id="instituteState"
+              class="form-control"
+              formControlName="instituteState"
+              [ngClass]="{
+                'is-invalid': submitted && instApp.instituteState.errors
+              }"
+            />
+            <div
+              style="color: red"
+              *ngIf="
+                instApp.instituteState.errors &&
+                (instApp.instituteState.touched || instApp.instituteState.dirty)
+              "
+            >
+              <p>Institute State is required</p>
+            </div>
+          </div>
+          <div class="form-group col-md-6">
+            <label for="district">District</label>
+            <input
+              type="text"
+              id="district"
+              class="form-control"
+              formControlName="district"
+              [ngClass]="{ 'is-invalid': submitted && instApp.district.errors }"
+            />
+            <div
+              style="color: red"
+              *ngIf="
+                instApp.district.errors &&
+                (instApp.district.touched || instApp.district.dirty)
+              "
+            >
+              <p>District is required</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="city">City</label>
+            <input
+              type="text"
+              id="city"
+              class="form-control"
+              formControlName="city"
+              [ngClass]="{ 'is-invalid': submitted && instApp.city.errors }"
+            />
+            <div
+              style="color: red"
+              *ngIf="
+                instApp.city.errors &&
+                (instApp.city.touched || instApp.city.dirty)
+              "
+            >
+              <p>City is required</p>
+            </div>
+          </div>
+          <div class="form-group col-md-6">
+            <label for="pincode">Pincode</label>
+            <input
+              type="text"
+              id="pincode"
+              class="form-control"
+              formControlName="pincode"
+              [ngClass]="submitted && instApp.pincode.errors"
+            />
+            <div
+              style="color: red"
+              *ngIf="
+                instApp.pincode.errors &&
+                (instApp.pincode.touched || instApp.pincode.dirty)
+              "
+            >
+              <p>Pincode is required</p>
+            </div>
+          </div>
+        </div>
+
+        <h4 style="font-family: monospace">
+          <span
+            ><svg
+              width="1em"
+              height="1em"
+              viewBox="0 0 16 16"
+              class="bi bi-arrow-right"
+              fill="currentColor"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"
+              />
+            </svg>
+          </span>
+          Contact Details
+        </h4>
+        <hr />
+
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="instituteHeadName">Institute Head Contact</label>
+            <input
+              type="text"
+              id="instituteHeadName"
+              class="form-control"
+              formControlName="instituteHeadName"
+              [ngClass]="{
+                'is-invalid': submitted && instApp.instituteHeadName.errors
+              }"
+            />
+            <div
+              style="color: red"
+              *ngIf="
+                instApp.instituteHeadName.errors &&
+                (instApp.instituteHeadName.touched ||
+                  instApp.instituteHeadName.dirty)
+              "
+            >
+              <p>Institute Head Name is required</p>
+            </div>
+          </div>
+
+          <div class="form-group col-md-6">
+            <label for="instituteHeadContact">Email ID</label>
+            <input
+              type="email"
+              id="instituteHeadContact"
+              class="form-control"
+              formControlName="instituteHeadContact"
+              [ngClass]="{
+                'is-invalid': submitted && instApp.instituteHeadContact.errors
+              }"
+            />
+            <div
+              style="color: red"
+              *ngIf="
+                instApp.instituteHeadContact.errors &&
+                (instApp.instituteHeadContact.touched ||
+                  instApp.instituteHeadContact.dirty)
+              "
+            >
+              <p>Email Id is required</p>
+            </div>
+          </div>
+        </div>
+        <div class="container">
+          <div class="row">
+            <div class="col">
+              <button
+                class="btn btn-block btn-primary mb-4"
+              
+              >
+                Submit
+              </button>
+            </div>
+            <div class="col">
+              <button
+                class="btn btn-block btn-secondary mb-4"
+                type="reset"
+                (click)="onReset()"
+              >
+                Reset
+              </button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+    <!-- <div class="container">
+      <div class="row">
+        <div class="col">
+          <button
+            class="btn btn-block btn-primary mb-4"
+            [disabled]="instituteApplicationForm.invalid"
+          >
+            Submit
+          </button>
+        </div>
+        <div class="col">
+          <button
+            class="btn btn-block btn-secondary mb-4"
+            type="reset"
+            (click)="onReset()"
+          >
+            Reset
+          </button>
+        </div>
+      </div>
+    </div> -->
+  </div>
+</div>

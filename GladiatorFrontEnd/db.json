@@ -1,0 +1,254 @@
+{
+  "students": [
+    {
+      "studentAadharNo": "32424256060",
+      "studentFatherName": "Gautam",
+      "state": "",
+      "district": "",
+      "blockNo": "",
+      "streetNo": "",
+      "houseNo": "",
+      "pinCode": "",
+      "tuitionFee": "",
+      "admissionFee": "",
+      "otherFee": "",
+      "bankName": "",
+      "bankAccountNo": "",
+      "bankIfscCode": "",
+      "studentReligion": "Hindu",
+      "studentCategory": "",
+      "studentMotherName": "",
+      "studentFamilyIncome": "",
+      "studentCourse": "",
+      "studentYear": "",
+      "modeOfStudy": "",
+      "courseStartDate": "",
+      "studentPrevCourse": "",
+      "studentPrevPassingYear": "",
+      "studentPrevPercent": "",
+      "student10RollNo": "",
+      "student10BoardName": "",
+      "student10PassingYear": "",
+      "student10Percent": "",
+      "student12RollNo": "",
+      "student12Board": "",
+      "student12PassingYear": "",
+      "student12Percent": "",
+      "disability": "",
+      "disabilityType": "",
+      "disabilityPercentage": "",
+      "studentMaritalStatus": "",
+      "parentProfession": "",
+      "scholarshipType": "",
+      "id": 1
+    },
+    {
+      "studentAadharNo": "1234567890",
+      "studentFatherName": "Snayasish",
+      "state": "prakasam",
+      "district": "andhra",
+      "blockNo": "ongol",
+      "streetNo": "21jump street",
+      "houseNo": "123",
+      "pinCode": "523001",
+      "tuitionFee": "50000",
+      "admissionFee": "80000",
+      "otherFee": "200000",
+      "bankName": "ICICI",
+      "bankAccountNo": "9798",
+      "bankIfscCode": "icici000013",
+      "studentReligion": "Hindu",
+      "studentCategory": "General",
+      "studentMotherName": "efef",
+      "studentFamilyIncome": "231344324",
+      "studentCourse": "Btech",
+      "studentYear": "1",
+      "modeOfStudy": "Government School",
+      "courseStartDate": "2020-10-04",
+      "studentPrevCourse": "12",
+      "studentPrevPassingYear": "2015",
+      "studentPrevPercent": "91.11",
+      "student10RollNo": "193001",
+      "student10BoardName": "cbse",
+      "student10PassingYear": "2013",
+      "student10Percent": "97.5",
+      "student12RollNo": "132064",
+      "student12Board": "cbse",
+      "student12PassingYear": "2015",
+      "student12Percent": "91.11",
+      "disability": "No",
+      "disabilityType": "no disability",
+      "disabilityPercentage": "0",
+      "studentMaritalStatus": "Divorced",
+      "parentProfession": "BusinessMan",
+      "scholarshipType": "Merit-Cum-Based Scholarship",
+      "id": 2
+    }
+  ],
+  "institutes": [
+    {
+      "diseCode": "AB9876",
+      "institutePassword": "dd",
+      "id": 1
+    },
+    {
+      "diseCode": "AB9876",
+      "institutePassword": "dd",
+      "id": 2
+    },
+    {
+      "diseCode": "ab2344",
+      "institutePassword": "cc",
+      "id": 3
+    },
+    {
+      "diseCode": "aabbcc",
+      "institutePassword": "gg",
+      "id": 4
+    },
+    {
+      "diseCode": "asdf1234",
+      "institutePassword": "tt",
+      "id": 5
+    },
+    {
+      "diseCode": "qwerty1234",
+      "institutePassword": "qw",
+      "id": 6
+    },
+    {
+      "diseCode": "1234",
+      "institutePassword": "1234",
+      "id": 7
+    },
+    {
+      "diseCode": "abcd1234",
+      "institutePassword": "1234",
+      "id": 8
+    },
+    {
+      "diseCode": "9876543210",
+      "institutePassword": "qq",
+      "id": 9
+    }
+  ],
+  "signedupstudents": [
+    {
+      "studentEmailId": "Snayasishkmr@gmail.com",
+      "studentPassword": "cccc",
+      "id": 1
+    },
+    {
+      "studentEmailId": "Rahul@gmail.com",
+      "studentPassword": "dd",
+      "id": 2
+    },
+    {
+      "studentEmailId": "waeqer",
+      "studentPassword": "12345",
+      "id": 3
+    },
+    {
+      "studentEmailId": "qewqeqweq",
+      "studentPassword": "qwert",
+      "id": 4
+    },
+    {
+      "studentEmailId": "divyue@gmail.com",
+      "studentPassword": "ww",
+      "id": 5
+    },
+    {
+      "studentEmailId": "Divyuesharma@gmail.com",
+      "studentPassword": "ww",
+      "id": 6
+    },
+    {
+      "studentEmailId": "DineshThakur@gmail.com",
+      "studentPassword": "dd",
+      "id": 7
+    }
+  ],
+  "registeredstudents": [
+    {
+      "studentAadharNo": "Snayasish Kumar",
+      "studentName": "",
+      "studentGender": "Male",
+      "studentInstitution": "",
+      "studentMobile": "",
+      "studentDob": "",
+      "id": 1
+    },
+    {
+      "studentAadharNo": "Ira",
+      "studentName": "",
+      "studentGender": "Female",
+      "studentInstitution": "",
+      "studentMobile": "8597586252",
+      "studentDob": "",
+      "id": 2
+    },
+    {
+      "studentAadharNo": "Divyue Sharma",
+      "studentName": "",
+      "studentGender": "Male",
+      "studentInstitution": "2020-10-16",
+      "studentMobile": "8597586252",
+      "studentDob": "VIT",
+      "id": 3
+    },
+    {
+      "studentAadharNo": "Dinesh",
+      "studentName": "23131323213",
+      "studentGender": "Male",
+      "studentInstitution": "2020-10-08",
+      "studentMobile": "8984391849",
+      "studentDob": "NIT hamirpur",
+      "id": 4
+    }
+  ],
+  "registeredinstitutes": [
+    {
+      "instituteCode": "1234",
+      "instituteName": "institute1",
+      "instituteCategory": "Government",
+      "instituteType": "Engineering",
+      "affiliatedUniState": "maulana azaad University",
+      "affiliatedUniboard": "WbUt",
+      "yearAdmissionStarted": "",
+      "uniAffiliationCerti": "",
+      "instituteEstbCerti": "",
+      "addressLine1": "",
+      "addressLine2": "",
+      "instituteState": "",
+      "district": "",
+      "city": "",
+      "pincode": "",
+      "instituteHeadName": "",
+      "instituteHeadContact": "",
+      "diseCode": "AB9876",
+      "id": 1
+    },
+    {
+      "instituteCode": "VIT007",
+      "instituteName": "VIT",
+      "instituteCategory": "Private",
+      "instituteType": "Engineering",
+      "affiliatedUniState": "Tamil Nadu",
+      "affiliatedUniboard": "VIT",
+      "yearAdmissionStarted": "2020-10-10",
+      "uniAffiliationCerti": "",
+      "instituteEstbCerti": "",
+      "addressLine1": "velllore",
+      "addressLine2": "vellore1",
+      "instituteState": "TamilNadu",
+      "district": "Vellore",
+      "city": "vellore",
+      "pincode": "632014",
+      "instituteHeadName": "822017891",
+      "instituteHeadContact": "IRA",
+      "diseCode": "9876543210",
+      "id": 2
+    }
+  ]
+}

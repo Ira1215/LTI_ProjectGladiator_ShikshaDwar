@@ -1,0 +1,116 @@
+<app-navbar-landing-page></app-navbar-landing-page>
+
+<div class="container">
+  <div class="card mt-5">
+    <div class="card-body">
+      <div class="text-center alert alert-danger mb-5" role="alert">
+        Please Sign Up and then try to register.
+      </div>
+
+      <div class="row">
+        <div class="col-sm text-center">
+          <figure class="figure">
+            <img
+              style="height: 240px; width: auto"
+              class="figure-img img-fluid rounded"
+              src="assets/svg/undraw_Graduation_ktn0.svg"
+            />
+          </figure>
+        </div>
+
+        <div class="col-sm">
+          <div class="container">
+            <div class="tab-content" id="pills-tabContent">
+              <div
+                class="tab-pane fade show active"
+                id="pills-home"
+                role="tabpanel"
+                aria-labelledby="pills-home-tab"
+              >
+                <div class="card">
+                  <div class="card-body">
+                    <form
+                      [formGroup]="signUpStudentForm"
+                      (ngSubmit)="onSubmit()"
+                    >
+                      <div class="form-group">
+                        <label for="studentEmailId">Email Id</label>
+                        <input
+                          type="email"
+                          class="form-control"
+                          name="studentEmailId"
+                          id="studentEmailId"
+                          formControlName="studentEmailId"
+                          [ngClass]="{
+                            'is-invalid':
+                              submitted && signUp.studentEmailId.errors
+                          }"
+                        />
+                        <div
+                          style="color: red"
+                          *ngIf="
+                            signUp.studentEmailId.errors &&
+                            (signUp.studentEmailId.touched ||
+                              signUp.studentEmailId.dirty)
+                          "
+                        >
+                          <p>Email Id is required</p>
+                        </div>
+                        <label for="studentPassword">Password</label>
+                        <input
+                          type="password"
+                          class="form-control"
+                          name="studentPassword"
+                          id="studentPassword"
+                          formControlName="studentPassword"
+                          [ngClass]="{
+                            'is-invalid':
+                              submitted && signUp.studentPassword.errors
+                          }"
+                        />
+                        <div
+                          style="color: red"
+                          *ngIf="
+                            signUp.studentPassword.errors &&
+                            (signUp.studentPassword.touched ||
+                              signUp.studentPassword.dirty)
+                          "
+                        >
+                          <p>Password is required</p>
+                        </div>
+
+                        <label for="cPassword">Confirm Password</label>
+                        <input
+                          type="password"
+                          class="form-control"
+                          name="cPassword"
+                          id="cPassword"
+                          formControlName="cPassword"
+                          [ngClass]="{
+                            'is-invalid': submitted && signUp.cPassword.errors
+                          }"
+                        />
+                        <div
+                          style="color: red"
+                          *ngIf="
+                            signUp.cPassword.errors &&
+                            (signUp.cPassword.touched || signUp.cPassword.dirty)
+                          "
+                        >
+                          <p>Password does not match</p>
+                        </div>
+                      </div>
+                      <button class="btn btn-block btn-success" type="submit">
+                        Submit
+                      </button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

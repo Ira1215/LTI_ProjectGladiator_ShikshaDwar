@@ -1,0 +1,41 @@
+<form [formGroup]="nodalLoginForm" (ngSubmit)="onSubmit()" >
+  <h1 class="h3 mb-3 font-weight-normal">Nodal Officer sign in</h1>
+  <label for="username" class="sr-only">Username</label>
+  <input
+    type="text"
+    id="username"
+    class="form-control my-2"
+    placeholder="Username"
+    formControlName="username"
+    [ngClass]="{'is-invalid': submitted && f.username.errors}"
+  />
+
+  <div style="color: red;" *ngIf="f.username.errors && (f.username.touched || f.username.dirty)">
+    <p>Username is required</p>
+  </div>
+
+  <label for="password" class="sr-only">Password</label>
+  <input
+    type="password"
+    id="password"
+    class="form-control my-2"
+    placeholder="Password"
+    formControlName="password"
+    [ngClass] = "{'is-invalid': submitted && f.password.errors}"
+  />
+
+  <div style="color: red;" *ngIf="f.password.errors && (f.password.touched || f.password.dirty)">
+    <p>Password is required</p>
+  </div>
+
+  <p class="my-3" class="my-3">
+    Forgot Password! Click on <a href="#">Reset</a>
+  </p>
+  <button
+    class="btn btn-lg btn-primary btn-block"
+    type="submit"
+   [disabled]="nodalLoginForm.invalid"
+  >
+    Sign in
+  </button>
+</form>
