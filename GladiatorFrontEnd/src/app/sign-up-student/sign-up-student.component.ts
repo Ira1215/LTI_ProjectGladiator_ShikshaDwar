@@ -32,11 +32,13 @@ export class SignUpStudentComponent implements OnInit {
   studentData:StudentSignup[];
 
   onSubmit() {
-    alert("ok");
+    alert(this.signUpStudentForm.controls.studentEmailId.value);
+    alert(this.signUpStudentForm.controls.studentPassword.value);
     this.submitted= true;
     let student:StudentSignup=new StudentSignup(this.signUpStudentForm.controls.studentEmailId.value,
       this.signUpStudentForm.controls.studentPassword.value);
-      for(let s of this.studentData)
+      this.service.addUser(student).subscribe( data => this.studentData.push(student));
+      /* for(let s of this.studentData)
       {
         if(s.studentEmailId==student.studentEmailId)
         {
@@ -53,7 +55,7 @@ export class SignUpStudentComponent implements OnInit {
           this.router.navigate(['/studentRegister']);
 
         }
-
+ */
 
     if (this.signUpStudentForm.invalid) {
       return;

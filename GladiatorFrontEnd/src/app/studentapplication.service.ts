@@ -11,13 +11,14 @@ export class StudentapplicationService {
   constructor(private http:HttpClient) {}
    
   addUser(user:StudentApplication):Observable<Object>{
-   alert("its coming")
-    return this.http.post("http://localhost:3000/students" , user);
+   alert("You just Subscribed to studentApplicationService");
+   console.log(user);
+    return this.http.post("http://localhost:9091/ShikshaDwar/users/student/application",user);
    }
  
    getAllUsers():Observable<StudentApplication[]>{
    
-     return this.http.get<StudentApplication[]>("http://localhost:3000/students");
+     return this.http.get<StudentApplication[]>("http://localhost:9091/ShikshaDwar/users/student/application");
    }
 
    

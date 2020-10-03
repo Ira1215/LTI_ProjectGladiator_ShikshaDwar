@@ -14,13 +14,14 @@ export class StudentsignupService {
     
      
   addUser(user:StudentSignup):Observable<Object>{
-   // alert("its coming");
-     return this.http.post("http://localhost:3000/signedupstudents" , user);
+    console.log(user);
+      //alert("we are in service class");
+     return this.http.post("http://localhost:9091/ShikshaDwar/users/student/login",user);
     }
   
     getAllUsers():Observable<StudentSignup[]>{
     
-      return this.http.get<StudentSignup[]>("http://localhost:3000/signedupstudents");
+      return this.http.get<StudentSignup[]>("http://localhost:9091/ShikshaDwar/users/student/login");
     }
  
 }

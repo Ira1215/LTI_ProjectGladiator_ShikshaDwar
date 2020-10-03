@@ -135,7 +135,8 @@ constructor(private service:StudentapplicationService)
  
     //console.log(student);
     alert(this.form.controls.studentAadharNo.value);
-     for(let s of this.studentApp)
+    this.service.addUser(student).subscribe( data => this.studentApp.push(student));
+    /*  for(let s of this.studentApp)
     {
       
       //checking whether the current entered aadhar number is having a match in the array
@@ -150,7 +151,7 @@ constructor(private service:StudentapplicationService)
       this.service.addUser(student).subscribe( data => this.studentApp.push(student));
     } 
        
-
+ */
 
 
   }

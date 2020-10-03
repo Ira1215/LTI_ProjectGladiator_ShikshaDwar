@@ -122,12 +122,12 @@
         <div class="card">
           <img class="card-img-top py-4 px-4" src="assets/svg/undraw_Reading_book_re_kqpk.svg" alt="Student">
           <div class="card-body">
-            <h4 class="text-center">Snayasish Kumar</h4>
+            <h4 class="text-center">{{user}}</h4>
             <h5 class="text-center">Tracking Id</h5>
             <h5 class="text-center">Institute Name</h5>
 					</div>
 					<div class="card-footer">
-						<a class="btn btn-danger btn-block" href="#">Logout</a>
+						<button class="btn btn-danger btn-block" (click)="onLogout()">Logout</button>
 					</div>
         </div>
       </div>

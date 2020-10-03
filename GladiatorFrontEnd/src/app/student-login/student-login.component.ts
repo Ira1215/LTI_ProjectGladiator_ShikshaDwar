@@ -32,14 +32,21 @@ export class StudentLoginComponent implements OnInit  {
   
   onClick()
   {
-    for(let rs of this.registeredStudents)
+    alert("You just clicked the Login button");
+    this.router.navigate(['/studentDashboard']);
+   /*  for(let rs of this.registeredStudents)
     {
+      
       if(rs.studentEmailId==this.form.controls.studentEmailId.value)
       {
+        alert("in between ifs");
         this.isThereOrNot=true;
         if(rs.studentPassword==this.form.controls.studentPassword.value)
         {
+          
           this.isThereOrNot=true
+          sessionStorage.setItem("signedUpUser",this.form.controls.studentEmailId.value);
+          alert(sessionStorage.getItem("signedUpUser"));
           this.router.navigate(['/studentDashboard']);
         }
         else{
@@ -53,20 +60,13 @@ export class StudentLoginComponent implements OnInit  {
       this.error=true;
     }
   }
-
-  get StudentEmail()
+ 
+   get StudentEmail()
   {
     return this.form.get('inputStudentEmail');
   }
+ */
 
 }
-
-  
-
-
-
-
-
-
-
+}
 
