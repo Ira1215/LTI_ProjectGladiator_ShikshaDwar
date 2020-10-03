@@ -38,10 +38,10 @@ export class StudentApplication{
     disabilityPercentage:number;
     studentMaritalStatus:string;
     parentProfession:string;
-    domicileCertificate:string;
     scholarshipType:string
 
-    /* studentPhotograph:string;
+    domicileCertificate:string;
+    studentPhotograph:string;
     instituteIdCard:string;
     incomeCertificate:string;
     previousYearMarksheet:string;
@@ -49,7 +49,7 @@ export class StudentApplication{
     feeReceipt:string;
     aadharCard:string;
     markSheet10:string;
-    markSheet12:string; */
+    markSheet12:string;
     
 
     
@@ -63,8 +63,9 @@ export class StudentApplication{
         student10BoardName:string,student10PassingYear:number,student10Percent:number,
         student12RollNo:string,student12Board:string,student12PassingYear:number,
         student12Percent:number,disability:string,disabilityType:string,disabilityPercentage:number,
-        studentMaritalStatus:string,parentProfession:string,scholarshipType:string
-        )
+        studentMaritalStatus:string,parentProfession:string,scholarshipType:string,domicileCertificate:string,studentPhotograph:string,
+        instituteIdCard:string,incomeCertificate:string,previousYearMarksheet:string,
+        bankPassbook:string,feeReceipt:string,aadharCard:string,markSheet10:string,markSheet12:string)
     {   
         this.studentName=studentName;
         this.studentAadharNo=studentAadharNo;
@@ -106,6 +107,17 @@ export class StudentApplication{
         this.studentMaritalStatus=studentMaritalStatus;
         this.parentProfession=parentProfession;
         this.scholarshipType=scholarshipType;
+
+        this.domicileCertificate=domicileCertificate;
+        this.studentPhotograph=studentPhotograph;
+        this.instituteIdCard=instituteIdCard;
+        this.incomeCertificate=incomeCertificate;
+        this.previousYearMarksheet=previousYearMarksheet;
+        this.bankPassbook=bankPassbook;
+        this.feeReceipt=feeReceipt;
+        this.aadharCard=aadharCard;
+        this.markSheet10=markSheet10;
+        this.markSheet12=markSheet12;
 
     }
 }

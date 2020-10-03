@@ -78,7 +78,25 @@ constructor(private service:StudentapplicationService)
       streetNo:new FormControl('',Validators.required),
       pinCode:new FormControl('',Validators.required),
       scholarshipType:new FormControl('',Validators.required),
-      studentMaritalStatus:new FormControl('',Validators.required)
+      studentMaritalStatus:new FormControl('',Validators.required),
+
+      domicileCertificate:new FormControl('',Validators.required),
+      studentPhotograph:new FormControl('',Validators.required),
+      instituteIdCard:new FormControl('',Validators.required),
+      incomeCertificate:new FormControl('',Validators.required),
+      previousYearMarkSheet:new FormControl('',Validators.required),
+      bankPassbook:new FormControl('',Validators.required),
+      feeReceipt:new FormControl('',Validators.required),
+      aadharCard:new FormControl('',Validators.required),
+      markSheet10:new FormControl('',Validators.required),
+      markSheet12:new FormControl('',Validators.required)
+
+
+
+
+
+
+
 
     });
    // alert(this.studentApp);
@@ -108,7 +126,12 @@ constructor(private service:StudentapplicationService)
     this.form.controls.student12PassingYear.value,this.form.controls.student12Percent.value,
     this.form.controls.disability.value,this.form.controls.disabilityType.value,
     this.form.controls.disabilityPercentage.value,this.form.controls.studentMaritalStatus.value,
-    this.form.controls.parentProfession.value,this.form.controls.scholarshipType.value);  
+    this.form.controls.parentProfession.value,this.form.controls.scholarshipType.value,
+    this.form.controls.domicileCertificate.value,this.form.controls.studentPhotograph.value,
+    this.form.controls.instituteIdCard.value,this.form.controls.incomeCertificate.value,
+    this.form.controls.previousYearMarkSheet.value,this.form.controls.bankPassbook.value,
+    this.form.controls.feeReceipt.value,this.form.controls.aadharCard.value,this.form.controls.markSheet10.value,
+    this.form.controls.markSheet12.value);  
  
     //console.log(student);
     alert(this.form.controls.studentAadharNo.value);

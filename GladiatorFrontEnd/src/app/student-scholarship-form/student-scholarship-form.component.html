@@ -18,649 +18,656 @@
               xmlns="http://www.w3.org/2000/svg">
               <path fill-rule="evenodd"
                 d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" />
-              </svg>
+            </svg>
           </span>
           Basic Details
         </h4>
         <hr />
 
         <div class="form-row">
-          <div class="form-group">
+          <div class="form-group col-md-4">
             <label for="studentName">Student Name</label>
-            <input formControlName="studentName" type="text" class="form-control" id="studentAadharNo" />
+            <input formControlName="studentName" type="text" class="form-control" id="studentName">
             <div *ngIf="
-                form.get('studentName').touched && form.get('studentName').invalid"
-                 style="color: red">
+                form.get('studentName').touched && form.get('studentName').invalid" style="color: red">
               Student Name is Required
             </div>
+          </div>
 
 
-        <div class="form-row">
-          <div class="form-group">
+          <div class="form-group col-md-4">
             <label for="studentAadharNo">Aadhar Number</label>
             <input formControlName="studentAadharNo" type="text" class="form-control" id="studentAadharNo" />
             <div *ngIf="
-                form.get('studentAadharNo').touched && form.get('studentAadharNo').invalid"
-                 style="color: red">
+                form.get('studentAadharNo').touched && form.get('studentAadharNo').invalid" style="color: red">
               Aadhar Number is Required
             </div>
+          </div>
 
-            <div class="form-group">
-              <label for="studentReligion">Religion</label>
-              <select id="studentReligion" class="form-control" formControlName="studentReligion">
-                <option selected>Hindu</option>
-                <option>Muslim</option>
-                <option>Christian</option>
-                <option>Sikh</option>
-                <option>Indian</option>
-              </select>
-            </div>
-
-            <div class="form-row">
-              <div class="form-group">
-                <label for="studentFatherName">Father's Name</label>
-                <input formControlName="studentFatherName" type="text" class="form-control" id="studentFatherName" />
-                <div *ngIf="
+          <div class="form-group col-md-4">
+            <label for="studentReligion">Religion</label>
+            <select id="studentReligion" class="form-control" formControlName="studentReligion">
+              <option selected>Hindu</option>
+              <option>Muslim</option>
+              <option>Christian</option>
+              <option>Sikh</option>
+              <option>Indian</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="studentFatherName">Father's Name</label>
+            <input formControlName="studentFatherName" type="text" class="form-control" id="studentFatherName" />
+            <div *ngIf="
                     form.get('studentFatherName').touched &&
                     form.get('studentFatherName').invalid
                   " style="color: red">
-                  Father's Name is Required
-                </div>
+              Father's Name is Required
+            </div>
 
-                <div class="form-group">
-                  <label for="studentMotherName">Mother's Name</label>
-                  <input formControlName="studentMotherName" type="Text" class="form-control" id="studentMotherName" />
-                  <div *ngIf="
+            <div class="form-group">
+              <label for="studentMotherName">Mother's Name</label>
+              <input formControlName="studentMotherName" type="Text" class="form-control" id="studentMotherName" />
+              <div *ngIf="
                       form.get('studentMotherName').touched &&
                       form.get('studentMotherName').invalid
                     " style="color: red">
-                    Mothers's Name is Required
-                  </div>
-                </div>
+                Mothers's Name is Required
+              </div>
+            </div>
 
-                <div class="form-row">
-                  <div class="form-group col-md-6">
-                    <label for="studentCategory">Community or Category</label>
-                    <input formControlName="studentCategory" type="text" class="form-control" id="studentCategory" />
-                    <div *ngIf="
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="studentCategory">Community or Category</label>
+                <input formControlName="studentCategory" type="text" class="form-control" id="studentCategory" />
+                <div *ngIf="
                         form.get('studentCategory').touched &&
                         form.get('studentCategory').invalid
                       " style="color: red">
-                      Community Name is Required
-                    </div>
-                  </div>
-
-                  <div class="form-group col-md-6">
-                    <label for="studentFamilyIncome">Family Annual Income</label>
-                    <input formControlName="studentFamilyIncome" type="text" class="form-control" id="studentFamilyIncome" />
-                    <div *ngIf="
-                        form.get('studentFamilyIncome').touched &&
-                        form.get('studentFamilyIncome').invalid
-                      " style="color: red">
-                      Family Annual Income is Required
-                    </div>
-                  </div>
-                </div>
-
-                <h4 style="font-family: monospace">
-                  <span><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right" fill="currentColor"
-                      xmlns="http://www.w3.org/2000/svg">
-                      <path fill-rule="evenodd"
-                        d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" />
-                      </svg>
-                  </span>
-                  Academic Details
-                </h4>
-                <hr />
-
-                <div class="form-row">
-                  <div class="form-group col-md-6">
-                    <label for="classStartDate">Course Start date</label>
-                    <input formControlName="courseStartDate" type="date" class="form-control" id="classStartDate" />
-                    <div *ngIf="
-                        form.get('courseStartDate').touched &&
-                        form.get('courseStartDate').invalid
-                      " style="color: red">
-                      course Start Date is Required
-                    </div>
-                  </div>
-                  <div class="form-group col-md-6">
-                    <label for="studentCourse">Present Class/Course</label>
-                    <input formControlName="studentCourse" type="text" class="form-control" id="studentCourse" />
-                    <div *ngIf="
-                        form.get('studentCourse').touched &&
-                        form.get('studentCourse').invalid
-                      " style="color: red">
-                      Present Course must be Mentioned
-                    </div>
-                  </div>
-                </div>
-
-                <div class="form-row">
-                  <div class="form-group col-md-6">
-                    <label for="studentYear">Present Class/Course Year</label>
-                    <input formControlName="presentCourseYear" type="text" class="form-control" id="studentYear" />
-                    <div *ngIf="
-                        form.get('presentCourseYear').touched &&
-                        form.get('presentCourseYear').invalid
-                      " style="color: red">
-                      Present Course Year must be Mentioned
-                    </div>
-                  </div>
-
-                  <div class="form-group col-md-6">
-                    <label for="modeOfStudy">Mode of Study</label>
-                    <select formControlName="modeOfStudy" id="modeOfStudy" class="form-control">
-
-                      <option >Government School</option>
-                      <option>Private School</option>
-                      <option>Home School</option>
-                      <option>Other</option>
-                    </select>
-                    <div *ngIf="
-                          form.get('modeOfStudy').touched &&
-                          form.get('modeOfStudy').invalid
-                        " style="color: red">
-                        Mode Of Study is Required
-                    </div>
-                  </div>
-                </div>
-
-
-                <div class="form-row">
-                  <div class="form-group col-md-4">
-                    <label for="previousClassCourse">Previous Class/Course</label>
-                    <input formControlName="studentPrevCourse" type="text" class="form-control"
-                      id="previousClassCourse" />
-                    <div *ngIf="
-                        form.get('studentPrevCourse').touched &&
-                        form.get('studentPrevCourse').invalid
-                      " style="color: red">
-                      Previous Course is Required is Required
-                    </div>
-                  </div>
-                  <div class="form-group col-md-4">
-                    <label for="PrePassYear">Previous Passing Year</label>
-                    <input formControlName="studentPrevPassingYear" type="text" class="form-control" id="PrePassYear" />
-                    <div *ngIf="
-                        form.get('studentPrevPassingYear').touched &&
-                        form.get('studentPrevPassingYear').invalid
-                      " style="color: red">
-                      Previous Course Passing year is Required
-                    </div>
-                  </div>
-                  <div class="form-group col-md-4">
-                    <label for="PrePassper">Previous Class %</label>
-                    <input formControlName="studentPrevPercent" type="text" class="form-control" id="PrePassper" />
-                    <div *ngIf="
-                        form.get('studentPrevPercent').touched &&
-                        form.get('studentPrevPercent').invalid
-                      " style="color: red">
-                      Student Previous year % is Required
-                    </div>
-                  </div>
-                </div>
-
-                <h4 style="font-family: monospace">
-                  <span><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right" fill="currentColor"
-                      xmlns="http://www.w3.org/2000/svg">
-                      <path fill-rule="evenodd"
-                        d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" />
-                      </svg>
-                  </span>
-                  10th Class Details
-                </h4>
-                <hr />
-
-                <div class="form-row">
-                  <div class="form-group col-md-6">
-                    <label for="tenRollNum">Roll Number</label>
-                    <input formControlName="student10RollNo" type="text" class="form-control" id="tenRollNum" />
-                    <div *ngIf="
-                        form.get('student10RollNo').touched &&
-                        form.get('student10RollNo').invalid
-                      " style="color: red">
-                      Please Enter your Class 10th ROll number
-                    </div>
-                  </div>
-
-                  <div class="form-group col-md-6">
-                    <label for="tenBoardName">Board Name</label>
-                    <input formControlName="student10BoardName" type="text" class="form-control" id="tenBoardName" />
-                    <div *ngIf="
-                        form.get('student10BoardName').touched &&
-                        form.get('student10BoardName').invalid
-                      " style="color: red">
-                      Your 10th Board Name is Required
-                    </div>
-                  </div>
-                </div>
-
-                <div class="form-row">
-                  <div class="form-group col-md-6">
-                    <label for="tenPassYear">10th Passing Year</label>
-                    <input formControlName="student10PassingYear" type="text" class="form-control" id="tenPassYear" />
-                    <div *ngIf="
-                        form.get('studentPrevPassingYear').touched &&
-                        form.get('studentPrevPassingYear').invalid
-                      " style="color: red">
-                      Your 10th Passing year is Required
-                    </div>
-                  </div>
-
-                  <div class="form-group col-md-6">
-                    <label for="student10Percent">10th Percentage Obtained</label>
-                    <input formControlName="student10Percent" type="text" class="form-control" id="student10Percent" />
-                    <div *ngIf="
-                        form.get('student10Percent').touched &&
-                        form.get('student10Percent').invalid
-                      " style="color: red">
-                      Your Class 10th percentage is Required
-                    </div>
-                  </div>
-                </div>
-
-                <h4 style="font-family: monospace">
-                  <span><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right" fill="currentColor"
-                      xmlns="http://www.w3.org/2000/svg">
-                      <path fill-rule="evenodd"
-                        d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" />
-                      </svg>
-                  </span>
-                  12th Class Details
-                </h4>
-                <hr />
-
-                <div class="form-row">
-                  <div class="form-group col-md-6">
-                    <label for="tweRollNum">12th Roll Number</label>
-                    <input formControlName="student12RollNo" type="text" class="form-control" id="tweRollNum" />
-                    <div *ngIf="
-                        form.get('student12RollNo').touched &&
-                        form.get('student12RollNo').invalid
-                      " style="color: red">
-                      Class 12th Roll no is Required
-                    </div>
-                  </div>
-
-                  <div class="form-group col-md-6">
-                    <label for="student12BoardName">12th Board Name</label>
-                    <input formControlName="student12BoardName" type="text" class="form-control"
-                      id="student12BoardName" />
-                    <div *ngIf="
-                        form.get('student12BoardName').touched &&
-                        form.get('student12BoardName').invalid
-                      " style="color: red">
-                      Student 12th Board Name is Required
-                    </div>
-                  </div>
-                </div>
-
-                <div class="form-row">
-                  <div class="form-group col-md-6">
-                    <label for="student12PassingYear">12th Passing Year</label>
-                    <input formControlName="student12PassingYear" type="text" class="form-control" id="student12PassingYear" />
-                    <div *ngIf="
-                        form.get('student12PassingYear').touched &&
-                        form.get('student12PassingYear').invalid
-                      " style="color: red">
-                      Student 12th Passing year is Required
-                    </div>
-                  </div>
-
-                  <div class="form-group col-md-6">
-                    <label for="twePercentObt">12th Percentage Obtained</label>
-                    <input formControlName="student12Percent" type="text" class="form-control" id="twePercentObt" />
-                    <div *ngIf="
-                        form.get('student12Percent').touched &&
-                        form.get('student12Percent').invalid
-                      " style="color: red">
-                      Class 12th percentage obtained is Required
-                    </div>
-                  </div>
-                </div>
-
-                <h4 style="font-family: monospace">
-                  <span><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right" fill="currentColor"
-                      xmlns="http://www.w3.org/2000/svg">
-                      <path fill-rule="evenodd"
-                        d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" />
-                      </svg>
-                  </span>
-                  Fee Details
-                </h4>
-                <hr />
-                <div class="form-row">
-                  <div class="form-group col-md-4">
-                    <label for="admFees">Admission Fees</label>
-                    <input formControlName="admissionFee" type="text" class="form-control" id="admFees" />
-                    <div *ngIf="
-                        form.get('admissionFee').touched &&
-                        form.get('admissionFee').invalid
-                      " style="color: red">
-                      Admission Fee is Required
-                    </div>
-                  </div>
-
-                  <div class="form-group col-md-4">
-                    <label for="TuiFees">Tuition Fees</label>
-                    <input formControlName="tuitionFee" type="text" class="form-control" id="TuiFees" />
-                    <div *ngIf="
-                        form.get('tuitionFee').touched &&
-                        form.get('tuitionFee').invalid
-                      " style="color: red">
-                      tuition Fee is Required
-                    </div>
-                  </div>
-
-                  <div class="form-group col-md-4">
-                    <label for="OthFees">Other Fees</label>
-                    <input formControlName="otherFee" type="text" class="form-control" id="OthFees" />
-                    <div *ngIf="
-                        form.get('otherFee').touched &&
-                        form.get('otherFee').invalid
-                      " style="color: red">
-                      other Fees is Required
-                    </div>
-                  </div>
-                </div>
-
-                <h4 style="font-family: monospace">
-                  <span><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right" fill="currentColor"
-                      xmlns="http://www.w3.org/2000/svg">
-                      <path fill-rule="evenodd"
-                        d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" />
-                      </svg>
-                  </span>
-                  Bank Details
-                </h4>
-                <hr />
-                <div class="form-row">
-                  <div class="form-group col-md-4">
-                    <label for="bankName">Bank Name</label>
-                    <input formControlName="bankName" type="text" class="form-control" id="bankName" />
-                    <div *ngIf="
-                        form.get('bankName').touched &&
-                        form.get('bankName').invalid
-                      " style="color: red">
-                      Bank Name is Required
-                    </div>
-                  </div>
-
-                  <div class="form-group col-md-4">
-                    <label for="bankAccountNo">Account Number</label>
-                    <input formControlName="bankAccountNo" type="text" class="form-control" id="bankAccountNo" />
-                    <div *ngIf="
-                        form.get('bankAccountNo').touched &&
-                        form.get('bankAccountNo').invalid
-                      " style="color: red">
-                      Bank Account Number is Required
-                    </div>
-                  </div>
-
-                  <div class="form-group col-md-4">
-                    <label for="bankIfscCode">Bank IFSC Code</label>
-                    <input formControlName="bankIfscCode" type="text" class="form-control" id="bankIfscCode" />
-                    <div *ngIf="
-                        form.get('bankIfscCode').touched &&
-                        form.get('bankIfscCode').invalid
-                      " style="color: red">
-                      Bank IFSC Code is Required
-                    </div>
-                  </div>
-                </div>
-
-                <h4 style="font-family: monospace">
-                  <span><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right" fill="currentColor"
-                      xmlns="http://www.w3.org/2000/svg">
-                      <path fill-rule="evenodd"
-                        d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" />
-                      </svg>
-                  </span>
-                  Other Personal Details
-                </h4>
-                <hr />
-
-                <div class="form-row">
-                  <div class="form-group col-md-4">
-                    <label for="disabilityType">Type Of Disability</label>
-                    <input formControlName="disabilityType" type="text" class="form-control" id="disabilityType" />
-                    <div *ngIf="
-                        form.get('disabilityType').touched &&
-                        form.get('disabilityType').invalid
-                      " style="color: red">
-                      Disability Type is Required
-                    </div>
-                  </div>
-
-                  <div class="form-group col-md-4">
-                    <label for="disability">Is Disabled:</label>
-                    <select formControlName="disability" id="disability" class="form-control">
-                      <option>Yes</option>
-                      <option selected>No</option>
-                    </select>
-                    <div *ngIf="
-                          form.get('disability').touched &&
-                          form.get('disability').invalid
-                        " style="color: red">
-                        You have to select one Option
-                    </div>
-                  </div>
-
-                  <div class="form-group col-md-4">
-                    <label for="disabilityPercentage">% of Disability</label>
-                    <input formControlName="disabilityPercentage" type="text" class="form-control"
-                      id="disabilityPercentage" />
-                    <div *ngIf="
-                        form.get('disabilityPercentage').touched &&
-                        form.get('disabilityPercentage').invalid
-                      " style="color: red">
-                      Disability Percentage is Required
-                    </div>
-                  </div>
-                </div>
-
-                <div class="form-row">
-                  <div class="form-group col-md-6">
-                     <label for="studentMaritalStatus">Marital Status</label>
-                     <select formControlName="studentMaritalStatus" id="studentMaritalStatus" class="form-control">
-                      <option>Single!</option>
-                      <option>Married</option>
-                      <option>Divorced</option>
-                      </select>
-                     <div *ngIf="
-                        form.get('studentMaritalStatus').touched &&
-                        form.get('studentMaritalStatus').invalid
-                               " style="color: red">
-                       Student Marital Status is Required
-                      </div>
-                    
-                  </div>
-
-                  <div class="form-group col-md-6">
-                    <label for="ParentProfession">Parents Profession</label>
-                    <input formControlName="parentProfession" type="text" class="form-control" id="ParentProfession" />
-                    <div *ngIf="
-                        form.get('parentProfession').touched &&
-                        form.get('parentProfession').invalid
-                      " style="color: red">
-                      Parent Profession is Required
-                    </div>
-                  </div>
-                </div>
-
-                <h4 style="font-family: monospace">
-                  <span><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right" fill="currentColor"
-                      xmlns="http://www.w3.org/2000/svg">
-                      <path fill-rule="evenodd"
-                        d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" />
-                      </svg>
-                  </span>
-                  Contact details
-                </h4>
-                <hr />
-
-                <div class="form-row">
-                  <div class="form-group col-md-4">
-                    <label for="state">State</label>
-                    <input formControlName="state" type="text" class="form-control" id="state" />
-                    <div *ngIf="
-                        form.get('state').touched && form.get('state').invalid"
-                         style="color: red">
-                      You have to Enter your state
-                    </div>
-                  </div>
-
-                  <div class="form-group col-md-4">
-                    <label for="district">District</label>
-                    <input formControlName="district" type="text" class="form-control" id="district" />
-                    <div *ngIf="
-                        form.get('district').touched &&
-                        form.get('district').invalid
-                      " style="color: red">
-                      You have to Enter your district
-                    </div>
-                  </div>
-
-                  <div class="form-group col-md-4">
-                    <label for="blocktaluk">Block / Taluk</label>
-                    <input formControlName="blockNo" type="text" class="form-control" id="blocktaluk" />
-                    <div *ngIf="
-                        form.get('blockNo').touched &&
-                        form.get('blockNo').invalid
-                      " style="color: red">
-                      Block Number is Required
-                    </div>
-                  </div>
-                </div>
-
-                <div class="form-row">
-                  <div class="form-group col-md-4">
-                    <label for="houseNo">House No</label>
-                    <input formControlName="houseNo" type="text" class="form-control" id="houseNo" />
-                    <div *ngIf="
-                        form.get('houseNo').touched &&
-                        form.get('houseNo').invalid
-                      " style="color: red">
-                      House number is Required
-                    </div>
-                  </div>
-
-                  <div class="form-group col-md-4">
-                    <label for="streetNumber">Street Number</label>
-                    <input formControlName="streetNo" type="text" class="form-control" id="streetNumber" />
-                    <div *ngIf="
-                        form.get('streetNo').touched &&
-                        form.get('streetNo').invalid
-                      " style="color: red">
-                      Street Number is Required
-                    </div>
-                  </div>
-
-                  <div class="form-group col-md-4">
-                    <label for="pincode">Pincode</label>
-                    <input formControlName="pinCode" type="text" class="form-control" id="pincode" />
-                    <div *ngIf="
-                        form.get('pinCode').touched &&
-                        form.get('pinCode').invalid
-                      " style="color: red">
-                      Pin code must be Entered
-                    </div>
-                  </div>
-                </div>
-
-                <h4 style="font-family: monospace">
-                  <span><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right" fill="currentColor"
-                      xmlns="http://www.w3.org/2000/svg">
-                      <path fill-rule="evenodd"
-                        d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" />
-                      </svg>
-                  </span>
-                  Scholarship Type
-                </h4>
-                <hr />
-
-                <div class="form-row">
-                  <div class="form-group col-md-4">
-                    <select formControlName="scholarshipType" id="scholarship" class="form-control">
-                      <option>Merit-Cum-Based Scholarship</option>
-                      <option>Pragati Scholarship</option>
-                      <option>Merit-Based Scholarship</option>
-                    </select>
-                    <div *ngIf="
-                        form.get('scholarshipType').touched &&
-                        form.get('scholarshipType').invalid
-                      " style="color: red">
-                        You Have to Select one Scholarship
-                    </div>
-                  </div>
-                </div>
-
-                <h4 style="font-family: monospace">
-                  <span><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right" fill="currentColor"
-                      xmlns="http://www.w3.org/2000/svg">
-                      <path fill-rule="evenodd"
-                        d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" />
-                      </svg>
-                  </span>
-                  Document Upload Section
-                </h4>
-                <hr />
-                <div class="custom-file mb-2">
-                  <input type="file" class="custom-file-input" id="domicileCertificate" />
-                  <label class="custom-file-label" for="domicileCertificate">Domicile Certificate</label>
-                </div>
-                <div class="custom-file mb-2">
-                  <input type="file" class="custom-file-input" id="studentPhotograph" />
-                  <label class="custom-file-label" for="studentPhotograph">Student Photograph</label>
-                </div>
-                <div class="custom-file mb-2">
-                  <input type="file" class="custom-file-input" id="instituteIdCard" />
-                  <label class="custom-file-label" for="instituteIdCard">Institute Id Card</label>
-                </div>
-                <div class="custom-file mb-2">
-                  <input type="file" class="custom-file-input" id="casteCertificate" />
-                  <label class="custom-file-label" for="casteCertificate">Caste Certificate</label>
-                </div>
-                <div class="custom-file mb-2">
-                  <input type="file" class="custom-file-input" id="previousYearMarkSheet" />
-                  <label class="custom-file-label" for="previousYearMarkSheet">Previous Year MarkSheet</label>
-                </div>
-                <div class="custom-file mb-2">
-                  <input type="file" class="custom-file-input" id="feeReceiptofCurrentYear" />
-                  <label class="custom-file-label" for="feeReceiptofCurrentYear">Fee Receipt of Current Year</label>
-                </div>
-                <div class="custom-file mb-2">
-                  <input type="file" class="custom-file-input" id="bankPassbook" />
-                  <label class="custom-file-label" for="bankPassbook">Bank Passbook</label>
-                </div>
-                <div class="custom-file mb-2">
-                  <input type="file" class="custom-file-input" id="aadharCard" />
-                  <label class="custom-file-label" for="aadharCard">Aadhar Card</label>
-                </div>
-                <div class="custom-file mb-2">
-                  <input type="file" class="custom-file-input" id="tenClassMarkSheet" />
-                  <label class="custom-file-label" for="tenClassMarkSheet">10th Class Maksheet</label>
-                </div>
-                <div class="custom-file mb-2">
-                  <input type="file" class="custom-file-input" id="twelveClassMarkSheet" />
-                  <label class="custom-file-label" for="twelveClassMarkSheet">12th Class Marksheet</label>
+                  Community Name is Required
                 </div>
               </div>
 
-              <div class="container">
-                <div class="row">
-                  <div class="col">
-                    <button  class="btn btn-block btn-primary mb-4">
-                      Submit
-                    </button>
-                  </div>
-                  <div class="col">
-                    <button class="btn btn-block btn-secondary mb-4">
-                      Reset
-                    </button>
-                  </div>
+              <div class="form-group col-md-6">
+                <label for="studentFamilyIncome">Family Annual Income</label>
+                <input formControlName="studentFamilyIncome" type="text" class="form-control"
+                  id="studentFamilyIncome" />
+                <div *ngIf="
+                        form.get('studentFamilyIncome').touched &&
+                        form.get('studentFamilyIncome').invalid
+                      " style="color: red">
+                  Family Annual Income is Required
                 </div>
+              </div>
+            </div>
+
+            <h4 style="font-family: monospace">
+              <span><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right" fill="currentColor"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd"
+                    d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" />
+                </svg>
+              </span>
+              Academic Details
+            </h4>
+            <hr />
+
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="classStartDate">Course Start date</label>
+                <input formControlName="courseStartDate" type="date" class="form-control" id="classStartDate" />
+                <div *ngIf="
+                        form.get('courseStartDate').touched &&
+                        form.get('courseStartDate').invalid
+                      " style="color: red">
+                  course Start Date is Required
+                </div>
+              </div>
+              <div class="form-group col-md-6">
+                <label for="studentCourse">Present Class/Course</label>
+                <input formControlName="studentCourse" type="text" class="form-control" id="studentCourse" />
+                <div *ngIf="
+                        form.get('studentCourse').touched &&
+                        form.get('studentCourse').invalid
+                      " style="color: red">
+                  Present Course must be Mentioned
+                </div>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="studentYear">Present Class/Course Year</label>
+                <input formControlName="presentCourseYear" type="text" class="form-control" id="studentYear" />
+                <div *ngIf="
+                        form.get('presentCourseYear').touched &&
+                        form.get('presentCourseYear').invalid
+                      " style="color: red">
+                  Present Course Year must be Mentioned
+                </div>
+              </div>
+
+              <div class="form-group col-md-6">
+                <label for="modeOfStudy">Mode of Study</label>
+                <select formControlName="modeOfStudy" id="modeOfStudy" class="form-control">
+
+                  <option>Government School</option>
+                  <option>Private School</option>
+                  <option>Home School</option>
+                  <option>Other</option>
+                </select>
+                <div *ngIf="
+                          form.get('modeOfStudy').touched &&
+                          form.get('modeOfStudy').invalid
+                        " style="color: red">
+                  Mode Of Study is Required
+                </div>
+              </div>
+            </div>
+
+
+            <div class="form-row">
+              <div class="form-group col-md-4">
+                <label for="previousClassCourse">Previous Class/Course</label>
+                <input formControlName="studentPrevCourse" type="text" class="form-control" id="previousClassCourse" />
+                <div *ngIf="
+                        form.get('studentPrevCourse').touched &&
+                        form.get('studentPrevCourse').invalid
+                      " style="color: red">
+                  Previous Course is Required is Required
+                </div>
+              </div>
+              <div class="form-group col-md-4">
+                <label for="PrePassYear">Previous Passing Year</label>
+                <input formControlName="studentPrevPassingYear" type="text" class="form-control" id="PrePassYear" />
+                <div *ngIf="
+                        form.get('studentPrevPassingYear').touched &&
+                        form.get('studentPrevPassingYear').invalid
+                      " style="color: red">
+                  Previous Course Passing year is Required
+                </div>
+              </div>
+              <div class="form-group col-md-4">
+                <label for="PrePassper">Previous Class %</label>
+                <input formControlName="studentPrevPercent" type="text" class="form-control" id="PrePassper" />
+                <div *ngIf="
+                        form.get('studentPrevPercent').touched &&
+                        form.get('studentPrevPercent').invalid
+                      " style="color: red">
+                  Student Previous year % is Required
+                </div>
+              </div>
+            </div>
+
+            <h4 style="font-family: monospace">
+              <span><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right" fill="currentColor"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd"
+                    d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" />
+                </svg>
+              </span>
+              10th Class Details
+            </h4>
+            <hr />
+
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="tenRollNum">Roll Number</label>
+                <input formControlName="student10RollNo" type="text" class="form-control" id="tenRollNum" />
+                <div *ngIf="
+                        form.get('student10RollNo').touched &&
+                        form.get('student10RollNo').invalid
+                      " style="color: red">
+                  Please Enter your Class 10th ROll number
+                </div>
+              </div>
+
+              <div class="form-group col-md-6">
+                <label for="tenBoardName">Board Name</label>
+                <input formControlName="student10BoardName" type="text" class="form-control" id="tenBoardName" />
+                <div *ngIf="
+                        form.get('student10BoardName').touched &&
+                        form.get('student10BoardName').invalid
+                      " style="color: red">
+                  Your 10th Board Name is Required
+                </div>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="tenPassYear">10th Passing Year</label>
+                <input formControlName="student10PassingYear" type="text" class="form-control" id="tenPassYear" />
+                <div *ngIf="
+                        form.get('studentPrevPassingYear').touched &&
+                        form.get('studentPrevPassingYear').invalid
+                      " style="color: red">
+                  Your 10th Passing year is Required
+                </div>
+              </div>
+
+              <div class="form-group col-md-6">
+                <label for="student10Percent">10th Percentage Obtained</label>
+                <input formControlName="student10Percent" type="text" class="form-control" id="student10Percent" />
+                <div *ngIf="
+                        form.get('student10Percent').touched &&
+                        form.get('student10Percent').invalid
+                      " style="color: red">
+                  Your Class 10th percentage is Required
+                </div>
+              </div>
+            </div>
+
+            <h4 style="font-family: monospace">
+              <span><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right" fill="currentColor"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd"
+                    d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" />
+                </svg>
+              </span>
+              12th Class Details
+            </h4>
+            <hr />
+
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="tweRollNum">12th Roll Number</label>
+                <input formControlName="student12RollNo" type="text" class="form-control" id="tweRollNum" />
+                <div *ngIf="
+                        form.get('student12RollNo').touched &&
+                        form.get('student12RollNo').invalid
+                      " style="color: red">
+                  Class 12th Roll no is Required
+                </div>
+              </div>
+
+              <div class="form-group col-md-6">
+                <label for="student12BoardName">12th Board Name</label>
+                <input formControlName="student12BoardName" type="text" class="form-control" id="student12BoardName" />
+                <div *ngIf="
+                        form.get('student12BoardName').touched &&
+                        form.get('student12BoardName').invalid
+                      " style="color: red">
+                  Student 12th Board Name is Required
+                </div>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="student12PassingYear">12th Passing Year</label>
+                <input formControlName="student12PassingYear" type="text" class="form-control"
+                  id="student12PassingYear" />
+                <div *ngIf="
+                        form.get('student12PassingYear').touched &&
+                        form.get('student12PassingYear').invalid
+                      " style="color: red">
+                  Student 12th Passing year is Required
+                </div>
+              </div>
+
+              <div class="form-group col-md-6">
+                <label for="twePercentObt">12th Percentage Obtained</label>
+                <input formControlName="student12Percent" type="text" class="form-control" id="twePercentObt" />
+                <div *ngIf="
+                        form.get('student12Percent').touched &&
+                        form.get('student12Percent').invalid
+                      " style="color: red">
+                  Class 12th percentage obtained is Required
+                </div>
+              </div>
+            </div>
+
+            <h4 style="font-family: monospace">
+              <span><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right" fill="currentColor"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd"
+                    d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" />
+                </svg>
+              </span>
+              Fee Details
+            </h4>
+            <hr />
+            <div class="form-row">
+              <div class="form-group col-md-4">
+                <label for="admFees">Admission Fees</label>
+                <input formControlName="admissionFee" type="text" class="form-control" id="admFees" />
+                <div *ngIf="
+                        form.get('admissionFee').touched &&
+                        form.get('admissionFee').invalid
+                      " style="color: red">
+                  Admission Fee is Required
+                </div>
+              </div>
+
+              <div class="form-group col-md-4">
+                <label for="TuiFees">Tuition Fees</label>
+                <input formControlName="tuitionFee" type="text" class="form-control" id="TuiFees" />
+                <div *ngIf="
+                        form.get('tuitionFee').touched &&
+                        form.get('tuitionFee').invalid
+                      " style="color: red">
+                  tuition Fee is Required
+                </div>
+              </div>
+
+              <div class="form-group col-md-4">
+                <label for="OthFees">Other Fees</label>
+                <input formControlName="otherFee" type="text" class="form-control" id="OthFees" />
+                <div *ngIf="
+                        form.get('otherFee').touched &&
+                        form.get('otherFee').invalid
+                      " style="color: red">
+                  other Fees is Required
+                </div>
+              </div>
+            </div>
+
+            <h4 style="font-family: monospace">
+              <span><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right" fill="currentColor"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd"
+                    d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" />
+                </svg>
+              </span>
+              Bank Details
+            </h4>
+            <hr />
+            <div class="form-row">
+              <div class="form-group col-md-4">
+                <label for="bankName">Bank Name</label>
+                <input formControlName="bankName" type="text" class="form-control" id="bankName" />
+                <div *ngIf="
+                        form.get('bankName').touched &&
+                        form.get('bankName').invalid
+                      " style="color: red">
+                  Bank Name is Required
+                </div>
+              </div>
+
+              <div class="form-group col-md-4">
+                <label for="bankAccountNo">Account Number</label>
+                <input formControlName="bankAccountNo" type="text" class="form-control" id="bankAccountNo" />
+                <div *ngIf="
+                        form.get('bankAccountNo').touched &&
+                        form.get('bankAccountNo').invalid
+                      " style="color: red">
+                  Bank Account Number is Required
+                </div>
+              </div>
+
+              <div class="form-group col-md-4">
+                <label for="bankIfscCode">Bank IFSC Code</label>
+                <input formControlName="bankIfscCode" type="text" class="form-control" id="bankIfscCode" />
+                <div *ngIf="
+                        form.get('bankIfscCode').touched &&
+                        form.get('bankIfscCode').invalid
+                      " style="color: red">
+                  Bank IFSC Code is Required
+                </div>
+              </div>
+            </div>
+
+            <h4 style="font-family: monospace">
+              <span><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right" fill="currentColor"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd"
+                    d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" />
+                </svg>
+              </span>
+              Other Personal Details
+            </h4>
+            <hr />
+
+            <div class="form-row">
+              <div class="form-group col-md-4">
+                <label for="disabilityType">Type Of Disability</label>
+                <input formControlName="disabilityType" type="text" class="form-control" id="disabilityType" />
+                <div *ngIf="
+                        form.get('disabilityType').touched &&
+                        form.get('disabilityType').invalid
+                      " style="color: red">
+                  Disability Type is Required
+                </div>
+              </div>
+
+              <div class="form-group col-md-4">
+                <label for="disability">Is Disabled:</label>
+                <select formControlName="disability" id="disability" class="form-control">
+                  <option>Yes</option>
+                  <option selected>No</option>
+                </select>
+                <div *ngIf="
+                          form.get('disability').touched &&
+                          form.get('disability').invalid
+                        " style="color: red">
+                  You have to select one Option
+                </div>
+              </div>
+
+              <div class="form-group col-md-4">
+                <label for="disabilityPercentage">% of Disability</label>
+                <input formControlName="disabilityPercentage" type="text" class="form-control"
+                  id="disabilityPercentage" />
+                <div *ngIf="
+                        form.get('disabilityPercentage').touched &&
+                        form.get('disabilityPercentage').invalid
+                      " style="color: red">
+                  Disability Percentage is Required
+                </div>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="studentMaritalStatus">Marital Status</label>
+                <select formControlName="studentMaritalStatus" id="studentMaritalStatus" class="form-control">
+                  <option>Single!</option>
+                  <option>Married</option>
+                  <option>Divorced</option>
+                </select>
+                <div *ngIf="
+                        form.get('studentMaritalStatus').touched &&
+                        form.get('studentMaritalStatus').invalid
+                               " style="color: red">
+                  Student Marital Status is Required
+                </div>
+
+              </div>
+
+              <div class="form-group col-md-6">
+                <label for="ParentProfession">Parents Profession</label>
+                <input formControlName="parentProfession" type="text" class="form-control" id="ParentProfession" />
+                <div *ngIf="
+                        form.get('parentProfession').touched &&
+                        form.get('parentProfession').invalid
+                      " style="color: red">
+                  Parent Profession is Required
+                </div>
+              </div>
+            </div>
+
+            <h4 style="font-family: monospace">
+              <span><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right" fill="currentColor"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd"
+                    d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" />
+                </svg>
+              </span>
+              Contact details
+            </h4>
+            <hr />
+
+            <div class="form-row">
+              <div class="form-group col-md-4">
+                <label for="state">State</label>
+                <input formControlName="state" type="text" class="form-control" id="state" />
+                <div *ngIf="
+                        form.get('state').touched && form.get('state').invalid" style="color: red">
+                  You have to Enter your state
+                </div>
+              </div>
+
+              <div class="form-group col-md-4">
+                <label for="district">District</label>
+                <input formControlName="district" type="text" class="form-control" id="district" />
+                <div *ngIf="
+                        form.get('district').touched &&
+                        form.get('district').invalid
+                      " style="color: red">
+                  You have to Enter your district
+                </div>
+              </div>
+
+              <div class="form-group col-md-4">
+                <label for="blocktaluk">Block / Taluk</label>
+                <input formControlName="blockNo" type="text" class="form-control" id="blocktaluk" />
+                <div *ngIf="
+                        form.get('blockNo').touched &&
+                        form.get('blockNo').invalid
+                      " style="color: red">
+                  Block Number is Required
+                </div>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group col-md-4">
+                <label for="houseNo">House No</label>
+                <input formControlName="houseNo" type="text" class="form-control" id="houseNo" />
+                <div *ngIf="
+                        form.get('houseNo').touched &&
+                        form.get('houseNo').invalid
+                      " style="color: red">
+                  House number is Required
+                </div>
+              </div>
+
+              <div class="form-group col-md-4">
+                <label for="streetNumber">Street Number</label>
+                <input formControlName="streetNo" type="text" class="form-control" id="streetNumber" />
+                <div *ngIf="
+                        form.get('streetNo').touched &&
+                        form.get('streetNo').invalid
+                      " style="color: red">
+                  Street Number is Required
+                </div>
+              </div>
+
+              <div class="form-group col-md-4">
+                <label for="pincode">Pincode</label>
+                <input formControlName="pinCode" type="text" class="form-control" id="pincode" />
+                <div *ngIf="
+                        form.get('pinCode').touched &&
+                        form.get('pinCode').invalid
+                      " style="color: red">
+                  Pin code must be Entered
+                </div>
+              </div>
+            </div>
+
+            <h4 style="font-family: monospace">
+              <span><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right" fill="currentColor"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd"
+                    d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" />
+                </svg>
+              </span>
+              Scholarship Type
+            </h4>
+            <hr />
+
+            <div class="form-row">
+              <div class="form-group col-md-4">
+                <select formControlName="scholarshipType" id="scholarship" class="form-control">
+                  <option>Merit-Cum-Based Scholarship</option>
+                  <option>Pragati Scholarship</option>
+                  <option>Merit-Based Scholarship</option>
+                </select>
+                <div *ngIf="
+                        form.get('scholarshipType').touched &&
+                        form.get('scholarshipType').invalid
+                      " style="color: red">
+                  You Have to Select one Scholarship
+                </div>
+              </div>
+            </div>
+
+            <h4 style="font-family: monospace">
+              <span><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right" fill="currentColor"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd"
+                    d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" />
+                </svg>
+              </span>
+              Document Upload Section
+            </h4>
+            <hr />
+            <div class="custom-file mb-2">
+              <input formControlName="domicileCertificate" type="file" class="custom-file-input" id="domicileCertificate" />
+              <label class="custom-file-label" for="domicileCertificate">Domicile Certificate</label>
+            </div>
+
+            <div class="custom-file mb-2">
+              <input formControlName="studentPhotograph" type="file" class="custom-file-input" id="studentPhotograph" />
+              <label class="custom-file-label" for="studentPhotograph">Student Photograph</label>
+            </div>
+
+            <div class="custom-file mb-2">
+              <input formControlName="instituteIdCard" type="file" class="custom-file-input" id="instituteIdCard" />
+              <label class="custom-file-label" for="instituteIdCard">Institute Id Card</label>
+            </div>
+
+            <div class="custom-file mb-2">
+              <input formControlName="incomeCertificate" type="file" class="custom-file-input" id="casteCertificate" />
+              <label class="custom-file-label" for="incomeCertificate">Income Certificate</label>
+            </div>
+
+            <div class="custom-file mb-2">
+              <input formControlName="previousYearMarkSheet" type="file" class="custom-file-input" id="previousYearMarkSheet" />
+              <label class="custom-file-label" for="previousYearMarkSheet">Previous Year MarkSheet</label>
+            </div>
+
+            <div class="custom-file mb-2">
+              <input formControlName="feeReceipt" type="file" class="custom-file-input" id="feeReceiptofCurrentYear" />
+              <label class="custom-file-label" for="feeReceipt">Fee Receipt of Current Year</label>
+            </div>
+
+
+            <div class="custom-file mb-2">
+              <input formControlName="bankPassbook" type="file" class="custom-file-input" id="bankPassbook" />
+              <label class="custom-file-label" for="bankPassbook">Bank Passbook</label>
+            </div>
+
+            <div class="custom-file mb-2">
+              <input formControlName="aadharCard" type="file" class="custom-file-input" id="aadharCard" />
+              <label class="custom-file-label" for="aadharCard">Aadhar Card</label>
+            </div>
+
+            <div class="custom-file mb-2">
+              <input formControlName="markSheet10" type="file" class="custom-file-input" id="tenClassMarkSheet" />
+              <label class="custom-file-label" for="markSheet10">10th Class Marksheet</label>
+            </div>
+
+            <div class="custom-file mb-2">
+              <input formControlName="markSheet12" type="file" class="custom-file-input" id="twelveClassMarkSheet" />
+              <label class="custom-file-label" for="markSheet12">12th Class Marksheet</label>
+            </div>
+            
+          </div>
+
+          <div class="container">
+            <div class="row">
+              <div class="col">
+                <button class="btn btn-block btn-primary mb-4">
+                  Submit
+                </button>
+              </div>
+              <div class="col">
+                <button class="btn btn-block btn-secondary mb-4">
+                  Reset
+                </button>
               </div>
             </div>
           </div>
