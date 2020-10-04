@@ -12,13 +12,13 @@ export class InstituteService {
     
      
   addUser(user:InstituteLogin):Observable<Object>{
-    alert("its coming");
-     return this.http.post("http://localhost:3000/institutes" , user);
+    alert("You just Subscribed to InstituteLoginService");
+     return this.http.post("http://localhost:9091/ShikshaDwar/users/institute/login",user);
     }
   
     getAllUsers():Observable<InstituteLogin[]>{
     
-      return this.http.get<InstituteLogin[]>("http://localhost:3000/institutes");
+      return this.http.get<InstituteLogin[]>("http://localhost:9091/ShikshaDwar/users/institute/login");
     }
  
 

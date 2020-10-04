@@ -41,8 +41,9 @@ export class InstituteLoginComponent implements OnInit {
      // alert(diseCode);
       let password=this.form.controls.institutePassword.value;
     //  alert(password);
-
-      for(let i of this.instituteLogin)
+    this.router.navigate(['/instituteDashboard']);
+      
+      /* for(let i of this.instituteLogin)
       { 
        // alert(i.diseCode);
           if(i.diseCode==diseCode)
@@ -66,7 +67,7 @@ export class InstituteLoginComponent implements OnInit {
         this.error=true;
         alert("You are Not a Registered Institute Register yourself First");
       }
-
+ */
 
     }
 

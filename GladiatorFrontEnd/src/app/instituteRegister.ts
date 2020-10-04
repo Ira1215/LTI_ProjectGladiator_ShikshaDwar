@@ -23,7 +23,7 @@ export class InstitutesRegistered{
    // public constructor(init?: Partial<InstitutesRegistered>) { Object.assign(this, init); }
 
 
-    constructor(instituteCode:string,instituteName:string,instituteCategory:string,institutelocation:string,
+    constructor(instituteCode:string,instituteName:string,instituteCategory:string,instituteLocation:string,
         instituteType:string,affiliatedUniState:string,affiliatedUniboard:string,yearAdmissionStarted:string,
         uniAffiliationCerti:string,instituteEstbCerti:string,addressLine1:string,addressLine2:string,
         instituteState:string,district:string,city:string,pincode:string,instituteHeadName:string,
@@ -32,7 +32,7 @@ export class InstitutesRegistered{
                     this.instituteCode=instituteCode;
                     this.instituteName=instituteName;
                     this.instituteCategory=instituteCategory;
-                    this.instituteLocation=this.instituteLocation;
+                    this.instituteLocation=instituteLocation;
                     this.instituteType=instituteType;
                     this.affiliatedUniState=affiliatedUniState;
                     this.affiliatedUniboard=affiliatedUniboard;

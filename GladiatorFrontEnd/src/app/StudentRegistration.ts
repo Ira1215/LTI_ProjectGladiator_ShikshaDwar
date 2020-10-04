@@ -3,8 +3,8 @@ export class StudentRegistration{
     studentName:string;
     studentGender:string;
     studentMobile:string;
-    studentInstitution:string;
     studentDob:Date;
+    studentInstitution:string;
 
     constructor(studentAadharNo:string,studentName:string,studentGender:string,
         studentMobile:string,studentInstitution:string,studentDob:Date)
@@ -12,9 +12,9 @@ export class StudentRegistration{
         this.studentAadharNo=studentAadharNo;
         this.studentName=studentName;
         this.studentGender=studentGender;
-        this.studentInstitution=studentInstitution;
         this.studentMobile=studentMobile;
         this.studentDob=studentDob;
+        this.studentInstitution=studentInstitution;
 
     }
 }

@@ -12,7 +12,7 @@ export class StudentapplicationService {
    
   addUser(user:StudentApplication):Observable<Object>{
    alert("You just Subscribed to studentApplicationService");
-   console.log(user);
+   //console.log(user);
     return this.http.post("http://localhost:9091/ShikshaDwar/users/student/application",user);
    }
  

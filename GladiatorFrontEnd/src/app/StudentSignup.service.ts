@@ -11,11 +11,11 @@ export class StudentsignupService {
   
 
   constructor(private http:HttpClient) {}
-    
-     
+ 
+  
   addUser(user:StudentSignup):Observable<Object>{
-    console.log(user);
-      //alert("we are in service class");
+    //console.log(user);
+      alert("we are in service class");
      return this.http.post("http://localhost:9091/ShikshaDwar/users/student/login",user);
     }
   

@@ -1,3 +1,4 @@
+import { UserValidationService } from './../user-validation.service';
 import { StudentSignup } from './../StudentSignUp';
 import { Router } from '@angular/router';
 import { StudentsignupService } from './../StudentSignup.service';
@@ -15,11 +16,11 @@ export class SignUpStudentComponent implements OnInit {
   isExist=false;
   
 
-  constructor(private formBuilder: FormBuilder,private service:StudentsignupService,private router:Router) {}
+  constructor(private formBuilder: FormBuilder,private service:StudentsignupService,private router:Router,private service1:UserValidationService) {}
   ngOnInit(): void {
     this.signUpStudentForm = this.formBuilder.group({
-      studentEmailId: ['', Validators.required],
-      studentPassword: ['', Validators.required],
+      studentEmailId: ['',Validators.required],
+      studentPassword: ['',Validators.required,],
       cPassword: ['', Validators.required],
     });
     this.service.getAllUsers().subscribe(data =>{this.studentData=data});
@@ -38,6 +39,7 @@ export class SignUpStudentComponent implements OnInit {
     let student:StudentSignup=new StudentSignup(this.signUpStudentForm.controls.studentEmailId.value,
       this.signUpStudentForm.controls.studentPassword.value);
       this.service.addUser(student).subscribe( data => this.studentData.push(student));
+      this.router.navigate(['/studentRegister']);
       /* for(let s of this.studentData)
       {
         if(s.studentEmailId==student.studentEmailId)
