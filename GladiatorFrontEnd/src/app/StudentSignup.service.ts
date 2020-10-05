@@ -15,7 +15,7 @@ export class StudentsignupService {
   
   addUser(user:StudentSignup):Observable<Object>{
     //console.log(user);
-      alert("we are in service class");
+      alert("StudentSignUp Service Called");
      return this.http.post("http://localhost:9091/ShikshaDwar/users/student/login",user);
     }
   

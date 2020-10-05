@@ -16,14 +16,20 @@ export class SignUpStudentComponent implements OnInit {
   isExist=false;
   
 
-  constructor(private formBuilder: FormBuilder,private service:StudentsignupService,private router:Router,private service1:UserValidationService) {}
+  constructor(private formBuilder: FormBuilder,private service:StudentsignupService,private router:Router,private userValidate:UserValidationService) {}
   ngOnInit(): void {
     this.signUpStudentForm = this.formBuilder.group({
-      studentEmailId: ['',Validators.required],
-      studentPassword: ['',Validators.required,],
-      cPassword: ['', Validators.required],
+      studentEmailId:['',[Validators.required,Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]],
+      studentPassword:['',Validators.compose([Validators.required,this.userValidate.patternValidator()])],
+      cPassword:['', Validators.required],
+    },
+    {
+      validator: this.userValidate.MatchPassword('studentPassword','cPassword'),
+    }
+    );
+    this.service.getAllUsers().subscribe(data =>{
+      this.studentData=data;
     });
-    this.service.getAllUsers().subscribe(data =>{this.studentData=data});
   }
 
   get signUp() {

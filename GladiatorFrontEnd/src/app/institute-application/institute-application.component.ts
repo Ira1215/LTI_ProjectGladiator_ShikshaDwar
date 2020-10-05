@@ -76,6 +76,7 @@ export class InstituteApplicationComponent implements OnInit {
     );
 
     this.service.addUser(this.instituteDetails).subscribe( data => this.institutesRegistered.push(this.instituteDetails));
+    this.router.navigate(['/']);
 /* 
     for(let s of this.institutesRegistered)
     {

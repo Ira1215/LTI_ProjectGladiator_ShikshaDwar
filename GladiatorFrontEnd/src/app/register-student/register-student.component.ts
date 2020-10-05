@@ -51,6 +51,7 @@ export class RegisterStudentComponent implements OnInit {
       this.studentRegisterForm.controls.studentDob.value); 
 
       this.service.addUser(student).subscribe( data => this.registeredStudents.push(student));
+      this.router.navigate(['/']);
 
 
     //  alert(this.form.controls.fatherName.value);
