@@ -59,7 +59,7 @@ public class ScholarshipDaoImpl implements ScholarshipDao{
 	
 	@Override
 	public List<StudentLogin> readAllStudentLogin() {
-		String jpql= "select s from student_login s";
+		String jpql= "select s from StudentLogin s";
 		TypedQuery<StudentLogin> tquery = entityManager.createQuery(jpql, StudentLogin.class);
 		return tquery.getResultList();
 	}
@@ -103,7 +103,7 @@ public class ScholarshipDaoImpl implements ScholarshipDao{
 	
 	@Override
 	public List<InstitueLogin> readAllInstituteLogin() {
-		String jpql= "select i from institute_login i";
+		String jpql= "select i from InstituteLogin i";
 		TypedQuery<InstitueLogin> tquery = entityManager.createQuery(jpql, InstitueLogin.class);
 		return tquery.getResultList();
 	}
@@ -114,13 +114,7 @@ public class ScholarshipDaoImpl implements ScholarshipDao{
 	}
 
 	@Override
-	public List<StudentRegistrationDetails> readStudentByInstitute(String instituteCode) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public List<StudentDetails> readStudentForInstitute(String applicationStatus) {
+	public List<StudentDetails> readStudentForInstitute(String instituteCode) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -140,14 +134,14 @@ public class ScholarshipDaoImpl implements ScholarshipDao{
 	
 	@Override
 	public List<StudentDetails> readStudentForNodal() {
-		String jpql="Select s from student_details s where s.application_status='Approved By Institute'";
+		String jpql="Select s from StudentDetails s where s.application_status='Approved By Institute'";
 		TypedQuery<StudentDetails> tquery= entityManager.createQuery(jpql, StudentDetails.class);
 		return tquery.getResultList();
 	}
 	
 	@Override
 	public List<Institute> readInsituteForNodal() {
-		String jpql="Select i from institute i where i.registration_status='Pending'";
+		String jpql="Select i from Institute i where i.registration_status='Pending'";
 		TypedQuery<Institute> tquery= entityManager.createQuery(jpql, Institute.class);
 		return tquery.getResultList();
 	}
@@ -159,7 +153,7 @@ public class ScholarshipDaoImpl implements ScholarshipDao{
 	
 	@Override
 	public List<AdminLogin> readAllAdminLogin() {
-		String jpql= "select a from admin_login a";
+		String jpql= "select a from AdminLogin a";
 		TypedQuery<AdminLogin> tquery = entityManager.createQuery(jpql, AdminLogin.class);
 		return tquery.getResultList();
 	}
@@ -192,7 +186,7 @@ public class ScholarshipDaoImpl implements ScholarshipDao{
 	//Read Methods
 	@Override
 	public List<StudentDetails> readStudentForMinistry() {
-		String jpql = "select s from student_details s where s.application_status='Approved by Nodal'";
+		String jpql = "select s from StudentDetails s where s.application_status='Approved by Nodal'";
 		TypedQuery<StudentDetails> tquery = entityManager.createQuery(jpql, StudentDetails.class);
 		return tquery.getResultList();
 	}
@@ -200,7 +194,7 @@ public class ScholarshipDaoImpl implements ScholarshipDao{
 	
 	@Override
 	public List<Institute> readInstituteForMinistry() {
-		String jpql = "select i from institute i where i.registration_status='Approved By Nodal'";
+		String jpql = "select i from Institute i where i.registration_status='Approved By Nodal'";
 		TypedQuery<Institute> tquery = entityManager.createQuery(jpql, Institute.class);
 		return tquery.getResultList();
 	}

@@ -23,7 +23,7 @@ public class StudentDetails implements Serializable{
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@Column(name = "STUDENT_APPLICATION_NO")
+	@Column(name = "STUDENT_APPLICATION_NO") //add institutecode
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long studentApplicationNo;
 	

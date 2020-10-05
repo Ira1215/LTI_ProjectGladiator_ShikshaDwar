@@ -2,9 +2,8 @@ package com.lti.controller;
 
 import java.util.List;
 
-import javax.persistence.criteria.CriteriaBuilder.In;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,12 +13,15 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.lti.controller.ScholarshipController.Status;
+import com.lti.controller.ScholarshipController.Status.StatusType;
 import com.lti.model.AdminLogin;
 import com.lti.model.InstitueLogin;
 import com.lti.model.Institute;
 import com.lti.model.StudentDetails;
 import com.lti.model.StudentLogin;
 import com.lti.model.StudentRegistrationDetails;
+import com.lti.service.MailServiceImpl;
 import com.lti.service.ScholarshipService;
 
 @RestController
@@ -27,13 +29,16 @@ import com.lti.service.ScholarshipService;
 @RequestMapping(path = "users")
 public class ScholarshipController {
 
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 	@Autowired
 	private ScholarshipService service;
+	MailServiceImpl mail = new MailServiceImpl();
 
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	
-	// Student Module
-	// Add Values
+
+	// STUDENT
+	// SIGNUP
 
 	// http://localhost:9091/ShikshaDwar/users/student/login
 	@PostMapping(path = "student/login")
@@ -41,18 +46,41 @@ public class ScholarshipController {
 		service.addStudentLogin(studentLogin);
 	}
 
+	// STUDENT
+	// PORTAL REGISTRATION
+
 	// http://localhost:9091/ShikshaDwar/users/student/registration
 	@PostMapping(path = "student/registration")
-	public void addStudentRegistration(@RequestBody StudentRegistrationDetails studentRegistration) {
-		service.addStudentRegistration(studentRegistration);
+	public Status addStudent(@RequestBody StudentRegistrationDetails studentRegistration) {
+		try {
+			service.addStudentRegistration(studentRegistration);
+			if (mail.mailValidate(studentRegistration.getLogin().getStudentEmailId())) {
+				mail.send(studentRegistration.getLogin().getStudentEmailId(), "REGISTRATION SUCCESSFULL",
+						"<b>CONGRATULATIONS !</b> You have Successfully Registered with ShikshaDwaar<br><p>Hope We will serve you better</p>");
+			}
+			Status status = new Status();
+			status.setStatus(StatusType.SUCCESS);
+			status.setMessage("REGISTRATION SUCCESSFUL");
+			return status;
+		} catch (Exception e) {
+			Status status = new Status();
+			status.setStatus(StatusType.FAILURE);
+			status.setMessage(e.getMessage());
+			return status;
+		}
 
 	}
+
+	// STUDENT
+	// SCHOLARSHIP APPLICATION
 
 	// http://localhost:9091/ShikshaDwar/users/student/application
 	@PostMapping(path = "student/application")
-	public void addStudent(@RequestBody StudentDetails studentApplication) {
+	public void addStudentApplication(@RequestBody StudentDetails studentApplication) {
 		service.addStudent(studentApplication);
 	}
+
+	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	// Read Values
 
@@ -71,17 +99,6 @@ public class ScholarshipController {
 		return status;
 	}
 
-	// Update Values
-
-	// http://localhost:9091/ShikshaDwar/users/student/forgotPassword/{studentEmailId}
-	@PutMapping(path = "student/forgotPassword/{studentEmailId}")
-	public void updateStudentPassword(@PathVariable String studentEmailId, @RequestBody StudentLogin studentLogin) {
-		StudentLogin s = service.getStudentLoginByEmail(studentEmailId);
-		s.setStudentPassword(studentLogin.getStudentPassword());
-		service.modifyStudentPassword(s);
-	}
-	
-	
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	// INSTITUTE MODULE
@@ -107,37 +124,20 @@ public class ScholarshipController {
 		List<InstitueLogin> i = service.getAllInstituteLogin();
 		return i;
 	}
-	
-	
+
 	// http://localhost:9091/ShikshaDwar/users/institute/registrationStatus/{instituteCode}
-	@GetMapping(path ="institute/registrationStatus/{instituteCode}" )
-	public String findInstituteStatus(@PathVariable String instituteCode)
-	{
-		Institute i= service.getinstituteByInstituteCode(instituteCode);
-		String status= i.getRegistrationStatus();
+	@GetMapping(path = "institute/registrationStatus/{instituteCode}")
+	public String findInstituteStatus(@PathVariable String instituteCode) {
+		Institute i = service.getinstituteByInstituteCode(instituteCode);
+		String status = i.getRegistrationStatus();
 		return status;
 	}
 
 	// Update Module
 
-	// http://localhost:9091/ShikshaDwar/users/institute/forgotPassword/{diseCode}
-	@PutMapping(path = "institute/forgotPassword/{diseCode}")
-	public void updateInstitutePassword(@PathVariable String diseCode, @RequestBody InstitueLogin instituteLogin) {
-		InstitueLogin i = service.getInstituteByDise(diseCode);
-		i.setInstituePassword(instituteLogin.getInstituePassword());
-		service.modifyInstitutePassword(i);
-	}
-
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	
+
 	// NODAL + MINISTRY PASSWORD UPDATE AND VERIFY
-	// http://localhost:9091/ShikshaDwar/users/admin/forgotPassword/{username}
-	@PutMapping(path = "admin/forgotPassword/{username}")
-	public void updateAdminPassword(@PathVariable String username, @RequestBody AdminLogin adminLogin) {
-		AdminLogin a = service.getAdminById(username);
-		a.setPassword(adminLogin.getPassword());
-		service.modifyAdminPassword(a);
-	}
 
 	// http://localhost:9091/ShikshaDwar/users/admin/loginDetails
 	@GetMapping(path = "admin/loginDetails")
@@ -145,7 +145,7 @@ public class ScholarshipController {
 		List<AdminLogin> a = service.getAllAdminLogin();
 		return a;
 	}
-	
+
 	///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	// NODAL MODULE
@@ -198,7 +198,7 @@ public class ScholarshipController {
 		i.setRegistrationStatus("Rejected");
 		service.modifyInstituteStatus(i);
 	}
-	
+
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	// MINISTRY MODULE
@@ -245,13 +245,155 @@ public class ScholarshipController {
 		service.modifyInstituteStatus(i);
 	}
 
-
 	// http://localhost:9091/ShikshaDwar/users/ministry/rejectInstitute/{instituteCode}
-	@PutMapping(path = "ministry/rejectInstitute/{instituteCode}")
+	@PutMapping(path = "/ministry/rejectInstitute/{instituteCode}")
 	public void rejectInstituteRegistrationByMinistry(@PathVariable String instituteCode) {
 		Institute i = service.getinstituteByInstituteCode(instituteCode);
 		i.setRegistrationStatus("Rejected");
 		service.modifyInstituteStatus(i);
 	}
+
+	///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+	// LOGIN SERVICE
+	// STUDENT
+
+	// http://localhost:9091/ShikshaDwar/users/student/login
+	@PostMapping(path = "/student/login")
+	public ResponseEntity<String> loginStudent(@RequestBody StudentLogin login) {
+		boolean result = service.verifyStudentLogin(login);
+		if (result) {
+			return ResponseEntity.ok("Login Success");
+		} else {
+			return ResponseEntity.notFound().build();
+		}
+	}
+
+	// INSTITUTE
+
+	// http://localhost:9091/ShikshaDwar/users/institute/login
+	@PostMapping(path = "/institute/login")
+	public ResponseEntity<String> loginInstitute(@RequestBody InstitueLogin login) {
+		boolean result = service.verifyInstituteLogin(login);
+		if (result) {
+			return ResponseEntity.ok("Login Success");
+		} else {
+			return ResponseEntity.notFound().build();
+		}
+	}
+
+	// NODAL LOGIN
+
+	// http://localhost:9091/ShikshaDwar/users/nodal/login
+	@PostMapping(path = "/nodal/login")
+	public ResponseEntity<String> loginNodal(@RequestBody AdminLogin login) {
+		boolean result = service.verifyAdminLogin(login);
+		if (result) {
+			return ResponseEntity.ok("Login Success");
+		} else {
+			return ResponseEntity.notFound().build();
+		}
+	}
+
+	// MINISTRY LOGIN
+
+	// http://localhost:9091/ShikshaDwar/users/ministry/login
+	@PostMapping(path = "/ministry/login")
+	public ResponseEntity<String> loginMinistry(@RequestBody AdminLogin login) {
+		boolean result = service.verifyAdminLogin(login);
+		if (result) {
+			return ResponseEntity.ok("Login Success");
+		} else {
+			return ResponseEntity.notFound().build();
+		}
+	}
+
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+	// STUDENT
+	// FORGOT PASSWORD OTP
+
+	// http://localhost:9091/ShikshaDwar/users/student/ForgotPassword/GetOtp/{email}
+	@GetMapping("/student/ForgotPassword/GetOtp/{email}")
+	public String getOtp(@PathVariable String email) {
+		String cotp = service.generateOTP();
+		mail.send(email, "OTP For Password Regeneration", "<p>Your <b>One Time Password</b> is : " + cotp + "</p>");
+		return cotp;
+	}
+
+	// STUDENT
+	// PASSWORD RESET
+
+	// http://localhost:9091/ShikshaDwar/users/student/ResetPassword/{studentEmailId}
+	@PutMapping(path = "student/ResetPassword/{studentEmailId}")
+	public void updateStudentPassword(@PathVariable String studentEmailId, @RequestBody StudentLogin studentLogin) {
+		StudentLogin s = service.getStudentLoginByEmail(studentEmailId);
+		s.setStudentPassword(studentLogin.getStudentPassword());
+		service.modifyStudentPassword(s);
+	}
+
+	// INSTITUTE
+	// PASSWORD RESET
+
+	// http://localhost:9091/ShikshaDwar/users/institute/ResetPassword/{diseCode}
+	@PutMapping(path = "institute/ResetPassword/{diseCode}")
+	public void updateInstitutePassword(@PathVariable String diseCode, @RequestBody InstitueLogin instituteLogin) {
+		InstitueLogin i = service.getInstituteByDise(diseCode);
+		i.setInstituePassword(instituteLogin.getInstituePassword());
+		service.modifyInstitutePassword(i);
+	}
+
+	// NODAL
+	// PASSWORD RESET
+
+	// http://localhost:9091/ShikshaDwar/users/nodal/ResetPassword/{username}
+	@PutMapping(path = "nodal/ResetPassword/{username}")
+	public void updateNodalPassword(@PathVariable String username, @RequestBody AdminLogin adminLogin) {
+		AdminLogin a = service.getAdminById(username);
+		a.setPassword(adminLogin.getPassword());
+		service.modifyAdminPassword(a);
+	}
+
+	// MINISTRY
+	// PASSWORD RESET
+
+	// http://localhost:9091/ShikshaDwar/users/ministry/ResetPassword/{username}
+	@PutMapping(path = "ministry/ResetPassword/{username}")
+	public void updateMinistryPassword(@PathVariable String username, @RequestBody AdminLogin adminLogin) {
+		AdminLogin a = service.getAdminById(username);
+		a.setPassword(adminLogin.getPassword());
+		service.modifyAdminPassword(a);
+	}
+
+	///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+	public static class Status {
+
+		private StatusType status;
+		private String message;
+
+		public static enum StatusType {
+			SUCCESS, FAILURE;
+		}
+
+		public StatusType getStatus() {
+			return status;
+		}
+
+		public void setStatus(StatusType status) {
+			this.status = status;
+		}
+
+		public String getMessage() {
+			return message;
+		}
+
+		public void setMessage(String message) {
+			this.message = message;
+		}
+
+	}
+
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 }

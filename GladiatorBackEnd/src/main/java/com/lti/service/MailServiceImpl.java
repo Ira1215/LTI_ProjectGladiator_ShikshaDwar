@@ -7,10 +7,26 @@ import javax.mail.MessagingException;
 import javax.mail.PasswordAuthentication;
 import javax.mail.Session;
 import javax.mail.Transport;
+import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
+
 public class MailServiceImpl {
+	
+	public boolean mailValidate(String to)
+	{
+		boolean isValid = false;
+		try {
+			InternetAddress in = new InternetAddress(to);
+			in.validate();
+			isValid = true;
+		}
+		catch(AddressException e)
+		{}
+		return isValid;
+	}
+	
 	public void send(String to, String sub, String msg) {
 		
 		//PROPERTIES
@@ -20,37 +36,30 @@ public class MailServiceImpl {
 		props.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
 		props.put("mail.smtp.auth", "true");
 		props.put("mail.smtp.port", "465");
-		
-		//SESSION
-		Session session = Session.getDefaultInstance(props, new javax.mail.Authenticator() {
+
+		// SESSION
+		Session session = Session.getInstance(props, new javax.mail.Authenticator() {
 			protected PasswordAuthentication getPasswordAuthentication() {
-				return new PasswordAuthentication("shikshadwar.lti@gmail.com", "ShikshaDwar@lti");
+				return new PasswordAuthentication("shikshadwaar.lti@gmail.com", "ShikshaDwaar@lti");
 			}
 		});
-		
-		//MESSAGE
-		try 
-		{
+
+		// MESSAGE
+		try {
 			MimeMessage message = new MimeMessage(session);
-			message.setFrom("shikshadwar.lti@gmail.com");
+			message.setFrom("shikshadwaar.lti@gmail.com");
 			message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
 			message.setSubject(sub);
 			message.setContent(msg, "text/html");
 			// send message
 			Transport.send(message);
-			if(sub=="REGISTRATION SUCCESSFULL")
-			{
-				System.out.println("Registration Email Successfully sent to "+to);
-			}
-			else
-			{
-				System.out.println("One Time Password is sent successfully to "+to);
+			if (sub == "REGISTRATION SUCCESSFULL") {
+				System.out.println("Registration Email Successfully sent to " + to);
+			} else {
+				System.out.println("One Time Password is sent successfully to " + to);
 			}
 		} 
-		catch (MessagingException e) 
-		{
-			throw new RuntimeException(e);
+		catch (MessagingException e) {
 		}
-
 	}
 }

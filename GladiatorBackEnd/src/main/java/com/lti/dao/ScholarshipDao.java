@@ -34,7 +34,6 @@ public interface ScholarshipDao {
 	public List<InstitueLogin> readAllInstituteLogin();
 	public Institute readInstituteByInstituteCode(String instituteCode);
 	public List<StudentDetails> readStudentForInstitute(String applicationStatus);
-	public List<StudentRegistrationDetails> readStudentByInstitute(String instituteCode);
 	//Update Values in database
 	public void updateInstitutePassword(InstitueLogin instituteLogin);
 	public void updateInstituteStatus(Institute institute);
