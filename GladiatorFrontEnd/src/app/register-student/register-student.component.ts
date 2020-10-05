@@ -24,8 +24,8 @@ export class RegisterStudentComponent implements OnInit {
       studentAadharNo: ['', Validators.required],
       studentMobileNo: ['', Validators.required],
       studentGender: ['', Validators.required],
-      studentDob: ['', Validators.required],
-      studentInstitution: ['', Validators.required]
+      studentInstitution: ['', Validators.required],
+      studentDob: ['', Validators.required]
     })
     this.service.getAllUsers().subscribe(data =>{this.registeredStudents=data});
 
@@ -47,10 +47,15 @@ export class RegisterStudentComponent implements OnInit {
       this.studentRegisterForm.controls.studentAadharNo.value,
       this.studentRegisterForm.controls.studentGender.value,
       this.studentRegisterForm.controls.studentMobileNo.value,
-      this.studentRegisterForm.controls.studentDob.value,
-      this.studentRegisterForm.controls.studentInstitution.value); 
+      this.studentRegisterForm.controls.studentInstitution.value,
+      this.studentRegisterForm.controls.studentDob.value); 
+
+      this.service.addUser(student).subscribe( data => this.registeredStudents.push(student));
+      this.router.navigate(['/']);
+
+
     //  alert(this.form.controls.fatherName.value);
-      for(let rs of this.registeredStudents)
+      /* for(let rs of this.registeredStudents)
       {
         if(rs.studentAadharNo==student.studentAadharNo)
         {
@@ -68,7 +73,7 @@ export class RegisterStudentComponent implements OnInit {
     
     if(this.studentRegisterForm.invalid){
       return;
-    }
+    } */
   }
 
   onReset(){

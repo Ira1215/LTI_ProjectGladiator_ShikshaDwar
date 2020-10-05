@@ -10,8 +10,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class NodalLoginComponent implements OnInit {
   nodalLoginForm: FormGroup;
   submitted = false;
-  user:string="officer";
-  pass:string="officer";
+  
+  
 
   constructor(private formBuilder:FormBuilder,private router:Router) { }
 
@@ -28,7 +28,10 @@ export class NodalLoginComponent implements OnInit {
 
   onSubmit(){
 alert("ok");
-    if(this.nodalLoginForm.controls.username.value==this.user)
+    localStorage.setItem("nodalUserLoginName",this.nodalLoginForm.controls.username.value);
+    this.router.navigate(['/officerDashboard']);
+
+    /* if(this.nodalLoginForm.controls.username.value==this.user)
     {
       if(this.nodalLoginForm.controls.password.value==this.pass)
       {
@@ -37,7 +40,7 @@ alert("ok");
       else{
         alert("Invalid Credentials");
       }
-    }
+    } */
     if(this.nodalLoginForm.invalid){
       return;
     }

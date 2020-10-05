@@ -10,12 +10,12 @@ export class StudentRegistrationService {
 
   constructor(private http:HttpClient) { }
   addUser(user:StudentRegistration):Observable<Object>{
-    alert("its coming")
-     return this.http.post("http://localhost:3000/registeredstudents" , user);
+    alert("We are in the student Registration Service");
+     return this.http.post("http://localhost:9091/ShikshaDwar/users/student/registration", user);
     }
   
     getAllUsers():Observable<StudentRegistration[]>{
     
-      return this.http.get<StudentRegistration[]>("http://localhost:3000/registeredstudents");
+      return this.http.get<StudentRegistration[]>("http://localhost:9091/ShikshaDwar/users/student/registration");
     }
 }

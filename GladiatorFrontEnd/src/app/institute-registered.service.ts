@@ -12,12 +12,12 @@ export class InstituteRegisteredService {
   constructor(private http:HttpClient) {}
    
   addUser(user:InstitutesRegistered):Observable<Object>{
-   alert("its coming")
-    return this.http.post("http://localhost:3000/registeredinstitutes" , user);
+   alert("You Just Subscribed to RegisteredInstituteService");
+    return this.http.post("http://localhost:9091/ShikshaDwar/users/institute/registration",user);
    }
  
    getAllUsers():Observable<InstitutesRegistered[]>{
    
-     return this.http.get<InstitutesRegistered[]>("http://localhost:3000/registeredinstitutes");
+     return this.http.get<InstitutesRegistered[]>("http://localhost:9091/ShikshaDwar/users/institute/");
    }
 }

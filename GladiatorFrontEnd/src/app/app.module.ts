@@ -1,3 +1,4 @@
+import { ForgotUpdatePasswordService } from './forgot-update-password.service';
 import { InstituteRegisteredService } from './institute-registered.service';
 import { MinistryInstituteDetailFetchComponent } from './ministry-institute-detail-fetch/ministry-institute-detail-fetch.component';
 import { MinistryStudentDetailFetchComponent } from './ministry-student-detail-fetch/ministry-student-detail-fetch.component';
@@ -83,7 +84,7 @@ import { ErrorComponent } from './error/error.component';
   
     
   ],
-  providers: [HardcodedAuthenticationService,StudentapplicationService,InstituteService,InstituteRegisteredService],
+  providers: [HardcodedAuthenticationService,StudentapplicationService,InstituteService,InstituteRegisteredService,ForgotUpdatePasswordService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

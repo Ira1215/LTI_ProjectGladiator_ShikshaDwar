@@ -41,7 +41,10 @@ export class SignUpInstituteComponent implements OnInit {
     this.submitted = true;
     let institute:InstituteLogin=new InstituteLogin(this.signUpInstituteForm.controls.diseCode.value,
       this.signUpInstituteForm.controls.institutePassword.value); 
-      for(let i of this.instituteData)
+      this.service.addUser(institute).subscribe( data => this.instituteArray.push(institute));
+          //alert("its entering here!");
+      this.router.navigate(['/instituteRegistrationForm']);
+      /* for(let i of this.instituteData)
       {
         if(i.diseCode==institute.diseCode)
         {
@@ -67,7 +70,7 @@ export class SignUpInstituteComponent implements OnInit {
 
     if(this.signUpInstituteForm.invalid){
       return; 
-    }
+    } */
   }
 }
 

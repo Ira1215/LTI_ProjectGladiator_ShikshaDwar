@@ -75,6 +75,9 @@ export class InstituteApplicationComponent implements OnInit {
       this.instituteApplicationForm.controls.diseCode.value
     );
 
+    this.service.addUser(this.instituteDetails).subscribe( data => this.institutesRegistered.push(this.instituteDetails));
+    this.router.navigate(['/']);
+/* 
     for(let s of this.institutesRegistered)
     {
       
@@ -101,6 +104,7 @@ export class InstituteApplicationComponent implements OnInit {
   onReset(){
     this.submitted=false;
     this.instituteApplicationForm.reset();
-  }
+  } */
 
+}
 }

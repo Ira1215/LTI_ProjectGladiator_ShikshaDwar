@@ -4,7 +4,7 @@ export class StudentApplication{
     studentFatherName:string;
     state:string;
     district:string;
-    blockNo:number;
+    blockNo:string; //changed
     streetNo:number;
     houseNo:number;
     pinCode:string;
@@ -55,7 +55,7 @@ export class StudentApplication{
     
 
     constructor(studentName:string,studentAadharNo:string,studentFatherName:string,state:string,district:string,
-        blockNo:number,streetNo:number,houseNo:number,pinCode:string,tuitionFee:number,admissionFee:number,
+        blockNo:string,streetNo:number,houseNo:number,pinCode:string,tuitionFee:number,admissionFee:number,
         otherFee:number,bankName:string,bankAccountNo:string,bankIfscCode:string,studentReligion:string,
         studentCategory:string,studentMotherName:string,studentFamilyIncome:string,studentCourse:string,
         studentYear:number,modeOfStudy:string,courseStartDate:Date,studentPrevCourse:string,

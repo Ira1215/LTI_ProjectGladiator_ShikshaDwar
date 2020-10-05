@@ -22,7 +22,7 @@
           </span>
           Basic Details
         </h4>
-        <hr />
+        <hr/>
 
         <div class="form-row">
           <div class="form-group col-md-4">
@@ -46,15 +46,14 @@
 
           <div class="form-group col-md-4">
             <label for="studentReligion">Religion</label>
-            <select id="studentReligion" class="form-control" formControlName="studentReligion">
-              <option selected>Hindu</option>
-              <option>Muslim</option>
-              <option>Christian</option>
-              <option>Sikh</option>
-              <option>Indian</option>
-            </select>
+            <input type="text" id="studentReligion" class="form-control" formControlName="studentReligion">
+            <div *ngIf="
+                form.get('studentReligion').touched && form.get('studentReligion').invalid" style="color: red">
+              Student Religion is Required
+            </div>
           </div>
         </div>
+
         <div class="form-row">
           <div class="form-group">
             <label for="studentFatherName">Father's Name</label>
@@ -65,6 +64,7 @@
                   " style="color: red">
               Father's Name is Required
             </div>
+
 
             <div class="form-group">
               <label for="studentMotherName">Mother's Name</label>
@@ -79,13 +79,19 @@
 
             <div class="form-row">
               <div class="form-group col-md-6">
-                <label for="studentCategory">Community or Category</label>
-                <input formControlName="studentCategory" type="text" class="form-control" id="studentCategory" />
+                <label for="studentCategory">Category</label>
+                <select formControlName="studentCategory" type="text" class="form-control" id="studentCategory">
+                  <option selected>General</option>
+                  <option>SC/ST</option>
+                  <option>OBC</option>
+                  <option>PWD</option>
+                  <option>Others</option>
+                </select> 
                 <div *ngIf="
                         form.get('studentCategory').touched &&
                         form.get('studentCategory').invalid
                       " style="color: red">
-                  Community Name is Required
+                  Category Name is Required
                 </div>
               </div>
 
@@ -152,9 +158,8 @@
                 <label for="modeOfStudy">Mode of Study</label>
                 <select formControlName="modeOfStudy" id="modeOfStudy" class="form-control">
 
-                  <option>Government School</option>
-                  <option>Private School</option>
-                  <option>Home School</option>
+                  <option>ClassRoom Program</option>
+                  <option>Distance Learning Program</option>
                   <option>Other</option>
                 </select>
                 <div *ngIf="
@@ -189,8 +194,8 @@
                 </div>
               </div>
               <div class="form-group col-md-4">
-                <label for="PrePassper">Previous Class %</label>
-                <input formControlName="studentPrevPercent" type="text" class="form-control" id="PrePassper" />
+                <label for="studentPrevPercent">Previous Class Percentage</label>
+                <input formControlName="studentPrevPercent" type="text" class="form-control" id="studentPrevPercent" />
                 <div *ngIf="
                         form.get('studentPrevPercent').touched &&
                         form.get('studentPrevPercent').invalid
@@ -224,7 +229,7 @@
               </div>
 
               <div class="form-group col-md-6">
-                <label for="tenBoardName">Board Name</label>
+                <label for="tenBoardName">10th Board Name</label>
                 <input formControlName="student10BoardName" type="text" class="form-control" id="tenBoardName" />
                 <div *ngIf="
                         form.get('student10BoardName').touched &&
@@ -248,7 +253,7 @@
               </div>
 
               <div class="form-group col-md-6">
-                <label for="student10Percent">10th Percentage Obtained</label>
+                <label for="student10Percent">10th Percentage</label>
                 <input formControlName="student10Percent" type="text" class="form-control" id="student10Percent" />
                 <div *ngIf="
                         form.get('student10Percent').touched &&
@@ -308,7 +313,7 @@
               </div>
 
               <div class="form-group col-md-6">
-                <label for="twePercentObt">12th Percentage Obtained</label>
+                <label for="twePercentObt">12th Percentage</label>
                 <input formControlName="student12Percent" type="text" class="form-control" id="twePercentObt" />
                 <div *ngIf="
                         form.get('student12Percent').touched &&
@@ -331,7 +336,7 @@
             <hr />
             <div class="form-row">
               <div class="form-group col-md-4">
-                <label for="admFees">Admission Fees</label>
+                <label for="admFees">Admission Fee</label>
                 <input formControlName="admissionFee" type="text" class="form-control" id="admFees" />
                 <div *ngIf="
                         form.get('admissionFee').touched &&
@@ -342,7 +347,7 @@
               </div>
 
               <div class="form-group col-md-4">
-                <label for="TuiFees">Tuition Fees</label>
+                <label for="TuiFees">Tuition Fee</label>
                 <input formControlName="tuitionFee" type="text" class="form-control" id="TuiFees" />
                 <div *ngIf="
                         form.get('tuitionFee').touched &&
@@ -353,7 +358,7 @@
               </div>
 
               <div class="form-group col-md-4">
-                <label for="OthFees">Other Fees</label>
+                <label for="OthFees">Other Fee</label>
                 <input formControlName="otherFee" type="text" class="form-control" id="OthFees" />
                 <div *ngIf="
                         form.get('otherFee').touched &&
@@ -422,32 +427,32 @@
 
             <div class="form-row">
               <div class="form-group col-md-4">
-                <label for="disabilityType">Type Of Disability</label>
-                <input formControlName="disabilityType" type="text" class="form-control" id="disabilityType" />
+                <label for="disability">Disability</label>
+                <select formControlName="disability" type="text" class="form-control" id="disability">
+                  <option>Yes</option>
+                  <option>No</option>
+                </select>
                 <div *ngIf="
-                        form.get('disabilityType').touched &&
-                        form.get('disabilityType').invalid
+                        form.get('disability').touched &&
+                        form.get('disability').invalid
                       " style="color: red">
                   Disability Type is Required
                 </div>
               </div>
 
               <div class="form-group col-md-4">
-                <label for="disability">Is Disabled:</label>
-                <select formControlName="disability" id="disability" class="form-control">
-                  <option>Yes</option>
-                  <option selected>No</option>
-                </select>
+                <label for="disabilityType">Disablility Type</label>
+                <input formControlName="disabilityType" id="disabilityType" class="form-control">
                 <div *ngIf="
-                          form.get('disability').touched &&
-                          form.get('disability').invalid
+                          form.get('disabilityType').touched &&
+                          form.get('disabilityType').invalid
                         " style="color: red">
                   You have to select one Option
                 </div>
               </div>
 
               <div class="form-group col-md-4">
-                <label for="disabilityPercentage">% of Disability</label>
+                <label for="disabilityPercentage">Disability Percentage</label>
                 <input formControlName="disabilityPercentage" type="text" class="form-control"
                   id="disabilityPercentage" />
                 <div *ngIf="
@@ -463,9 +468,10 @@
               <div class="form-group col-md-6">
                 <label for="studentMaritalStatus">Marital Status</label>
                 <select formControlName="studentMaritalStatus" id="studentMaritalStatus" class="form-control">
-                  <option>Single!</option>
+                  <option>Single</option>
                   <option>Married</option>
                   <option>Divorced</option>
+                  <option>Widowed</option>
                 </select>
                 <div *ngIf="
                         form.get('studentMaritalStatus').touched &&
@@ -477,7 +483,7 @@
               </div>
 
               <div class="form-group col-md-6">
-                <label for="ParentProfession">Parents Profession</label>
+                <label for="ParentProfession">Parent Profession</label>
                 <input formControlName="parentProfession" type="text" class="form-control" id="ParentProfession" />
                 <div *ngIf="
                         form.get('parentProfession').touched &&
@@ -534,7 +540,7 @@
 
             <div class="form-row">
               <div class="form-group col-md-4">
-                <label for="houseNo">House No</label>
+                <label for="houseNo">House Number</label>
                 <input formControlName="houseNo" type="text" class="form-control" id="houseNo" />
                 <div *ngIf="
                         form.get('houseNo').touched &&
@@ -581,9 +587,9 @@
             <div class="form-row">
               <div class="form-group col-md-4">
                 <select formControlName="scholarshipType" id="scholarship" class="form-control">
-                  <option>Merit-Cum-Based Scholarship</option>
+                  <option selected>Merit-Cum-Means Based Scholarship</option>
                   <option>Pragati Scholarship</option>
-                  <option>Merit-Based Scholarship</option>
+                  <option>NTSE</option>
                 </select>
                 <div *ngIf="
                         form.get('scholarshipType').touched &&
@@ -621,7 +627,7 @@
 
             <div class="custom-file mb-2">
               <input formControlName="incomeCertificate" type="file" class="custom-file-input" id="casteCertificate" />
-              <label class="custom-file-label" for="incomeCertificate">Income Certificate</label>
+              <label class="custom-file-label" for="incomeCertificate">Income Certificate / Caste Certificate</label>
             </div>
 
             <div class="custom-file mb-2">
