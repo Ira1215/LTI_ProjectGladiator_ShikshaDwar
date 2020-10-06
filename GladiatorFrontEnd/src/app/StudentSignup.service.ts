@@ -1,7 +1,8 @@
 import { Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpResponse } from '@angular/common/http';
 import { StudentSignup } from './StudentSignUp';
 import { Injectable } from '@angular/core';
+import {Config} from  'protractor';
 
 @Injectable({
   providedIn: 'root'
@@ -14,14 +15,18 @@ export class StudentsignupService {
  
   
   addUser(user:StudentSignup):Observable<Object>{
-    //console.log(user);
+  
       alert("StudentSignUp Service Called");
-     return this.http.post("http://localhost:9091/ShikshaDwar/users/student/login",user);
+     return this.http.post("http://localhost:9091/ShikshaDwar/users/student/AddLogin",user);
+    }
+
+    loginUser(login: StudentSignup): Observable<HttpResponse<Config>> {
+      return this.http.post<Config>(" http://localhost:9091/ShikshaDwar/users/student/login", login, { observe: 'response' });
     }
   
-    getAllUsers():Observable<StudentSignup[]>{
+    // getAllUsers():Observable<StudentSignup[]>{
     
-      return this.http.get<StudentSignup[]>("http://localhost:9091/ShikshaDwar/users/student/login");
-    }
+    //   return this.http.get<StudentSignup[]>("http://localhost:9091/ShikshaDwar/users/student/login");
+    // }
  
 }

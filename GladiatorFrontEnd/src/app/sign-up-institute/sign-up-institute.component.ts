@@ -41,9 +41,36 @@ export class SignUpInstituteComponent implements OnInit {
     this.submitted = true;
     let institute:InstituteLogin=new InstituteLogin(this.signUpInstituteForm.controls.diseCode.value,
       this.signUpInstituteForm.controls.institutePassword.value); 
-      this.service.addUser(institute).subscribe( data => this.instituteArray.push(institute));
-          //alert("its entering here!");
-      this.router.navigate(['/instituteRegistrationForm']);
+
+      alert(this.signUpInstituteForm.controls.diseCode.value);
+      alert(this.signUpInstituteForm.controls.institutePassword.value)
+
+
+
+      this.service.addInstitute(institute).subscribe( data => this.instituteArray.push(institute));
+          alert("its entering here!")
+          this.router.navigate(['/instituteRegistrationForm']);
+    //   this.service.addInstitute(institute).subscribe( institute=>{
+    //     if (institute.status =="SUCCESS") {
+    //       alert("REGISTRATION SUCCESSFUL");
+    //       setTimeout(function () {
+    //         window.location.href = 'instituteRegistrationForm';
+    //       }, 200);
+    //     }
+    //     else {
+    //       alert("THIS EMAIL ID IS ALREADY REGISTERED");
+    //       setTimeout(function () {
+    //         window.location.href = '/';
+    //       }, 200);
+    //     }
+    //   })
+    // }
+  
+      }
+        
+         
+   
+     
       /* for(let i of this.instituteData)
       {
         if(i.diseCode==institute.diseCode)
@@ -71,6 +98,5 @@ export class SignUpInstituteComponent implements OnInit {
     if(this.signUpInstituteForm.invalid){
       return; 
     } */
-  }
-}
 
+  }

@@ -13,4 +13,11 @@ export class ForgotUpdatePasswordService {
     alert("UpdatePassword Service Called");
    return this.http.put("http://localhost:9091/ShikshaDwar/users/admin/forgotPassword/"+username,adminLogin);
   }
+/* 
+  updatePassword1(username:string,adminLogin)
+  {
+    alert("UpdatePassword Service Called");
+   return this.http.put("http://localhost:9091/ShikshaDwar/users/ministry/ResetPassword/"+username,adminLogin);
+  }
+ */
 }

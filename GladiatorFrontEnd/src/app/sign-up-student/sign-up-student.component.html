@@ -41,21 +41,12 @@
                           name="studentEmailId"
                           id="studentEmailId"
                           formControlName="studentEmailId"
-                          [ngClass]="{
-                            'is-invalid':
-                              submitted && signUp.studentEmailId.errors
-                          }"
+                          
                         />
-                        <div
-                          style="color: red"
-                          *ngIf="
-                            signUp.studentEmailId.errors &&
-                            (signUp.studentEmailId.touched ||
-                              signUp.studentEmailId.dirty)
-                          "
-                        >
-                          <p>Email Id is required</p>
+                        <div style="color: red" *ngIf="signUpStudentForm.get('studentEmailId').touched && signUpStudentForm.get('studentEmailId').invalid">
+                              Email is Required
                         </div>
+
                         <label for="studentPassword">Password</label>
                         <input
                           type="password"
@@ -63,20 +54,10 @@
                           name="studentPassword"
                           id="studentPassword"
                           formControlName="studentPassword"
-                          [ngClass]="{
-                            'is-invalid':
-                              submitted && signUp.studentPassword.errors
-                          }"
+                          
                         />
-                        <div
-                          style="color: red"
-                          *ngIf="
-                            signUp.studentPassword.errors &&
-                            (signUp.studentPassword.touched ||
-                              signUp.studentPassword.dirty)
-                          "
-                        >
-                          <p>Password is required</p>
+                        <div style="color: red" *ngIf="signUpStudentForm.get('studentPassword').touched && signUpStudentForm.get('studentPassword').invalid" >
+                             Password is Required
                         </div>
 
                         <label for="cPassword">Confirm Password</label>
@@ -86,18 +67,10 @@
                           name="cPassword"
                           id="cPassword"
                           formControlName="cPassword"
-                          [ngClass]="{
-                            'is-invalid': submitted && signUp.cPassword.errors
-                          }"
+                          
                         />
-                        <div
-                          style="color: red"
-                          *ngIf="
-                            signUp.cPassword.errors &&
-                            (signUp.cPassword.touched || signUp.cPassword.dirty)
-                          "
-                        >
-                        
+                        <div style="color: red" *ngIf="signUpStudentForm.get('cPassword').touched && signUpStudentForm.get('cPassword').invalid">
+
                           <p>Password does not match</p>
                         </div>
                       </div>

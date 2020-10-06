@@ -12,8 +12,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class SignUpStudentComponent implements OnInit {
   signUpStudentForm: FormGroup;
-  submitted= false;
-  isExist=false;
+  
+
   
 
   constructor(private formBuilder: FormBuilder,private service:StudentsignupService,private router:Router,private userValidate:UserValidationService) {}
@@ -27,9 +27,7 @@ export class SignUpStudentComponent implements OnInit {
       validator: this.userValidate.MatchPassword('studentPassword','cPassword'),
     }
     );
-    this.service.getAllUsers().subscribe(data =>{
-      this.studentData=data;
-    });
+  
   }
 
   get signUp() {
@@ -41,12 +39,35 @@ export class SignUpStudentComponent implements OnInit {
   onSubmit() {
     alert(this.signUpStudentForm.controls.studentEmailId.value);
     alert(this.signUpStudentForm.controls.studentPassword.value);
-    this.submitted= true;
+   
     let student:StudentSignup=new StudentSignup(this.signUpStudentForm.controls.studentEmailId.value,
       this.signUpStudentForm.controls.studentPassword.value);
       this.service.addUser(student).subscribe( data => this.studentData.push(student));
       this.router.navigate(['/studentRegister']);
-      /* for(let s of this.studentData)
+    
+
+    if (this.signUpStudentForm.invalid) {
+      return;
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  /* for(let s of this.studentData)
       {
         if(s.studentEmailId==student.studentEmailId)
         {
@@ -64,9 +85,3 @@ export class SignUpStudentComponent implements OnInit {
 
         }
  */
-
-    if (this.signUpStudentForm.invalid) {
-      return;
-    }
-  }
-}

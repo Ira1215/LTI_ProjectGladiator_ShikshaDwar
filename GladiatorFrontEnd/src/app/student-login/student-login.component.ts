@@ -27,14 +27,58 @@ export class StudentLoginComponent implements OnInit  {
       studentEmailId: new FormControl('',Validators.required),
       studentPassword: new FormControl('',Validators.required)
   });
-  this.service.getAllUsers().subscribe(data =>{this.registeredStudents=data});
+  
   }
+  invalid = false;
   
   onClick()
   {
     alert("You just clicked the Login button");
-    this.router.navigate(['/studentDashboard']);
-   /*  for(let rs of this.registeredStudents)
+
+    let s:StudentSignup = new StudentSignup(this.form.controls.studentEmailId.value, this.form.controls.studentPassword.value)
+  
+    this.service.loginUser(s).subscribe(res => {
+      if (res.status == 200) {
+     alert("ok");
+        console.log("SUCCESS", res.status)
+        localStorage.setItem('loginEmail', this.form.controls.studentEmailId.value);
+        this.router.navigate(['/studentDashboard']);
+      
+      }
+    },
+      err => {
+        if (err.status == 200) {
+          alert("ok2");
+          console.log("error false", err.status)
+          localStorage.setItem('loginEmail', this.form.controls.studentEmailId.value);
+          this.router.navigate(['/studentDashboard']);
+
+        }
+        else {
+          this.invalid = true;
+          alert("You have Provided Invalid Credentails");
+          setTimeout(function () {
+            window.location.href = '';
+          }, 400);
+        }
+
+
+      })
+
+   
+  
+
+}
+}
+
+
+
+
+
+
+
+
+ /*  for(let rs of this.registeredStudents)
     {
       
       if(rs.studentEmailId==this.form.controls.studentEmailId.value)
@@ -66,7 +110,3 @@ export class StudentLoginComponent implements OnInit  {
     return this.form.get('inputStudentEmail');
   }
  */
-
-}
-}
-

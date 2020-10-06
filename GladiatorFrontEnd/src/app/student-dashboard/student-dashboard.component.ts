@@ -15,7 +15,7 @@ export class StudentDashboardComponent implements OnInit {
   ngOnInit(): void {
 
     this.user=sessionStorage.getItem("signedUpUser");
-     alert(this.user);
+  
   }
   onLogout()
   {

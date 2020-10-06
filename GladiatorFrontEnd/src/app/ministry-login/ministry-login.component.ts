@@ -9,9 +9,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class MinistryLoginComponent implements OnInit {
   ministryLoginForm: FormGroup;
-  submitted = false;
-  user:string="ministry";
-  pass:string="ministry";
+
+
+ 
   
 
   constructor(private formBuilder:FormBuilder,private router:Router) { }
@@ -29,7 +29,11 @@ export class MinistryLoginComponent implements OnInit {
 
   onSubmit(){
    // alert("ok");
-    if(this.ministryLoginForm.controls.username.value==this.user)
+
+
+   this.router.navigate(['/ministryDashboard']);
+
+    /* if(this.ministryLoginForm.controls.username.value==this.user)
     {
       if(this.ministryLoginForm.controls.password.value==this.pass)
       {
@@ -38,7 +42,7 @@ export class MinistryLoginComponent implements OnInit {
       else{
         alert("Invalid Credentials");
       }
-    }
+    } */
     
     if(this.ministryLoginForm.invalid){
       return;

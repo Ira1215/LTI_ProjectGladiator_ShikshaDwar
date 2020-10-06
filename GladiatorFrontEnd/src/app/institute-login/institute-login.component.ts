@@ -13,9 +13,10 @@ import { InstituteLogin } from '../institute';
 export class InstituteLoginComponent implements OnInit {
 
   form:FormGroup;
-  instituteLogin:InstituteLogin[];
+ 
   flag:boolean=false;
   error:boolean=false;
+ 
 
   constructor(private service:InstituteService,private router:Router)
   {
@@ -25,22 +26,26 @@ export class InstituteLoginComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.service.getAllUsers().subscribe(data =>{this.instituteLogin=data});
+   
    this.form=new FormGroup(
       {
-        diseCode: new FormControl('',Validators.required),
+        diseCode: new FormControl('',[Validators.required, Validators.maxLength(11)]),
         institutePassword: new FormControl('',Validators.required)
       });
 
       }
+
+     
         
     onLogin()
     { 
-      
-      let diseCode=this.form.controls.diseCode.value;
-     // alert(diseCode);
-      let password=this.form.controls.institutePassword.value;
-    //  alert(password);
+ 
+
+ 
+    let inst:InstituteLogin = new InstituteLogin(this.form.controls.diseCode.value , this.form.controls.institutePassword.value);
+    alert("login")
+   
+
     this.router.navigate(['/instituteDashboard']);
       
       /* for(let i of this.instituteLogin)

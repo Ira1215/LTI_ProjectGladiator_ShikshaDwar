@@ -27,7 +27,7 @@ export class RegisterStudentComponent implements OnInit {
       studentInstitution: ['', Validators.required],
       studentDob: ['', Validators.required]
     })
-    this.service.getAllUsers().subscribe(data =>{this.registeredStudents=data});
+  //  this.service.getAllUsers().subscribe(data =>{this.registeredStudents=data});
 
   }
   
@@ -43,8 +43,8 @@ export class RegisterStudentComponent implements OnInit {
     alert(this.studentRegisterForm.controls.studentGender.value);
 
     this.submitted = true;
-     let student:StudentRegistration=new StudentRegistration(this.studentRegisterForm.controls.studentName.value,
-      this.studentRegisterForm.controls.studentAadharNo.value,
+     let student:StudentRegistration=new StudentRegistration(  this.studentRegisterForm.controls.studentAadharNo.value,this.studentRegisterForm.controls.studentName.value,
+    
       this.studentRegisterForm.controls.studentGender.value,
       this.studentRegisterForm.controls.studentMobileNo.value,
       this.studentRegisterForm.controls.studentInstitution.value,

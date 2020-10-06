@@ -11,6 +11,7 @@
             <div class="card-body">
               <h4 class="text-center">Ministry Officer Name</h4>
               <h5 class="text-center">State</h5>
+              <button (click)="updatePassword()">Update Password</button>
             </div>
             <div class="card-footer">
               <a class="btn btn-danger btn-block" href="#">Logout</a>
@@ -18,7 +19,17 @@
           </div>
         </div>
         <div class="col-md-8">
+          <div *ngIf="showForgotdiv" class="card">
+            <div class="card-body">
+              <form [formGroup]="updatePasswordForm" (submit)="submitPassword()">
+              <input type="Password" formControlName="newPassword" placeholder="Enter New Password"><br>
+              <input type="Password" formControlName="confirmPassword" placeholder="Confirm Password"><br>
+              <button >Submit</button>
+            </form>
+            </div>
+          </div>
           <div class="card">
+
             <div class="card-body">
 
             </div>

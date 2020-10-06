@@ -9,13 +9,17 @@ import { Injectable } from '@angular/core';
 export class StudentRegistrationService {
 
   constructor(private http:HttpClient) { }
-  addUser(user:StudentRegistration):Observable<Object>{
+  addUser(user:StudentRegistration):Observable<any>{
     alert("We are in the student Registration Service");
      return this.http.post("http://localhost:9091/ShikshaDwar/users/student/registration", user);
     }
+
+   
   
-    getAllUsers():Observable<StudentRegistration[]>{
+    // getAllUsers():Observable<StudentRegistration[]>{
     
-      return this.http.get<StudentRegistration[]>("http://localhost:9091/ShikshaDwar/users/student/registration");
-    }
+    //   return this.http.get<StudentRegistration[]>("http://localhost:9091/ShikshaDwar/users/student/registration");
+    // }
+
+
 }

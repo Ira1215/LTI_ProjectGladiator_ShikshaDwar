@@ -7,10 +7,10 @@
     class="form-control my-2"
     formControlName="username"
     placeholder="Email address"
-    [ngClass]="{'is-invalid': submitted && f.username.errors}"
+   
   />
   <div style="color: red" *ngIf="f.username.errors && (f.username.touched || f.username.dirty)">
-    <p>Email is Required</p>
+    <p>Username is Required</p>
   </div>
   <label for="password" class="sr-only">Password</label>
   <input
@@ -19,7 +19,7 @@
     class="form-control my-2"
     placeholder="Password"
     formControlName="password"
-    [ngClass]="{'is-invalid': submitted && f.password.errors}"
+    
   />
 
   <div style="color: red;" *ngIf="f.password.errors && (f.password.touched || f.password.dirty)">

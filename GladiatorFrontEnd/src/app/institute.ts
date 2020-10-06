@@ -1,4 +1,4 @@
-export class InstituteLogin{
+    export class InstituteLogin{
     diseCode:string;
     institutePassword:string;
     
