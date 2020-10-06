@@ -40,10 +40,28 @@ export class SignUpStudentComponent implements OnInit {
     alert(this.signUpStudentForm.controls.studentEmailId.value);
     alert(this.signUpStudentForm.controls.studentPassword.value);
    
-    let student:StudentSignup=new StudentSignup(this.signUpStudentForm.controls.studentEmailId.value,
+    let u:StudentSignup=new StudentSignup(this.signUpStudentForm.controls.studentEmailId.value,
       this.signUpStudentForm.controls.studentPassword.value);
-      this.service.addUser(student).subscribe( data => this.studentData.push(student));
-      this.router.navigate(['/studentRegister']);
+
+      this.service.addUser(u).subscribe(u => {
+        if (u.status == "SUCCESS") {
+          alert("REGISTRATION SUCCESSFUL");
+          localStorage.setItem("signedupStudent",this.signUpStudentForm.controls.studentEmailId.value );
+          setTimeout(function () {
+            window.location.href = 'studentRegister';
+          }, 200);
+        }
+        else {
+          alert("THIS EMAIL ID IS ALREADY REGISTERED");
+          setTimeout(function () {
+            window.location.href = '/';
+          }, 200);
+        }
+      })
+      // this.service.addUser(student).subscribe( res=>{
+      //   console.log(res)
+      // });
+     
     
 
     if (this.signUpStudentForm.invalid) {

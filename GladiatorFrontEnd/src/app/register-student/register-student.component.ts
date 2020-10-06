@@ -19,14 +19,22 @@ export class RegisterStudentComponent implements OnInit {
   constructor(private formBuilder: FormBuilder,private router:Router,private service:StudentRegistrationService) { }
 
   ngOnInit(): void {
+
+
     this.studentRegisterForm = this.formBuilder.group({
       studentName: ['', Validators.required],
       studentAadharNo: ['', Validators.required],
       studentMobileNo: ['', Validators.required],
       studentGender: ['', Validators.required],
       studentInstitution: ['', Validators.required],
-      studentDob: ['', Validators.required]
+      studentDob: ['', Validators.required],
+      studentEmailId:['',Validators.required],
+      instituteCode:['',Validators.required]
     })
+
+
+    this.studentRegisterForm.controls.studentEmailId.setValue(localStorage.getItem("signedupStudent"));
+    alert(localStorage.getItem("signedupStudent"))
   //  this.service.getAllUsers().subscribe(data =>{this.registeredStudents=data});
 
   }
@@ -43,15 +51,32 @@ export class RegisterStudentComponent implements OnInit {
     alert(this.studentRegisterForm.controls.studentGender.value);
 
     this.submitted = true;
-     let student:StudentRegistration=new StudentRegistration(  this.studentRegisterForm.controls.studentAadharNo.value,this.studentRegisterForm.controls.studentName.value,
-    
+     let student:StudentRegistration=new StudentRegistration(this.studentRegisterForm.controls.studentAadharNo.value,
+     this.studentRegisterForm.controls.studentName.value,
       this.studentRegisterForm.controls.studentGender.value,
       this.studentRegisterForm.controls.studentMobileNo.value,
       this.studentRegisterForm.controls.studentInstitution.value,
-      this.studentRegisterForm.controls.studentDob.value); 
+      this.studentRegisterForm.controls.studentDob.value,
+    localStorage.getItem("signedupStudent"),
+      this.studentRegisterForm.controls.instituteCode.value
+      )
+      this.service.addUser(student , localStorage.getItem("signedupStudent")).subscribe(u => {
+        if (u.status == "SUCCESS") {
+          alert("REGISTRATION SUCCESSFUL");
+        
+          setTimeout(function () {
+            window.location.href = '/';
+          }, 200);
+        }
+        else {
+          alert("THIS EMAIL ID IS ALREADY REGISTERED");
+          setTimeout(function () {
+            window.location.href = '/';
+          }, 200);
+        }
+      })
 
-      this.service.addUser(student).subscribe( data => this.registeredStudents.push(student));
-      this.router.navigate(['/']);
+ 
 
 
     //  alert(this.form.controls.fatherName.value);

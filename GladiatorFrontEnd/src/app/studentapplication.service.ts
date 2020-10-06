@@ -10,16 +10,16 @@ export class StudentapplicationService {
 
   constructor(private http:HttpClient) {}
    
-  addUser(user:StudentApplication):Observable<Object>{
+  addUser(user:StudentApplication , email):Observable<any>{
    alert("You just Subscribed to studentApplicationService");
-   //console.log(user);
-    return this.http.post("http://localhost:9091/ShikshaDwar/users/student/application",user);
+
+    return this.http.post("http://localhost:9091/ShikshaDwar/users/student/ApplyScholarship/"+email ,user);
    }
  
-   getAllUsers():Observable<StudentApplication[]>{
+  //  getAllUsers():Observable<StudentApplication[]>{
    
-     return this.http.get<StudentApplication[]>("http://localhost:9091/ShikshaDwar/users/student/application");
-   }
+  //    return this.http.get<StudentApplication[]>("http://localhost:9091/ShikshaDwar/users/student/application");
+  //  }
 
    
 }

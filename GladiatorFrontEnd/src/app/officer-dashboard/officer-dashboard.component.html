@@ -2,40 +2,111 @@
 
 <div class="jumbotron">
   <div class="container">
-    <div>
-      <h2 class="my-2">Nodal Officer Dashboard</h2>
-      <div class="row">
-        <div class="col-md-4">
-          <div class="card">
-            <img class="card-img-top px-4 py-4" src="assets/svg/undraw_Resume_folder_re_e0bi.svg" alt="">
-            <div class="card-body">
-              <h4 class="text-center">Nodal Officer Name</h4>
-              <h5 class="text-center">District</h5>
-              <h5 class="text-center">State</h5>
-              <button (click)="updatePassword()">Update Password</button>
-            </div>
-            <div class="card-footer">
-              <a class="btn btn-danger btn-block" href="#">Logout</a>
-            </div>
-          </div>
-        </div>
-         <div class="col-md-8">
-          <div *ngIf="showForgotdiv" class="card">
-            <div class="card-body">
-              <form [formGroup]="updatePasswordForm" (submit)="submitPassword()">
-              <input type="Password" formControlName="newPassword" placeholder="Enter New Password"><br>
-              <input type="Password" formControlName="confirmPassword" placeholder="Confirm Password"><br>
-              <button >Submit</button>
-            </form>
-            </div>
-          </div>
-          <div class="card">
+    <h2 class="my-2">Nodal Officer Dashboard</h2>
+    <div class="row my-4">
+      <div class="col-md-4">
+        <div class="card bg-success">
           <div class="card-body">
-            
+            <h5>Student Approved</h5>
+            <hr>
+            <p></p>
+            <h5>Institute Approved</h5>
+            <hr>
+            <p></p>
           </div>
         </div>
-        </div> 
-        
+      </div>
+      <div class="col-md-4">
+        <div class="card bg-secondary">
+          <div class="card-body">
+            <h5>Student pending</h5>
+            <hr>
+            <p></p>
+            <h5>Institute pending</h5>
+            <hr>
+            <p></p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card bg-danger">
+          <div class="card-body">
+            <h5>Student Rejected</h5>
+            <hr>
+            <p></p>
+            <h5>Institute Rejected</h5>
+            <hr>
+            <p></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4">
+        <div class="card">
+          <img class="card-img-top px-4 py-4" src="assets/svg/undraw_Resume_folder_re_e0bi.svg" alt="">
+          <div class="card-footer">
+             
+            
+            <a class="btn btn-danger btn-block" href="#">Logout</a>
+            <button class="btn btn-danger btn-block"  (click) = "updatePassword()">Update password</button><br>
+            <div *ngIf = "showForgotdiv">
+              <form [formGroup] = "adminLogin" (submit) = "submitPassword()">
+                <input class="form-control"  type = "text" placeholder="password" ><br>
+                <input class="form-control"  type = "text" placeholder="confirmPaaword" ><br>
+                <button class="btn btn-danger btn-block" >Submit</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-8">
+        <div class="card card-body mb-4">
+          <h5>Basic Details</h5>
+          <hr>
+          <table class="table table-borderless">
+            <thead>
+              <tr>
+                <th scope="row">State</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>State</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="card">
+          <div class="card-body">
+            <h1 style="font-family: monospace;">
+              <span>
+                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-clipboard-check" fill="currentColor"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd"
+                    d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z" />
+                  <path fill-rule="evenodd"
+                    d="M9.5 1h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3zm4.354 7.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 9.793l2.646-2.647a.5.5 0 0 1 .708 0z" />
+                </svg>
+              </span> Latest Updates
+            </h1>
+            <div class="container">
+              <marquee direction="up" onmouseover="stop()" onmouseout="start()" scrollamount="3" loop="">
+                <ol>
+                  <li class="primary" style="font-weight: bold;">
+                    <span>For NMMS scheme please register as Scholarship Scheme.</span>
+                  </li>
+                  <hr>
+                  <li style="font-weight: bold;"><strong>Attention Institutes</strong><br>
+                    The Institutes which are registered on NSP 2.0 are required to submit
+                    Institute Registration Form for AY 2020-21. The Form is available in Institute Login.
+                  </li>
+                  <hr>
+                </ol>
+              </marquee>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>

@@ -11,13 +11,13 @@ export class InstituteRegisteredService {
   
   constructor(private http:HttpClient) {}
    
-  addUser(user:InstitutesRegistered):Observable<Object>{
-   alert("You Just Subscribed to RegisteredInstituteService");
-    return this.http.post("http://localhost:9091/ShikshaDwar/users/institute/registration",user);
+  addUser(user:InstitutesRegistered , dise):Observable<any>{
+
+    return this.http.post("http://localhost:9091/ShikshaDwar/users/institute/registration/" + dise,user);
    }
  
-   getAllUsers():Observable<InstitutesRegistered[]>{
+  //  getAllUsers():Observable<InstitutesRegistered[]>{
    
-     return this.http.get<InstitutesRegistered[]>("http://localhost:9091/ShikshaDwar/users/institute/");
-   }
+  //    return this.http.get<InstitutesRegistered[]>("http://localhost:9091/ShikshaDwar/users/institute/");
+  //  }
 }

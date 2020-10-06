@@ -39,8 +39,12 @@ export class InstituteApplicationComponent implements OnInit {
       instituteHeadContact:['', Validators.required],
       diseCode:['', Validators.required],
     });
-    this.service.getAllUsers().subscribe(data =>{this.institutesRegistered=data});
+
+    this.instituteApplicationForm.controls.diseCode.setValue(localStorage.getItem("signedupInstitute"))
+  //  this.service.getAllUsers().subscribe(data =>{this.institutesRegistered=data});
   }
+
+  
 
   get instApp(){
     return this.instituteApplicationForm.controls;
@@ -72,11 +76,40 @@ export class InstituteApplicationComponent implements OnInit {
       this.instituteApplicationForm.controls.pincode.value,
       this.instituteApplicationForm.controls.instituteHeadName.value,
       this.instituteApplicationForm.controls.instituteHeadContact.value,
-      this.instituteApplicationForm.controls.diseCode.value
+  localStorage.getItem("signedupInstitute")
     );
 
-    this.service.addUser(this.instituteDetails).subscribe( data => this.institutesRegistered.push(this.instituteDetails));
-    this.router.navigate(['/']);
+
+
+    this.service.addUser(this.instituteDetails , localStorage.getItem("signedupInstitute")).subscribe(u => {
+      if (u.status == "SUCCESS") {
+        alert("REGISTRATION SUCCESSFUL");
+      
+        setTimeout(function () {
+          window.location.href = '/';
+        }, 200);
+      }
+      else {
+        alert("THIS dise code is already registered");
+        setTimeout(function () {
+          window.location.href = '/';
+        }, 200);
+      }
+    })
+
+
+
+
+
+   
+ 
+
+
+}
+}
+
+
+
 /* 
     for(let s of this.institutesRegistered)
     {
@@ -105,6 +138,3 @@ export class InstituteApplicationComponent implements OnInit {
     this.submitted=false;
     this.instituteApplicationForm.reset();
   } */
-
-}
-}

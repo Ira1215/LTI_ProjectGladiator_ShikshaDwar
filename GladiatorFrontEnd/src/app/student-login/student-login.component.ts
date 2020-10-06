@@ -51,6 +51,7 @@ export class StudentLoginComponent implements OnInit  {
           alert("ok2");
           console.log("error false", err.status)
           localStorage.setItem('loginEmail', this.form.controls.studentEmailId.value);
+        
           this.router.navigate(['/studentDashboard']);
 
         }
@@ -58,16 +59,12 @@ export class StudentLoginComponent implements OnInit  {
           this.invalid = true;
           alert("You have Provided Invalid Credentails");
           setTimeout(function () {
-            window.location.href = '';
+            window.location.href = 'studentSignUp';
           }, 400);
         }
 
 
       })
-
-   
-  
-
 }
 }
 

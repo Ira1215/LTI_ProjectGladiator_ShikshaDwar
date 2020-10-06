@@ -1,12 +1,12 @@
     export class InstituteLogin{
     diseCode:string;
-    institutePassword:string;
+    instituePassword:string;
     
 
-    constructor(diseCode:string,institutePassword:string)
+    constructor(diseCode:string,instituePassword:string)
     {
         this.diseCode=diseCode;
-        this.institutePassword=institutePassword;
+        this.instituePassword=instituePassword;
     }
 
 }

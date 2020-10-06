@@ -14,7 +14,7 @@ export class StudentsignupService {
   constructor(private http:HttpClient) {}
  
   
-  addUser(user:StudentSignup):Observable<Object>{
+  addUser(user:StudentSignup):Observable<any>{
   
       alert("StudentSignUp Service Called");
      return this.http.post("http://localhost:9091/ShikshaDwar/users/student/AddLogin",user);
@@ -24,9 +24,6 @@ export class StudentsignupService {
       return this.http.post<Config>(" http://localhost:9091/ShikshaDwar/users/student/login", login, { observe: 'response' });
     }
   
-    // getAllUsers():Observable<StudentSignup[]>{
-    
-    //   return this.http.get<StudentSignup[]>("http://localhost:9091/ShikshaDwar/users/student/login");
-    // }
+
  
 }

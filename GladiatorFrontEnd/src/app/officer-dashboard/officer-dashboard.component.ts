@@ -37,7 +37,7 @@ export class OfficerDashboardComponent implements OnInit {
 updatePassword()
 {
 
-  alert("ok");
+ 
   this.showForgotdiv=!this.showForgotdiv;
 
 }

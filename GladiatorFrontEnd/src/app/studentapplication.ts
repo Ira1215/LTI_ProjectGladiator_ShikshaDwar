@@ -1,6 +1,6 @@
 export class StudentApplication{
     studentName:string;
-    studentAadharNo:string;
+
     studentFatherName:string;
     state:string;
     district:string;
@@ -54,7 +54,7 @@ export class StudentApplication{
 
     
 
-    constructor(studentName:string,studentAadharNo:string,studentFatherName:string,state:string,district:string,
+    constructor(studentName:string,studentFatherName:string,state:string,district:string,
         blockNo:string,streetNo:number,houseNo:number,pinCode:string,tuitionFee:number,admissionFee:number,
         otherFee:number,bankName:string,bankAccountNo:string,bankIfscCode:string,studentReligion:string,
         studentCategory:string,studentMotherName:string,studentFamilyIncome:string,studentCourse:string,

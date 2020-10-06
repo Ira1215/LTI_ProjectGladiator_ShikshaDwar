@@ -8,65 +8,77 @@
           <button class="btn btn-primary col mx-2">Fetch details</button>
         </div>
       </div>
-      <div class="card-body">
-        <table class="table table-bordered" style="border: 24px">
+      <div class="card-body text-center">
+        <table class="table table-borderless" style="border: 24px">
           <thead>
             <tr>
               <th scope="col">Application Number</th>
               <th scope="col">Student Name</th>
               <th scope="col">Approve</th>
               <th scope="col">Reject</th>
+              <th scope="col">View Details</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <th scope="col"><a href="">12133131</a></th>
+              <th scope="col"><a href="">12131313131</a></th>
               <th scope="col">Divyue</th>
               <th>
                 <button class="btn btn-success col">
-                  <span
-                    ><svg
-                      width="1em"
-                      height="1em"
-                      viewBox="0 0 16 16"
-                      class="bi bi-check2"
-                      fill="currentColor"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        fill-rule="evenodd"
-                        d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"
-                      /></svg
-                  ></span>
+                  <span><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-check2" fill="currentColor"
+                      xmlns="http://www.w3.org/2000/svg">
+                      <path fill-rule="evenodd"
+                        d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z" />
+                    </svg></span>
                   Approve
                 </button>
               </th>
               <th>
                 <button class="btn btn-danger col">
                   <span>
-                    <svg
-                      width="1em"
-                      height="1em"
-                      viewBox="0 0 16 16"
-                      class="bi bi-exclamation-circle"
-                      fill="currentColor"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
+                    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-exclamation-circle" fill="currentColor"
+                      xmlns="http://www.w3.org/2000/svg">
+                      <path fill-rule="evenodd"
+                        d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
                       <path
-                        fill-rule="evenodd"
-                        d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"
-                      />
-                      <path
-                        d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995z"
-                      />
-                    </svg> 
-                    </span>
-                    Reject
+                        d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995z" />
+                    </svg>
+                  </span>
+                  Reject
                 </button>
+              </th>
+              <th>
+                <button class="btn btn-info col text-center" type="button" data-toggle="collapse"
+                  data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">View</button>
               </th>
             </tr>
           </tbody>
         </table>
+        <div class="container">
+          <div class="collapse" id="collapseExample">
+            <div class="card card-body">
+              <div class="row">
+                <div class="col-md-6">
+                  <h4 class="my-2"><strong>Basic Details</strong></h4>
+                  <h5>Student Name</h5>
+                  <h5>Aadhar Number</h5>
+                  <h5>Religion</h5>
+                  <h5>Father's Name</h5>
+                  <h5>Mother's Name</h5>
+                  <h5>Community or Category</h5>
+                  <h5>Family Annual Income</h5>
+                  <hr>
+                  <h4 class="my-2"><strong>Scholarship Details</strong></h4>
+                  <h5>Scholarship Type</h5>
+                </div>
+                <div class="col-md-6">
+                  <hr>
+                  <p>fhs</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>

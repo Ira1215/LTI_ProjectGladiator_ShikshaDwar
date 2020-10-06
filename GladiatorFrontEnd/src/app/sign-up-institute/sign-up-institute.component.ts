@@ -24,7 +24,7 @@ export class SignUpInstituteComponent implements OnInit {
       institutePassword: ['', Validators.required],
       cPassword: ['', Validators.required]
     })
-    this.service.getAllUsers().subscribe(data =>{this.instituteData=data});
+  //   this.service.getAllUsers().subscribe(data =>{this.instituteData=data});
   }
 
   // convenience getter for easy access to form fields
@@ -32,25 +32,50 @@ export class SignUpInstituteComponent implements OnInit {
     return this.signUpInstituteForm.controls;
   }
 
-   instituteData:InstituteLogin[];
-
-  instituteArray:InstituteLogin[];
 
   onSubmit(){
   
     this.submitted = true;
-    let institute:InstituteLogin=new InstituteLogin(this.signUpInstituteForm.controls.diseCode.value,
+    let u:InstituteLogin=new InstituteLogin(this.signUpInstituteForm.controls.diseCode.value,
       this.signUpInstituteForm.controls.institutePassword.value); 
 
       alert(this.signUpInstituteForm.controls.diseCode.value);
-      alert(this.signUpInstituteForm.controls.institutePassword.value)
+      
+  
+      this.service.addInstitute(u).subscribe(u => {
+        alert(u.status)
+        if (u.status == "SUCCESS") {
+          alert("REGISTRATION SUCCESSFUL");
+          localStorage.setItem("signedupInstitute",this.signUpInstituteForm.controls.diseCode.value );
+          setTimeout(function () {
+            window.location.href = 'instituteRegistrationForm';
+          }, 200);
+        }
+        else {
+          alert("THIS dise code IS ALREADY REGISTERED");
+          setTimeout(function () {
+            window.location.href = '/';
+          }, 200);
+        }
+      })
+  
+      }
+        
+   
+
+  }
 
 
 
-      this.service.addInstitute(institute).subscribe( data => this.instituteArray.push(institute));
-          alert("its entering here!")
-          this.router.navigate(['/instituteRegistrationForm']);
-    //   this.service.addInstitute(institute).subscribe( institute=>{
+
+
+
+
+
+
+
+        
+      //   this.service.addInstitute(institute).subscribe( institute=>{
     //     if (institute.status =="SUCCESS") {
     //       alert("REGISTRATION SUCCESSFUL");
     //       setTimeout(function () {
@@ -65,11 +90,6 @@ export class SignUpInstituteComponent implements OnInit {
     //     }
     //   })
     // }
-  
-      }
-        
-         
-   
      
       /* for(let i of this.instituteData)
       {
@@ -98,5 +118,3 @@ export class SignUpInstituteComponent implements OnInit {
     if(this.signUpInstituteForm.invalid){
       return; 
     } */
-
-  }

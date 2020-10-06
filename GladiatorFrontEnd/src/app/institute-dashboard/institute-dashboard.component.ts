@@ -6,10 +6,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./institute-dashboard.component.css']
 })
 export class InstituteDashboardComponent implements OnInit {
-
+instDise;
   constructor() { }
 
   ngOnInit(): void {
+
+    this.instDise = localStorage.getItem("loggedinDise")
   }
 
 }

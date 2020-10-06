@@ -2,6 +2,7 @@ import { StudentapplicationService } from './../studentapplication.service';
 import { FormGroup, Validators, FormControl } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { StudentApplication } from '../studentapplication';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-student-scholarship-form',
@@ -14,7 +15,7 @@ export class StudentScholarshipFormComponent implements OnInit {
   studentApp:StudentApplication[]; //array to store the fetched values 
   exists:boolean=false;
 
-constructor(private service:StudentapplicationService)
+constructor(private service:StudentapplicationService , private router:Router)
 {
 
 }/* 
@@ -101,15 +102,15 @@ constructor(private service:StudentapplicationService)
     });
    // alert(this.studentApp);
    //fetching all the data using the service and adding it to array we just defined
-   this.service.getAllUsers().subscribe(data =>{this.studentApp=data});
+  //  this.service.getAllUsers().subscribe(data =>{this.studentApp=data});
   }
   addStudent()
   {
       alert("the flow of control is here!!");
       
-    //alert(this.form.controls.studentAadharNo.value);
+   
 
-    let student:StudentApplication=new StudentApplication(this.form.controls.studentName.value,this.form.controls.studentAadharNo.value,this.form.controls.studentFatherName.value,
+    let student:StudentApplication=new StudentApplication(this.form.controls.studentName.value,this.form.controls.studentFatherName.value,
     this.form.controls.district.value,this.form.controls.state.value,this.form.controls.blockNo.value,
     this.form.controls.streetNo.value,this.form.controls.houseNo.value,this.form.controls.pinCode.value,
     this.form.controls.tuitionFee.value,this.form.controls.admissionFee.value,
@@ -133,9 +134,58 @@ constructor(private service:StudentapplicationService)
     this.form.controls.feeReceipt.value,this.form.controls.aadharCard.value,this.form.controls.markSheet10.value,
     this.form.controls.markSheet12.value);  
  
-    //console.log(student);
+   
     alert(this.form.controls.studentAadharNo.value);
-    this.service.addUser(student).subscribe( data => this.studentApp.push(student));
+
+
+
+
+    this.service.addUser(student , localStorage.getItem("loginEmail")).subscribe(res => {
+      if (res.status == 200) {
+     alert("ok");
+        console.log("SUCCESS", res.status)
+    
+        this.router.navigate(['/studentDashboard']);
+      
+      }
+    },
+      err => {
+        if (err.status == 200) {
+          alert("ok2");
+          console.log("error false", err.status)
+      
+        
+          this.router.navigate(['/']);
+
+        }
+        else {
+         
+          alert("you have already applied for scholarship");
+          setTimeout(function () {
+            window.location.href = '/';
+          }, 400);
+        }
+
+
+      })
+}
+ 
+          
+
+
+
+  }
+
+
+
+
+
+
+
+
+
+
+
     /*  for(let s of this.studentApp)
     {
       
@@ -152,7 +202,3 @@ constructor(private service:StudentapplicationService)
     } 
        
  */
-
-
-  }
-}

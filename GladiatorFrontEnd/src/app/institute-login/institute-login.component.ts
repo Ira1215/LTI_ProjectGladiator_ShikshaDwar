@@ -39,15 +39,49 @@ export class InstituteLoginComponent implements OnInit {
         
     onLogin()
     { 
- 
 
  
-    let inst:InstituteLogin = new InstituteLogin(this.form.controls.diseCode.value , this.form.controls.institutePassword.value);
+    let s:InstituteLogin = new InstituteLogin(this.form.controls.diseCode.value , this.form.controls.institutePassword.value);
     alert("login")
+
+
+    this.service.loginUser(s).subscribe(res => {
+      if (res.status == 200) {
+     alert("ok");
+        console.log("SUCCESS", res.status)
+        localStorage.setItem('loggedinDise', this.form.controls.diseCode.value);
+        this.router.navigate(['/']);
+      
+      }
+    },
+      err => {
+        if (err.status == 200) {
+          alert("ok2");
+          console.log("error false", err.status)
+          localStorage.setItem('loggedinDise', this.form.controls.diseCode.value);
+        
+          this.router.navigate(['/instituteDashboard']);
+
+        }
+        else {
+        
+          alert("You have Provided Invalid Credentails");
+          setTimeout(function () {
+            window.location.href = 'instituteSignUp';
+          }, 400);
+        }
+
+
+      })
    
 
-    this.router.navigate(['/instituteDashboard']);
-      
+
+
+    }
+
+  }
+
+  
       /* for(let i of this.instituteLogin)
       { 
        // alert(i.diseCode);
@@ -73,11 +107,4 @@ export class InstituteLoginComponent implements OnInit {
         alert("You are Not a Registered Institute Register yourself First");
       }
  */
-
-    }
-
-  }
-
-  
-
 

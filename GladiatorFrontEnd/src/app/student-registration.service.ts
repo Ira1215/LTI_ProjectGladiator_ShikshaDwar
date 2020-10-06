@@ -9,9 +9,12 @@ import { Injectable } from '@angular/core';
 export class StudentRegistrationService {
 
   constructor(private http:HttpClient) { }
-  addUser(user:StudentRegistration):Observable<any>{
+
+
+
+  addUser(user:StudentRegistration , email):Observable<any>{
     alert("We are in the student Registration Service");
-     return this.http.post("http://localhost:9091/ShikshaDwar/users/student/registration", user);
+     return this.http.post("http://localhost:9091/ShikshaDwar/users/student/registration/"+email, user);
     }
 
    

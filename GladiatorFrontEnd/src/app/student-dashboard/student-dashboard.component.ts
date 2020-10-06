@@ -12,9 +12,11 @@ export class StudentDashboardComponent implements OnInit {
 
   user:string;
 
+
   ngOnInit(): void {
 
-    this.user=sessionStorage.getItem("signedUpUser");
+    this.user=localStorage.getItem("loginEmail");
+    alert(this.user)
   
   }
   onLogout()
