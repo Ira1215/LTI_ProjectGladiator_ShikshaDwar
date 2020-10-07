@@ -39,30 +39,41 @@ export class SignUpInstituteComponent implements OnInit {
     let u:InstituteLogin=new InstituteLogin(this.signUpInstituteForm.controls.diseCode.value,
       this.signUpInstituteForm.controls.institutePassword.value); 
 
-      alert(this.signUpInstituteForm.controls.diseCode.value);
-      
-  
-      this.service.addInstitute(u).subscribe(u => {
-        alert(u.status)
-        if (u.status == "SUCCESS") {
-          alert("REGISTRATION SUCCESSFUL");
-          localStorage.setItem("signedupInstitute",this.signUpInstituteForm.controls.diseCode.value );
-          setTimeout(function () {
-            window.location.href = 'instituteRegistrationForm';
-          }, 200);
-        }
-        else {
-          alert("THIS dise code IS ALREADY REGISTERED");
-          setTimeout(function () {
-            window.location.href = '/';
-          }, 200);
-        }
-      })
-  
-      }
-        
    
-
+      this.service.addInstitute(u).subscribe(u =>{
+        if(u.status=="SUCCESS")
+        {
+          alert("ok")
+          localStorage.setItem("signedupInstitute",this.signUpInstituteForm.controls.diseCode.value );
+          this.router.navigate(['/instituteRegistrationForm'])
+        }
+        else{
+          alert("not ok")
+          this.router.navigate(['/'])
+        } 
+      }
+      )
+      // this.service.addInstitute(u).subscribe(u => {
+      //   alert(u.status)
+      //   if (u.status == "SUCCESS") {
+      //     alert("REGISTRATION SUCCESSFUL");
+      //     localStorage.setItem("signedupInstitute",this.signUpInstituteForm.controls.diseCode.value );
+      //     setTimeout(function () {
+      //       window.location.href = 'instituteRegistrationForm';
+      //     }, 200);
+      //   }
+      //   else {
+      //     alert("THIS dise code IS ALREADY REGISTERED");
+      //     setTimeout(function () {
+      //       window.location.href = '/';
+      //     }, 200);
+      //   }
+      // })
+  
+      // }
+        
+    }
+    
   }
 
 

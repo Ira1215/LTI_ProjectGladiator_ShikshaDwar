@@ -1,3 +1,6 @@
+import { InstituteLogin } from './institute';
+import { StudentRegistration } from './StudentRegistration';
+
 export class InstitutesRegistered{
 
     instituteCode:string;
@@ -18,16 +21,17 @@ export class InstitutesRegistered{
     pincode:string;
     instituteHeadName:string;
     instituteHeadContact:string;
-    diseCode:string;
+    registrationStatus:string;
+    login:InstituteLogin;
+    students:StudentRegistration;
 
-   // public constructor(init?: Partial<InstitutesRegistered>) { Object.assign(this, init); }
 
 
     constructor(instituteCode:string,instituteName:string,instituteCategory:string,instituteLocation:string,
         instituteType:string,affiliatedUniState:string,affiliatedUniboard:string,yearAdmissionStarted:string,
         uniAffiliationCerti:string,instituteEstbCerti:string,addressLine1:string,addressLine2:string,
         instituteState:string,district:string,city:string,pincode:string,instituteHeadName:string,
-        instituteHeadContact:string,diseCode:string)
+        instituteHeadContact:string)
                 {
                     this.instituteCode=instituteCode;
                     this.instituteName=instituteName;
@@ -47,7 +51,6 @@ export class InstitutesRegistered{
                     this.pincode=pincode;
                     this.instituteHeadName=instituteHeadName;
                     this.instituteHeadContact=instituteHeadContact;
-                    this.diseCode=diseCode;
 
 
 

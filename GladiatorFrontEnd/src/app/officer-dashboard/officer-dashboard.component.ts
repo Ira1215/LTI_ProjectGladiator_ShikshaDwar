@@ -2,6 +2,8 @@ import { Router } from '@angular/router';
 import { ForgotUpdatePasswordService } from './../forgot-update-password.service';
 import { FormsModule, FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
+import { InstituteLogin } from '../institute';
+import { InstituteRegisteredService } from '../institute-registered.service';
 
 
 @Component({
@@ -16,7 +18,7 @@ export class OfficerDashboardComponent implements OnInit {
   adminLogin;
   updateValues;
 
-
+  inst:InstituteLogin[];
 
   updatePasswordForm:FormGroup; 
 
@@ -28,6 +30,15 @@ export class OfficerDashboardComponent implements OnInit {
     confirmPassword:['',Validators.required]
 
    })
+
+
+
+
+
+
+console.log(this.inst)
+
+
     
   }
   

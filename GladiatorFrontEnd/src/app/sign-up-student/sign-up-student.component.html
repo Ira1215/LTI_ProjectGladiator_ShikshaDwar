@@ -44,7 +44,7 @@
                           
                         />
                         <div style="color: red" *ngIf="signUpStudentForm.get('studentEmailId').touched && signUpStudentForm.get('studentEmailId').invalid">
-                              Email is Required
+                             <p> Email is Required</p>
                         </div>
 
                         <label for="studentPassword">Password</label>
@@ -57,7 +57,7 @@
                           
                         />
                         <div style="color: red" *ngIf="signUpStudentForm.get('studentPassword').touched && signUpStudentForm.get('studentPassword').invalid" >
-                             Password is Required
+                            <p> Password is Required
                         </div>
 
                         <label for="cPassword">Confirm Password</label>

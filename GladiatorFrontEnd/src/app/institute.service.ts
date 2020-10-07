@@ -4,6 +4,7 @@ import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 import {Config} from  'protractor';
+import { InstitutesRegistered } from './instituteRegister';
 
 @Injectable({
   providedIn: 'root'
@@ -22,6 +23,10 @@ export class InstituteService {
 
     loginUser(login): Observable<HttpResponse<Config>> {
       return this.http.post<Config>("http://localhost:9091/ShikshaDwar/users/institute/login", login, { observe: 'response' });
+    }
+
+    getInstituteByCode(instituteCode:String):Observable<InstitutesRegistered>{
+        return this.http.get<InstitutesRegistered>("http://localhost:9091/ShikshaDwar/users/institute/getByCode/"+instituteCode);
     }
   
     // getAllUsers():Observable<InstituteLogin[]>{

@@ -21,7 +21,9 @@ export class StudentDashboardComponent implements OnInit {
   }
   onLogout()
   {
-    sessionStorage.removeItem("signedUpUser");
+    localStorage.removeItem("loginEmail");
+    localStorage.clear
+    sessionStorage.removeItem("signedUpStudent");
     this.router.navigate(['/']);
 
   }

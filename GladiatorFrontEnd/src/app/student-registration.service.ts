@@ -12,12 +12,17 @@ export class StudentRegistrationService {
 
 
 
-  addUser(user:StudentRegistration , email):Observable<any>{
+  addUser(user:StudentRegistration ,email:string,instituteCode:string):Observable<any>{
     alert("We are in the student Registration Service");
-     return this.http.post("http://localhost:9091/ShikshaDwar/users/student/registration/"+email, user);
+     return this.http.post("http://localhost:9091/ShikshaDwar/users/student/registration/"+email+'/'+instituteCode, user);
     }
 
    
+
+    getAll():Observable<StudentRegistration[]>{
+      alert("coming")
+      return this.http.get<StudentRegistration[]>("http://localhost:9091/ShikshaDwar/users/allStudentRegistration")
+    }
   
     // getAllUsers():Observable<StudentRegistration[]>{
     

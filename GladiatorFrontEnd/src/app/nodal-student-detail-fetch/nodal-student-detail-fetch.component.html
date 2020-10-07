@@ -19,12 +19,13 @@
             <th scope="col">View Details</th>
           </tr>
         </thead>
-        <tbody>
-          <tr>
-            <th scope="col"><a href="">12131313131</a></th>
-            <th scope="col">Divyue</th>
+        <tbody *ngFor = "let s of AllStudent">
+          <tr *ngFor = "let a of s.application">
+            
+            <th scope="col"><a href="">{{a.studentApplicationNo}}</a></th>
+            <th scope="col">{{a.studentName}}</th>
             <th>
-              <button class="btn btn-success col">
+              <button class="btn btn-success col" (click)= "approve()" >
                 <span><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-check2" fill="currentColor"
                     xmlns="http://www.w3.org/2000/svg">
                     <path fill-rule="evenodd"
@@ -34,7 +35,7 @@
               </button>
             </th>
             <th>
-              <button class="btn btn-danger col">
+              <button class="btn btn-danger col" (click) = "reject()">
                 <span>
                   <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-exclamation-circle" fill="currentColor"
                     xmlns="http://www.w3.org/2000/svg">
@@ -49,7 +50,7 @@
             </th>
             <th>
               <button class="btn btn-info col text-center" type="button" data-toggle="collapse"
-                data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">View</button>
+                data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" (click)= "view(a)">View</button>
             </th>
           </tr>
         </tbody>
@@ -60,10 +61,12 @@
             <div class="row">
               <div class="col-md-6">
                 <h4 class="my-2"><strong>Basic Details</strong></h4>
+                <h5>Status</h5>
                 <h5>Student Name</h5>
                 <h5>Aadhar Number</h5>
                 <h5>Religion</h5>
                 <h5>Father's Name</h5>
+             
                 <h5>Mother's Name</h5>
                 <h5>Community or Category</h5>
                 <h5>Family Annual Income</h5>
@@ -86,7 +89,16 @@
               </div>
               <div class="col-md-6">
                 <hr>
-                <p>fhs</p>
+         <p>{{msg}}</p>
+            <p>{{b}}</p>
+            <p>{{c}}</p>
+            <p>{{d}}</p>
+            <p>{{e}}</p>
+            <p>{{f}}</p>
+            <p>{{g}}</p>
+            <p>{{h}}</p>
+            <p>{{i}}</p>
+            <p>{{j}}</p>
               </div>
             </div>
           </div>

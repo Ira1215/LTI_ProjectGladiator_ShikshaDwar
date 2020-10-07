@@ -76,7 +76,6 @@ export class InstituteApplicationComponent implements OnInit {
       this.instituteApplicationForm.controls.pincode.value,
       this.instituteApplicationForm.controls.instituteHeadName.value,
       this.instituteApplicationForm.controls.instituteHeadContact.value,
-  localStorage.getItem("signedupInstitute")
     );
 
 

@@ -135,40 +135,22 @@ constructor(private service:StudentapplicationService , private router:Router)
     this.form.controls.markSheet12.value);  
  
    
-    alert(this.form.controls.studentAadharNo.value);
+    //alert(this.form.controls.studentAadharNo.value);
 
-
-
-
-    this.service.addUser(student , localStorage.getItem("loginEmail")).subscribe(res => {
-      if (res.status == 200) {
-     alert("ok");
-        console.log("SUCCESS", res.status)
-    
-        this.router.navigate(['/studentDashboard']);
+    this.service.addUser(student , localStorage.getItem("loginEmail")).subscribe(student=>{
+      if(student.status == "SUCCESS")
+      {
+        alert("ok")
+     
+      }
+      else{
+        alert("not ok")
       
       }
-    },
-      err => {
-        if (err.status == 200) {
-          alert("ok2");
-          console.log("error false", err.status)
-      
-        
-          this.router.navigate(['/']);
+    })
+    this.router.navigate(['/studentDashboard'])
 
-        }
-        else {
-         
-          alert("you have already applied for scholarship");
-          setTimeout(function () {
-            window.location.href = '/';
-          }, 400);
-        }
-
-
-      })
-}
+  }
  
           
 
@@ -184,21 +166,3 @@ constructor(private service:StudentapplicationService , private router:Router)
 
 
 
-
-
-    /*  for(let s of this.studentApp)
-    {
-      
-      //checking whether the current entered aadhar number is having a match in the array
-      if(s.studentAadharNo==student.studentAadharNo)
-      { 
-        this.exists=true;
-        alert("User already Exists");
-      }
-      
-    }
-    if(!this.exists){
-      this.service.addUser(student).subscribe( data => this.studentApp.push(student));
-    } 
-       
- */

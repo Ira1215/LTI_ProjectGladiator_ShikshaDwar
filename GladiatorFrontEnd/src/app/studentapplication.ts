@@ -1,6 +1,6 @@
 export class StudentApplication{
     studentName:string;
-
+    //studentAadharNo:string;
     studentFatherName:string;
     state:string;
     district:string;
@@ -68,7 +68,7 @@ export class StudentApplication{
         bankPassbook:string,feeReceipt:string,aadharCard:string,markSheet10:string,markSheet12:string)
     {   
         this.studentName=studentName;
-        this.studentAadharNo=studentAadharNo;
+       // this.studentAadharNo=studentAadharNo;
         this.studentFatherName=studentFatherName;
         this.state=state;
         this.district=district;

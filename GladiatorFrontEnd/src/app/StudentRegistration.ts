@@ -1,3 +1,8 @@
+import { InstituteRegisteredService } from './institute-registered.service';
+import { InstitutesRegistered } from './instituteRegister';
+import { StudentApplication } from './studentapplication';
+import { StudentSignup } from './StudentSignUp';
+
 export class StudentRegistration{
     studentAadharNo:string;
     studentName:string;
@@ -5,11 +10,11 @@ export class StudentRegistration{
     studentMobile:string;
     studentDob:Date;
     studentInstitution:string;
-    studentEmailId:string;
-    instituteCode:string;
+    login:StudentSignup;
+    application:StudentApplication;
 
     constructor(studentAadharNo:string,studentName:string,studentGender:string,
-        studentMobile:string,studentInstitution:string,studentDob:Date,studentEmailId:string,instituteCode:string)
+        studentMobile:string,studentInstitution:string,studentDob:Date)
     {
         this.studentAadharNo=studentAadharNo;
         this.studentName=studentName;
@@ -17,8 +22,6 @@ export class StudentRegistration{
         this.studentMobile=studentMobile;
         this.studentDob=studentDob;
         this.studentInstitution=studentInstitution;
-        this.studentEmailId=studentEmailId;
-        this.instituteCode=instituteCode;
 
     }
 }
