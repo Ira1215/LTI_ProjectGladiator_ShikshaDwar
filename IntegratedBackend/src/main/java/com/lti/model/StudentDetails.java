@@ -16,6 +16,9 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 
 //Column declaration
 @Entity
@@ -183,6 +186,7 @@ public class StudentDetails implements Serializable{
 	@Column(name = "APPLICATION_STATUS")
 	private String applicationStatus= "Pending";
 	
+	@JsonBackReference
 	@ManyToOne
 	@JoinColumn(name="STUDENT_AADHAR_NO")
 	private StudentRegistrationDetails registration;
@@ -786,7 +790,7 @@ public class StudentDetails implements Serializable{
 		this.scholarshipType = scholarshipType;
 	}
 
-
+	//@JsonBackReference
 	public StudentRegistrationDetails getRegistration() {
 		return registration;
 	}

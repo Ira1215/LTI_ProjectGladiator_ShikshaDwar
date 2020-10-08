@@ -81,9 +81,10 @@ export class InstituteApplicationComponent implements OnInit {
 
 
     this.service.addUser(this.instituteDetails , localStorage.getItem("signedupInstitute")).subscribe(u => {
+      alert(u.status);
       if (u.status == "SUCCESS") {
         alert("REGISTRATION SUCCESSFUL");
-      
+        localStorage.setItem("instCodeFetchStudDetails",this.instituteApplicationForm.controls.instituteCode.value)
         setTimeout(function () {
           window.location.href = '/';
         }, 200);

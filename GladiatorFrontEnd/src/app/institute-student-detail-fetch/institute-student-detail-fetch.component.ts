@@ -1,3 +1,5 @@
+import { StudentApplication } from './../studentapplication';
+import { InstituteService } from './../institute.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +9,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InstituteStudentDetailFetchComponent implements OnInit {
 
-  constructor() { }
+  constructor(private fetchService:InstituteService) { }
 
+  studentScholarShipDetails:StudentApplication[];
+  code=localStorage.getItem("instCodeFetchStudDetails");
   ngOnInit(): void {
-  }
+
+    alert(this.code);
+    this.fetchService.getStudentDetailsByInstCode(this.code).subscribe(data=>{
+      this.studentScholarShipDetails=data;
+    }
+    )
+    alert(this.studentScholarShipDetails);
+
+  
+    }
+
 
 }

@@ -20,8 +20,9 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <th scope="col"><a href="">12131313131</a></th>
+          <tr *ngFor="let s of studentScholarShipDetails">
+            
+            <th scope="col"><a href="">{{s.studentName}}</a></th>
             <th scope="col">Divyue</th>
             <th>
               <button class="btn btn-success col">

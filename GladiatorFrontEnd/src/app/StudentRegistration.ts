@@ -12,6 +12,7 @@ export class StudentRegistration{
     studentInstitution:string;
     login:StudentSignup;
     application:StudentApplication;
+    institute:InstitutesRegistered;
 
     constructor(studentAadharNo:string,studentName:string,studentGender:string,
         studentMobile:string,studentInstitution:string,studentDob:Date)

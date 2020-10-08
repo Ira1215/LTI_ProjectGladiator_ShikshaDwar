@@ -68,6 +68,7 @@ export class RegisterStudentComponent implements OnInit {
 
 
     this.service.addUser(student,localStorage.getItem("signedupStudent"),this.studentRegisterForm.controls.instituteCode.value).subscribe(u => {
+      alert(u.status);
       if (u.status == "SUCCESS") {
         alert("REGISTRATION SUCCESSFUL");
         setTimeout(function () {

@@ -1,5 +1,6 @@
 <app-ministry-dashboard-nav-bar></app-ministry-dashboard-nav-bar>
 
+
 <div class="container">
   <div class="card mt-5">
     <div class="card-header">
@@ -12,34 +13,42 @@
       <table class="table table-borderless" style="border: 24px">
         <thead>
           <tr>
-            <th scope="col">Application Number</th>
-            <th scope="col">Student Name</th>
+            <th scope="col">Dise Code</th>
+            <th scope="col">Institute Name</th>
             <th scope="col">Approve</th>
             <th scope="col">Reject</th>
             <th scope="col">View Details</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <th scope="col"><a href="">12131313131</a></th>
-            <th scope="col">VIT</th>
+
+
+          <tr *ngFor = "let i of inst">
+            <th scope="col">{{i.diseCode}}</th>
+            <th scope="col">{{i.institute.instituteName}}</th>
             <th>
-              <button class="btn btn-success col">
+              <button class="btn btn-success col" (click) = "accept(i.institute , i.institute.instituteCode )">
                 Approve
               </button>
             </th>
             <th>
-              <button class="btn btn-danger col">
+              <button class="btn btn-danger col" (click) = "reject()">
                 Reject
               </button>
             </th>
             <th>
               <button class="btn btn-info col" type="button" data-toggle="collapse" data-target="#collapseExample"
-                aria-expanded="false" aria-controls="collapseExample">
+                aria-expanded="false" aria-controls="collapseExample" (click) = "view(i.institute.instituteCode)">
                 View
               </button>
             </th>
           </tr>
+
+
+
+
+
+
         </tbody>
       </table>
       <div class="collapse" id="collapseExample">
@@ -77,7 +86,31 @@
               <h5>Email ID</h5>
             </div>
             <div class="col-md-6">
-              Details idhar hongi
+              <hr>
+              <h5>{{inst1.instituteCategory}}</h5>
+              <h5>{{inst1.instituteCode}}</h5>
+              
+              <h5>{{inst1.instituteLocation}}</h5>
+              <h5>{{inst1.instituteType}}</h5>
+              <h5>{{inst1.affiliatedUniState}}</h5>
+
+
+ 
+         
+            <p>{{inst1.affiliatedUniboard}}</p>
+            <p>{{inst1.yearAdmissionStarted}}</p>
+            <p>{{inst1.uniAffiliationCerti}}</p>
+            <p>{{inst1.instituteEstbCerti}}</p>
+            <p>{{inst1.addressLine1}}</p>
+            <p>{{inst1.addressLine2}}</p>
+            <p>{{inst1.instituteState}}</p>
+            <p>{{inst1.district}}</p>
+            <p>{{inst1.city}}</p>
+            <p>{{inst1.pincode}}</p>
+            <p>{{inst1.instituteHeadName}}</p>
+            <p>{{acceptmsg}}</p>
+            <p>{{inst1.instituteHeadContact}}</p> 
+         
             </div>
           </div>
         </div>

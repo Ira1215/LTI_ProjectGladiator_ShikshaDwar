@@ -18,6 +18,9 @@ import javax.persistence.TemporalType;
 
 import org.springframework.stereotype.Component;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Component
 @Entity
 @Table(name = "STUDENT_REGISTRATION_DETAILS")
@@ -45,11 +48,15 @@ public class StudentRegistrationDetails implements Serializable {
 	
 	@OneToOne
 	@JoinColumn(name = "STUDENT_EMAIL")
+	//@JsonBackReference
 	private StudentLogin login;
 
+	@JsonManagedReference
 	@OneToMany(mappedBy = "registration", cascade = CascadeType.ALL)
 	private Set<StudentDetails> application;
 	
+	
+	@JsonBackReference
 	@ManyToOne
 	@JoinColumn(name = "INSTITUTE_CODE")
 	private Institute institute;
@@ -120,6 +127,7 @@ public class StudentRegistrationDetails implements Serializable {
 		this.studentAadharNo = studentAadharNo;
 	}
 	
+	//@JsonBackReference
 	public StudentLogin getLogin() {
 		return login;
 	}
@@ -128,6 +136,7 @@ public class StudentRegistrationDetails implements Serializable {
 		this.login = login;
 	}
 
+	//@JsonManagedReference
 	public Set<StudentDetails> getApplication() {
 		return application;
 	}
@@ -136,6 +145,7 @@ public class StudentRegistrationDetails implements Serializable {
 		this.application = application;
 	}
 	
+	//@JsonBackReference
 	public Institute getInstitute() {
 		return institute;
 	}

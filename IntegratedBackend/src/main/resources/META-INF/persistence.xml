@@ -8,8 +8,8 @@
         <provider>org.hibernate.ejb.HibernatePersistence</provider>
         <properties>
             <property name="javax.persistence.jdbc.url" value="jdbc:oracle:thin:@localhost:1521:ORCL" />
-            <property name="javax.persistence.jdbc.user" value="ridhi" />
-            <property name="javax.persistence.jdbc.password" value="ridhi" />
+            <property name="javax.persistence.jdbc.user" value="SYSTEM" />
+            <property name="javax.persistence.jdbc.password" value="Lebron#97" />
             <property name="javax.persistence.jdbc.driver" value="oracle.jdbc.driver.OracleDriver" />
             <property name="hibernate.show_sql" value="true"/>
         </properties>

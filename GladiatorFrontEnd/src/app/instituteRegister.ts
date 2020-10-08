@@ -23,7 +23,7 @@ export class InstitutesRegistered{
     instituteHeadContact:string;
     registrationStatus:string;
     login:InstituteLogin;
-    students:StudentRegistration;
+    
 
 
 

@@ -12,9 +12,11 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 @Table(name = "INSTITUTE_LOGIN")
-public class InstitueLogin implements Serializable {
+public class InstituteLogin implements Serializable {
 	
 	@Id
 	@Column(name = "DISE_CODE")
@@ -23,16 +25,17 @@ public class InstitueLogin implements Serializable {
 	@Column(name = "INSTITUTE_PASSWORD")
 	private String instituePassword;
 	
+	@JsonManagedReference
 	@OneToOne(mappedBy = "login", fetch = FetchType.LAZY)
 	private Institute institute;
 	
 	//Default Constructor
-	public InstitueLogin() {
+	public InstituteLogin() {
 		
 	}
 	
 	//Parameterized Constructor
-	public InstitueLogin(String diseCode, String instituePassword) {
+	public InstituteLogin(String diseCode, String instituePassword) {
 		super();
 		this.diseCode = diseCode;
 		this.instituePassword = instituePassword;
@@ -56,6 +59,7 @@ public class InstitueLogin implements Serializable {
 		this.instituePassword = instituePassword;
 	}
 	
+	//@JsonManagedReference
 	public Institute getInstitute() {
 		return institute;
 	}

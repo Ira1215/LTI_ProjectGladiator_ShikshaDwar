@@ -1,5 +1,8 @@
+import { StudentRegistration } from './StudentRegistration';
 export class StudentApplication{
+    studentApplicationNo:number;
     studentName:string;
+    
     //studentAadharNo:string;
     studentFatherName:string;
     state:string;
@@ -39,7 +42,6 @@ export class StudentApplication{
     studentMaritalStatus:string;
     parentProfession:string;
     scholarshipType:string
-
     domicileCertificate:string;
     studentPhotograph:string;
     instituteIdCard:string;
@@ -50,6 +52,9 @@ export class StudentApplication{
     aadharCard:string;
     markSheet10:string;
     markSheet12:string;
+    bonafideCertificate:string;
+    applicationStatus:string;
+    registration:StudentRegistration;
     
 
     

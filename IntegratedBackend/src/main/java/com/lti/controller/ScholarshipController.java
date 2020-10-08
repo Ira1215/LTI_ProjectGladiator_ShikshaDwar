@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.lti.controller.ScholarshipController.Status;
 import com.lti.controller.ScholarshipController.Status.StatusType;
 import com.lti.model.AdminLogin;
-import com.lti.model.InstitueLogin;
+import com.lti.model.InstituteLogin;
 import com.lti.model.Institute;
 import com.lti.model.StudentDetails;
 import com.lti.model.StudentLogin;
@@ -39,37 +39,43 @@ public class ScholarshipController {
 
 	// STUDENT
 	// SIGNUP
-	//Tested
+	// Tested
 
 	// http://localhost:9091/ShikshaDwar/users/student/AddLogin
 	@PostMapping(path = "student/AddLogin")
 	public Status addStudentLogin(@RequestBody StudentLogin studentLogin) {
-
-	try {
-		service.addStudentLogin(studentLogin);
-	
-		Status status = new Status();
-		status.setStatus(StatusType.SUCCESS);
-		status.setMessage("REGISTRATION SUCCESSFUL");
-		return status;
-	}
-	catch (Exception e) {
-		Status status = new Status();
-		status.setStatus(StatusType.FAILURE);
-		status.setMessage(e.getMessage());
-		return status;
-	}
+		try {
+			service.addStudentLogin(studentLogin);
+		
+			Status status = new Status();
+			status.setStatus(StatusType.SUCCESS);
+			status.setMessage("REGISTRATION SUCCESSFUL");
+			return status;
+		}
+		catch (Exception e) {
+			Status status = new Status();
+			status.setStatus(StatusType.FAILURE);
+			status.setMessage(e.getMessage());
+			return status;
+		}
 	}
 
 	// STUDENT
 	// PORTAL REGISTRATION
-	//Tested
+	// Tested
 
-	// http://localhost:9091/ShikshaDwar/users/student/registration/{email}
-	@PostMapping(path = "student/registration/{email}")
-	public Status addStudent(@PathVariable String email, @RequestBody StudentRegistrationDetails studentRegistration) {
+	// http://localhost:9091/ShikshaDwar/users/student/registration/{email}/{instituteCode}
+	@PostMapping(path = "student/registration/{email}/{instituteCode}")
+	public Status addStudent(@PathVariable String email,@PathVariable String instituteCode, @RequestBody StudentRegistrationDetails studentRegistration) {
 		try {
-			service.addStudentRegistration(studentRegistration);
+			Institute i= service.getinstituteByInstituteCode(instituteCode);
+			StudentLogin s= service.getStudentLoginByEmail(email);
+			if(s.getStudent()==null)
+			{
+				studentRegistration.setLogin(s);
+				studentRegistration.setInstitute(i);
+				service.addStudentRegistration(studentRegistration);
+			}
 			if (mail.mailValidate(email)) {
 				mail.send(email, "REGISTRATION SUCCESSFUL",
 						"<b>CONGRATULATIONS!!</b> You have Successfully Registered with ShikshaDwaar<br><p>Hope We will serve you better</p>");
@@ -89,7 +95,7 @@ public class ScholarshipController {
 
 	// STUDENT
 	// APPLY FOR SCHOLARSHIP APPLICATION
-	//Tested
+	// Tested
 
 	// http://localhost:9091/ShikshaDwar/users/student/ApplyScholarship/{email}
 	@PostMapping(path = "/student/ApplyScholarship/{email}")
@@ -97,7 +103,7 @@ public class ScholarshipController {
 		try {
 			StudentLogin l = service.getStudentLoginByEmail(email);
 			if (l.getStudent() != null) {
-				service.addStudent(studentApplication, l.getStudent(), l, l.getStudent().getInstitute());
+				service.addStudent(studentApplication, l.getStudent());
 			}
 			mail.send(email, "SCHOLARSHIP APPLICATION SUCCESSFUL",
 					"<b> Congratulations!! </b>You have successfully applied for "
@@ -120,14 +126,34 @@ public class ScholarshipController {
 
 	// STUDENT
 	// CHECK STATUS
-	//Tested
+	// Tested
 
 	// http://localhost:9091/ShikshaDwar/users/student/applicationStatus/{studentApplicationNo}
-	@GetMapping(path = "student/applicationStatus/{studentApplicationNo}")
+	@GetMapping(path = "/student/applicationStatus/{studentApplicationNo}")
 	public String findStudentStatus(@PathVariable long studentApplicationNo) {
 		StudentDetails s = service.getStudentByApplication(studentApplicationNo);
 		String status = s.getApplicationStatus();
 		return status;
+	}
+
+	// STUDENT
+	// GET ALL STUDENT LOGIN DETAILS
+	// Tested
+
+	// http://localhost:9091/ShikshaDwar/users/allStudentLogin
+	@GetMapping(path = "/allStudentLogin")
+	public List<StudentLogin> findAllStudentLogin() {
+		return service.getAllStudentLogin();
+	}
+
+	// STUDENT
+	// GET ALL STUDENT REGISTRATION DETAILS
+	// Tested
+
+	// http://localhost:9091/ShikshaDwar/users/allStudentRegistration
+	@GetMapping(path = "/allStudentRegistration")
+	public List<StudentRegistrationDetails> findAllStudentRegistration() {
+		return service.getAllStudentRegistration();
 	}
 
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -136,11 +162,11 @@ public class ScholarshipController {
 
 	// INSTITUTE MODULE
 	// SIGNUP
-	//Tested
+	// Tested
 
 	// http://localhost:9091/ShikshaDwar/users/institute/AddLogin
 	@PostMapping(path = "institute/AddLogin")
-	public Status addInstituteLogin(@RequestBody InstitueLogin instituteLogin) {
+	public Status addInstituteLogin(@RequestBody InstituteLogin instituteLogin) {
 		try {
 			service.addInstituteLogin(instituteLogin);
 		
@@ -157,16 +183,15 @@ public class ScholarshipController {
 		}
 
 	}
-
 	// INSTITUTE MODULE
 	// REGISTRATION
-	//Tested
+	// Tested
 
 	// http://localhost:9091/ShikshaDwar/users/institute/registration/{diseCode}
 	@PostMapping(path = "institute/registration/{diseCode}")
 	public Status addInstituteRegistration(@PathVariable String diseCode, @RequestBody Institute instituteApplication) {
 		try {
-			InstitueLogin i = service.getInstituteByDise(diseCode);
+			InstituteLogin i = service.getInstituteByDise(diseCode);
 			if (i.getInstitute() == null) {
 				service.addInstitute(instituteApplication, i);
 			}
@@ -187,7 +212,7 @@ public class ScholarshipController {
 
 	// INSTITUTE
 	// CHECK STATUS
-	//Tested
+	// Tested
 
 	// http://localhost:9091/ShikshaDwar/users/institute/registrationStatus/{instituteCode}
 	@GetMapping(path = "institute/registrationStatus/{instituteCode}")
@@ -197,12 +222,50 @@ public class ScholarshipController {
 		return status;
 	}
 
+	// INSTITUTE
+	// GET ALL INSTITUTE LOGIN DETAILS
+	// Tested
+
+	// http://localhost:9091/ShikshaDwar/users/allInsituteLogin
+	@GetMapping(path = "/allInsituteLogin")
+	public List<InstituteLogin> findAllInstituteLogin() {
+		return service.getAllInstituteLogin();
+	}
+
+	// INSTITUTE
+	// GET ALL APPROVED INSTITUTE CODES
+	// Tested
+
+	// http://localhost:9091/ShikshaDwar/users/approvedInstituteCodes
+	@GetMapping(path = "/approvedInstituteCodes")
+	public List<String> findAllApprovedInstituteCode() {
+		return service.getAllApprovedInstituteCode();
+	}
+
+	// INSTITUTE
+	// FETCH STUDENT APPLICATION FOR INSTITUTE
+	// Tested
+
+	// http://localhost:9091/ShikshaDwar/users/institute/fetchStudent/{instituteCode}
+	@GetMapping(path = "/institute/fetchStudent/{instituteCode}")
+	public List<StudentDetails> fetchStudentForInstitute(@PathVariable String instituteCode) {
+		return service.getStudentForInstitute(instituteCode);
+	}
+	
+	//http://localhost:9091/ShikshaDwar/users/institute/getByCode/{instituteCode}
+	@GetMapping(path = "/institute/getByCode/{instituteCode}")
+	public Institute fetchInstituteByInstituteCode(@PathVariable String instituteCode)
+	{
+		Institute i= service.getinstituteByInstituteCode(instituteCode);
+		return i;
+	}
+
 	///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-	//INSTITUTE
-	//APPROVE STUDENT APPLICATION
-	//Tested
-	
+	// INSTITUTE
+	// APPROVE STUDENT APPLICATION
+	// Tested
+
 	// http://localhost:9091/ShikshaDwar/users/institute/approveStudent/{studentApplicationNo}
 	@PutMapping(path = "/institute/approveStudent/{studentApplicationNo}")
 	public void approveStudentApplicationByInstitute(@PathVariable long studentApplicationNo) {
@@ -211,10 +274,10 @@ public class ScholarshipController {
 		service.modifyStudentStatus(s);
 	}
 
-	//INSTITUTE
-	//REJECT STUDENT APPLICATION
-	//Tested
-	
+	// INSTITUTE
+	// REJECT STUDENT APPLICATION
+	// Tested
+
 	// http://localhost:9091/ShikshaDwar/users/institute/rejectStudent/{studentApplicationNo}
 	@PutMapping(path = "/institute/rejectStudent/{studentApplicationNo}")
 	public void rejectStudentApplicationByInstitute(@PathVariable long studentApplicationNo) {
@@ -228,27 +291,32 @@ public class ScholarshipController {
 	///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	// NODAL MODULE
-	// Read Methods
+	// FETCH STUDENT FOR NODAL
+	// Tested
 
-	// http://localhost:9091/ShikshaDwar/users/nodal/studentApplication
-	@GetMapping(path = "nodal/studentApplication")
-	public List<StudentDetails> fetchStudentForNodal() {
-		List<StudentDetails> s = service.getStudentForNodal();
+	// http://localhost:9091/ShikshaDwar/users/nodal/studentApplication/{username}
+	@GetMapping(path = "nodal/studentApplication/{username}")
+	public List<StudentDetails> fetchStudentForNodal(@PathVariable String username) {
+		List<StudentDetails> s = service.getStudentForNodal(username);
 		return s;
 	}
 
-	// http://localhost:9091/ShikshaDwar/users/nodal/instituteAplication
-	@GetMapping(path = "nodal/instituteAplication")
-	public List<Institute> fetchInstituteForNodal() {
-		List<Institute> i = service.getInstituteForNodal();
+	// NODAL MODULE
+	// FETCH INSTITUTE FOR NODAL
+	// Tested
+
+	// http://localhost:9091/ShikshaDwar/users/nodal/instituteAplication/{username}
+	@GetMapping(path = "nodal/instituteAplication/{username}")
+	public List<Institute> fetchInstituteForNodal(@PathVariable String username) {
+		List<Institute> i = service.getInstituteForNodal(username);
 		return i;
 	}
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	
+
 	// NODAL
-	//APPROVE STUDENT APPLICATION
-	//Tested
+	// APPROVE STUDENT APPLICATION
+	// Tested
 
 	// http://localhost:9091/ShikshaDwar/users/nodal/approveStudent/{studentApplicationNo}
 	@PutMapping(path = "nodal/approveStudent/{studentApplicationNo}")
@@ -258,10 +326,10 @@ public class ScholarshipController {
 		service.modifyStudentStatus(s);
 	}
 
-	//NODAL
-	//REJECT STUDENT APPLICATION
-	//Tested
-	
+	// NODAL
+	// REJECT STUDENT APPLICATION
+	// Tested
+
 	// http://localhost:9091/ShikshaDwar/users/nodal/rejectStudent/{studentApplicationNo}
 	@PutMapping(path = "nodal/rejectStudent/{studentApplicationNo}")
 	public void rejectStudentApplication(@PathVariable long studentApplicationNo) {
@@ -269,10 +337,10 @@ public class ScholarshipController {
 		s.setApplicationStatus("Rejected");
 		service.modifyStudentStatus(s);
 	}
-	
-	//NODAL 
-	//APPROVE INSTITUTE APPLICATION
-	//Tested
+
+	// NODAL
+	// APPROVE INSTITUTE APPLICATION
+	// Tested
 
 	// http://localhost:9091/ShikshaDwar/users/nodal/approveInstitute/{instituteCode}
 	@PutMapping(path = "nodal/approveInstitute/{instituteCode}")
@@ -282,10 +350,10 @@ public class ScholarshipController {
 		service.modifyInstituteStatus(i);
 	}
 
-	//NODAL
-	//REJECT INSTITUTE APPLICATION
-	//Tested
-	
+	// NODAL
+	// REJECT INSTITUTE APPLICATION
+	// Tested
+
 	// http://localhost:9091/ShikshaDwar/users/nodal/rejectInstitute/{instituteCode}
 	@PutMapping(path = "nodal/rejectInstitute/{instituteCode}")
 	public void rejectInstituteRegistration(@PathVariable String instituteCode) {
@@ -297,9 +365,10 @@ public class ScholarshipController {
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	
+
 	// MINISTRY MODULE
-	// Read Values
+	// FETCH STUDENT APPLICATION FOR MINISTRY
+	// Tested
 
 	// http://localhost:9091/ShikshaDwar/users/ministry/studentApplication
 	@GetMapping(path = "ministry/studentApplication")
@@ -308,22 +377,23 @@ public class ScholarshipController {
 		return s;
 	}
 
+	// MINISTRY MODULE
+	// FETCH INSTITUTE APPLICATION FOR MINISTRY
+	// Tested
+
 	// http://localhost:9091/ShikshaDwar/users/ministry/instituteApplication
 	@GetMapping(path = "ministry/instituteApplication")
 	public List<Institute> fetchInstituteForMinistry() {
 		List<Institute> i = service.getInstituteForMinistry();
 		return i;
 	}
-	
-	
-	
-	
+
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-	//MINISTRY
-	//APPROVE STUDENT APPLICATION
-	//Tested
-	
+	// MINISTRY
+	// APPROVE STUDENT APPLICATION
+	// Tested
+
 	// http://localhost:9091/ShikshaDwar/users/ministry/approveStudent/{studentApplicationNo}
 	@PutMapping(path = "ministry/approveStudent/{studentApplicationNo}")
 	public void approveStudentApplicationByMinistry(@PathVariable long studentApplicationNo) {
@@ -332,10 +402,10 @@ public class ScholarshipController {
 		service.modifyStudentStatus(s);
 	}
 
-	//MINISTRY
-	//REJECT STUDENT APPLICATION
-	//Tested
-	
+	// MINISTRY
+	// REJECT STUDENT APPLICATION
+	// Tested
+
 	// http://localhost:9091/ShikshaDwar/users/ministry/rejectStudent/{studentApplicationNo}
 	@PutMapping(path = "ministry/rejectStudent/{studentApplicationNo}")
 	public void rejectStudentApplicationByMinistry(@PathVariable long studentApplicationNo) {
@@ -344,10 +414,10 @@ public class ScholarshipController {
 		service.modifyStudentStatus(s);
 	}
 
-	//MINISTRY
-	//APPROVE INSTITUTE APPLICATION
-	//Tested
-	
+	// MINISTRY
+	// APPROVE INSTITUTE APPLICATION
+	// Tested
+
 	// http://localhost:9091/ShikshaDwar/users/ministry/approveInstitute/{instituteCode}
 	@PutMapping(path = "ministry/approveInstitute/{instituteCode}")
 	public void approveInstituteRegistrationByMinistry(@PathVariable String instituteCode) {
@@ -356,10 +426,10 @@ public class ScholarshipController {
 		service.modifyInstituteStatus(i);
 	}
 
-	//MINISTRY
-	//REJECT INSTITUTE APPLICATION
-	//Tested
-	
+	// MINISTRY
+	// REJECT INSTITUTE APPLICATION
+	// Tested
+
 	// http://localhost:9091/ShikshaDwar/users/ministry/rejectInstitute/{instituteCode}
 	@PutMapping(path = "/ministry/rejectInstitute/{instituteCode}")
 	public void rejectInstituteRegistrationByMinistry(@PathVariable String instituteCode) {
@@ -370,6 +440,8 @@ public class ScholarshipController {
 
 	///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
 	// LOGIN SERVICE
 	// STUDENT
 
@@ -388,7 +460,7 @@ public class ScholarshipController {
 
 	// http://localhost:9091/ShikshaDwar/users/institute/login
 	@PostMapping(path = "/institute/login")
-	public ResponseEntity<String> loginInstitute(@RequestBody InstitueLogin login) {
+	public ResponseEntity<String> loginInstitute(@RequestBody InstituteLogin login) {
 		boolean result = service.verifyInstituteLogin(login);
 		if (result) {
 			return ResponseEntity.ok("Login Success");
@@ -452,8 +524,8 @@ public class ScholarshipController {
 
 	// http://localhost:9091/ShikshaDwar/users/institute/ResetPassword/{diseCode}
 	@PutMapping(path = "institute/ResetPassword/{diseCode}")
-	public void updateInstitutePassword(@PathVariable String diseCode, @RequestBody InstitueLogin instituteLogin) {
-		InstitueLogin i = service.getInstituteByDise(diseCode);
+	public void updateInstitutePassword(@PathVariable String diseCode, @RequestBody InstituteLogin instituteLogin) {
+		InstituteLogin i = service.getInstituteByDise(diseCode);
 		i.setInstituePassword(instituteLogin.getInstituePassword());
 		service.modifyInstitutePassword(i);
 	}

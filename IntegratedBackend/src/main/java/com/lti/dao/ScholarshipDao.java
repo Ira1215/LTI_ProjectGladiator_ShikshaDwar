@@ -2,8 +2,9 @@ package com.lti.dao;
 
 import java.util.List;
 
+import com.lti.dto.StudentForInstituteDto;
 import com.lti.model.AdminLogin;
-import com.lti.model.InstitueLogin;
+import com.lti.model.InstituteLogin;
 import com.lti.model.Institute;
 import com.lti.model.StudentDetails;
 import com.lti.model.StudentLogin;
@@ -23,6 +24,8 @@ public interface ScholarshipDao {
 	//Read Values from database
 	public StudentLogin readStudentLoginByEmail(String studentEmailId);
 	public StudentDetails readStudentByApplication(long studentApplicationNo);
+	public List<StudentLogin> readAllStudentLogin();
+	public List<StudentRegistrationDetails> readAllStudentRegistration();
 	
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
@@ -33,38 +36,46 @@ public interface ScholarshipDao {
 	
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
+	
+	
+	
 	///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
 	//INSTITUTE 
 	//Add Values to DataBase
-	public void createInstituteLogin(InstitueLogin instituteLogin);
+	public void createInstituteLogin(InstituteLogin instituteLogin);
 	public void createInstitute(Institute instituteApplication);
+//	public Institute readInstituteByDiseCode(String diseCode);
 	
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
 	//INSTITUTE
 	//Read Values from database
-	public InstitueLogin readInstituteByDise(String diseCode);
+	public InstituteLogin readInstituteByDise(String diseCode);
 	public Institute readInstituteByInstituteCode(String instituteCode);
-	public List<StudentDetails> readStudentForInstitute(String applicationStatus);
-	
+	public List<StudentDetails> readStudentForInstitute(String instituteCode);
+	public List<String> readAllApprovedInstituteCode();
+	public List<InstituteLogin> readAllInstituteLogin();
 	
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
 	//INSTITUTE
 	//Update Values in database
-	public void updateInstitutePassword(InstitueLogin instituteLogin);
+	public void updateInstitutePassword(InstituteLogin instituteLogin);
 	public void updateInstituteStatus(Institute institute);
 	
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	
+	
 	
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
 	//NODAL OFFICER MODULE
 	//Read Values from database
 	public AdminLogin readAdminById(String username);
-	public List<Institute> readInsituteForNodal();	
-	public List<StudentDetails> readStudentForNodal();
+	public List<Institute> readInsituteForNodal(String username);	
+	public List<StudentDetails> readStudentForNodal(String username);
 	//Update Methods
 	public void updateAdminPassword(AdminLogin adminLogin);
 	

@@ -17,6 +17,9 @@ export class OfficerDashboardComponent implements OnInit {
   showForgotdiv:boolean=false;
   adminLogin;
   updateValues;
+  user="nodal";
+  pass="nodal"
+  
 
   inst:InstituteLogin[];
 

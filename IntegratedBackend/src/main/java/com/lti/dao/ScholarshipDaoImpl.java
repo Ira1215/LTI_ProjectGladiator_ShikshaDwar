@@ -11,8 +11,9 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.lti.dto.StudentForInstituteDto;
 import com.lti.model.AdminLogin;
-import com.lti.model.InstitueLogin;
+import com.lti.model.InstituteLogin;
 import com.lti.model.Institute;
 import com.lti.model.StudentDetails;
 import com.lti.model.StudentLogin;
@@ -73,6 +74,20 @@ public class ScholarshipDaoImpl implements ScholarshipDao {
 	public StudentDetails readStudentByApplication(long studentApplicationNo) {
 		return entityManager.find(StudentDetails.class, studentApplicationNo);
 	}
+	
+	@Override
+	public List<StudentLogin> readAllStudentLogin() {
+		String jpql="select l from StudentLogin l";
+		TypedQuery<StudentLogin> tquery= entityManager.createQuery(jpql, StudentLogin.class);
+		return tquery.getResultList();
+	}
+
+	@Override
+	public List<StudentRegistrationDetails> readAllStudentRegistration() {
+		String jpql="select s from StudentRegistrationDetails s";
+		TypedQuery<StudentRegistrationDetails> tquery= entityManager.createQuery(jpql, StudentRegistrationDetails.class);
+		return tquery.getResultList();
+	}
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -104,7 +119,7 @@ public class ScholarshipDaoImpl implements ScholarshipDao {
 
 	@Transactional(propagation = Propagation.MANDATORY)
 	@Override
-	public void createInstituteLogin(InstitueLogin instituteLogin) {
+	public void createInstituteLogin(InstituteLogin instituteLogin) {
 		entityManager.persist(instituteLogin);
 	}
 
@@ -114,13 +129,15 @@ public class ScholarshipDaoImpl implements ScholarshipDao {
 		entityManager.persist(instituteApplication);
 	}
 
+	
+	
 	///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	// READ METHODS
 
 	@Override
-	public InstitueLogin readInstituteByDise(String diseCode) {
-		return entityManager.find(InstitueLogin.class, diseCode);
+	public InstituteLogin readInstituteByDise(String diseCode) {
+		return entityManager.find(InstituteLogin.class, diseCode);
 	}
 
 
@@ -131,14 +148,32 @@ public class ScholarshipDaoImpl implements ScholarshipDao {
 
 	@Override
 	public List<StudentDetails> readStudentForInstitute(String instituteCode) {
-		// TODO Auto-generated method stub
-		return null;
+		String jpql= "select s from StudentDetails s where s.registration.studentAadharNo IN(select r.studentAadharNo from StudentRegistrationDetails r where r.institute.instituteCode = :instituteCode) and s.applicationStatus='Pending'";                                          
+		TypedQuery<StudentDetails> tquery= entityManager.createQuery(jpql, StudentDetails.class).setParameter("instituteCode", instituteCode);
+		return tquery.getResultList();
 	}
+	
+	@Override
+	public List<String> readAllApprovedInstituteCode() {
+		String jpql="select i.instituteCode from Institute i where i.registrationStatus='Approved'";
+		TypedQuery<String> tquery= entityManager.createQuery(jpql, String.class);
+		return tquery.getResultList();
+	}
+
+	@Override
+	public List<InstituteLogin> readAllInstituteLogin() {
+		String jpql="select i from InstituteLogin i";
+		TypedQuery<InstituteLogin> tquery= entityManager.createQuery(jpql, InstituteLogin.class);
+		return tquery.getResultList();
+	}
+
+	
+	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	// UPDATE METHODS
 	@Transactional(propagation = Propagation.MANDATORY)
 	@Override
-	public void updateInstitutePassword(InstitueLogin instituteLogin) {
+	public void updateInstitutePassword(InstituteLogin instituteLogin) {
 		entityManager.merge(instituteLogin);
 
 	}
@@ -147,16 +182,16 @@ public class ScholarshipDaoImpl implements ScholarshipDao {
 	// Read Method
 
 	@Override
-	public List<StudentDetails> readStudentForNodal() {
-		String jpql = "Select s from StudentDetails s where s.applicationStatus='Approved By Institute'";
-		TypedQuery<StudentDetails> tquery = entityManager.createQuery(jpql, StudentDetails.class);
+	public List<StudentDetails> readStudentForNodal(String username) {
+		String jpql = "Select s from StudentDetails s where s.registration.studentAadharNo IN(select r.studentAadharNo from StudentRegistrationDetails r where r.institute.instituteCode IN(select i.instituteCode from Institute i where i.instituteState=:username)) and s.applicationStatus='Approved By Institute'";
+		TypedQuery<StudentDetails> tquery = entityManager.createQuery(jpql, StudentDetails.class).setParameter("username", username);
 		return tquery.getResultList();
 	}
 
 	@Override
-	public List<Institute> readInsituteForNodal() {
-		String jpql = "Select i from Institute i where i.registrationStatus='Pending'";
-		TypedQuery<Institute> tquery = entityManager.createQuery(jpql, Institute.class);
+	public List<Institute> readInsituteForNodal(String username) {
+		String jpql = "Select i from Institute i where i.instituteState= :username and i.registrationStatus='Pending'";
+		TypedQuery<Institute> tquery = entityManager.createQuery(jpql, Institute.class).setParameter("username", username);
 		return tquery.getResultList();
 	}
 
@@ -196,5 +231,8 @@ public class ScholarshipDaoImpl implements ScholarshipDao {
 		TypedQuery<Institute> tquery = entityManager.createQuery(jpql, Institute.class);
 		return tquery.getResultList();
 	}
+
+	
+	
 
 }

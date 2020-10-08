@@ -5,6 +5,7 @@ import { Injectable } from '@angular/core';
 
 import {Config} from  'protractor';
 import { InstitutesRegistered } from './instituteRegister';
+import { StudentApplication } from './studentapplication';
 
 @Injectable({
   providedIn: 'root'
@@ -27,6 +28,10 @@ export class InstituteService {
 
     getInstituteByCode(instituteCode:String):Observable<InstitutesRegistered>{
         return this.http.get<InstitutesRegistered>("http://localhost:9091/ShikshaDwar/users/institute/getByCode/"+instituteCode);
+    }
+
+    getStudentDetailsByInstCode(instCode):Observable<StudentApplication[]>{
+      return this.http.get<StudentApplication[]>("http://localhost:9091/ShikshaDwar/users/institute/fetchStudent/ "+instCode)
     }
   
     // getAllUsers():Observable<InstituteLogin[]>{

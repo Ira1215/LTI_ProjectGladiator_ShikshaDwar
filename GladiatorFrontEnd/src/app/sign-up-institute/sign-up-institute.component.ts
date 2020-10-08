@@ -39,8 +39,9 @@ export class SignUpInstituteComponent implements OnInit {
     let u:InstituteLogin=new InstituteLogin(this.signUpInstituteForm.controls.diseCode.value,
       this.signUpInstituteForm.controls.institutePassword.value); 
 
-   
+      alert("button working");
       this.service.addInstitute(u).subscribe(u =>{
+        alert(u.status);
         if(u.status=="SUCCESS")
         {
           alert("ok")

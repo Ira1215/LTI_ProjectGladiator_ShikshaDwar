@@ -10,6 +10,11 @@ import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonProperty.Access;
+
 @Entity
 @Table(name = "STUDENT_LOGIN")
 public class StudentLogin implements Serializable{
@@ -20,6 +25,9 @@ public class StudentLogin implements Serializable{
 	@Column(name="STUDENT_PASSWORD")
 	private String studentPassword;
 	
+	//@JsonManagedReference
+	// CHANGED
+	@JsonProperty(access = Access.WRITE_ONLY)
 	@OneToOne(mappedBy = "login", fetch = FetchType.LAZY)
 	private StudentRegistrationDetails student;
 	
@@ -50,6 +58,7 @@ public class StudentLogin implements Serializable{
 		this.studentPassword = studentPassword;
 	}
 	
+	//@JsonManagedReference
 	public StudentRegistrationDetails getStudent() {
 		return student;
 	}

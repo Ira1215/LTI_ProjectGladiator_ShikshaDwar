@@ -15,6 +15,11 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonProperty.Access;
+
 @Entity
 @Table(name ="INSTITUTE")
 public class Institute implements Serializable {
@@ -80,9 +85,12 @@ public class Institute implements Serializable {
 	
 	@OneToOne
 	@JoinColumn(name="DISE_CODE")
-	private InstitueLogin login;
+	@JsonProperty(access = Access.WRITE_ONLY)
+	@JsonBackReference
+	private InstituteLogin login;
 	
-	
+	@JsonManagedReference
+	//@JsonProperty(access = Access.WRITE_ONLY)
 	@OneToMany(mappedBy = "institute", cascade = CascadeType.ALL)
 	private Set<StudentRegistrationDetails> students;
 	
@@ -267,11 +275,12 @@ public class Institute implements Serializable {
 		this.instituteHeadContact = instituteHeadContact;
 	}
 
-	public InstitueLogin getLogin() {
+	//@JsonBackReference
+	public InstituteLogin getLogin() {
 		return login;
 	}
 
-	public void setLogin(InstitueLogin login) {
+	public void setLogin(InstituteLogin login) {
 		this.login = login;
 	}
 	

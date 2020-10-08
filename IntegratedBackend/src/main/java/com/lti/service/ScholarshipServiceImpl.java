@@ -10,7 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.lti.dao.ScholarshipDaoImpl;
 import com.lti.model.AdminLogin;
-import com.lti.model.InstitueLogin;
+import com.lti.model.InstituteLogin;
 import com.lti.model.Institute;
 import com.lti.model.StudentDetails;
 import com.lti.model.StudentLogin;
@@ -50,9 +50,9 @@ public class ScholarshipServiceImpl implements ScholarshipService {
 
 	@Transactional(propagation = Propagation.REQUIRED)
 	@Override
-	public void addStudent(StudentDetails studentApplication, StudentRegistrationDetails student, StudentLogin login, Institute institute) {
-		student.setLogin(login);
-		student.setInstitute(institute);
+	public void addStudent(StudentDetails studentApplication, StudentRegistrationDetails student) {
+		//student.setLogin(login);
+		//student.setInstitute(institute);
 		studentApplication.setRegistration(student);
 		dao.createStudent(studentApplication);
 		
@@ -72,6 +72,18 @@ public class ScholarshipServiceImpl implements ScholarshipService {
 	public StudentDetails getStudentByApplication(long studentApplicationNo) {
 		return dao.readStudentByApplication(studentApplicationNo);
 	}
+	
+	@Override
+	public List<StudentLogin> getAllStudentLogin() {
+		return dao.readAllStudentLogin();
+	}
+
+	@Override
+	public List<StudentRegistrationDetails> getAllStudentRegistration() {
+		return dao.readAllStudentRegistration();
+	}
+
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	// UPDATE METHOD
 	@Transactional(propagation = Propagation.REQUIRED)
@@ -79,19 +91,21 @@ public class ScholarshipServiceImpl implements ScholarshipService {
 	public void modifyStudentPassword(StudentLogin studentLogin) {
 		dao.updateStudentPassword(studentLogin);
 	}
+	
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	// INSTITUTE MODULE
 	// ADD METHODS
 
 	@Transactional(propagation = Propagation.REQUIRED)
 	@Override
-	public void addInstituteLogin(InstitueLogin instituteLogin) {
+	public void addInstituteLogin(InstituteLogin instituteLogin) {
 		dao.createInstituteLogin(instituteLogin);
 	}
 
 	@Transactional(propagation = Propagation.REQUIRED)
 	@Override
-	public void addInstitute(Institute instituteApplication, InstitueLogin login) {
+	public void addInstitute(Institute instituteApplication, InstituteLogin login) {
 		instituteApplication.setLogin(login);
 		dao.createInstitute(instituteApplication);
 	}
@@ -99,7 +113,7 @@ public class ScholarshipServiceImpl implements ScholarshipService {
 	// READ METHODS
 
 	@Override
-	public InstitueLogin getInstituteByDise(String diseCode) {
+	public InstituteLogin getInstituteByDise(String diseCode) {
 		return dao.readInstituteByDise(diseCode);
 	}
 
@@ -108,12 +122,30 @@ public class ScholarshipServiceImpl implements ScholarshipService {
 	public Institute getinstituteByInstituteCode(String instituteCode) {
 		return dao.readInstituteByInstituteCode(instituteCode);
 	}
+	
+	@Override
+	public List<InstituteLogin> getAllInstituteLogin() {
+		return dao.readAllInstituteLogin();
+	}
+	
+	@Override
+	public List<String> getAllApprovedInstituteCode() {
+		return dao.readAllApprovedInstituteCode();
+	}
+
+
+	@Override
+	public List<StudentDetails> getStudentForInstitute(String instituteCode) {
+		return dao.readStudentForInstitute(instituteCode);
+	}
+
+
 
 	// UPDATE METHODS
 
 	@Transactional(propagation = Propagation.REQUIRED)
 	@Override
-	public void modifyInstitutePassword(InstitueLogin instituteLogin) {
+	public void modifyInstitutePassword(InstituteLogin instituteLogin) {
 		dao.updateInstitutePassword(instituteLogin);
 	}
 
@@ -125,13 +157,13 @@ public class ScholarshipServiceImpl implements ScholarshipService {
 	}
 
 	@Override
-	public List<StudentDetails> getStudentForNodal() {
-		return dao.readStudentForNodal();
+	public List<StudentDetails> getStudentForNodal(String username) {
+		return dao.readStudentForNodal(username);
 	}
 
 	@Override
-	public List<Institute> getInstituteForNodal() {
-		return dao.readInsituteForNodal();
+	public List<Institute> getInstituteForNodal(String username) {
+		return dao.readInsituteForNodal(username);
 	}
 
 	// Update Methods
@@ -189,9 +221,9 @@ public class ScholarshipServiceImpl implements ScholarshipService {
 	// INSTITUTE LOGIN
 
 	@Override
-	public boolean verifyInstituteLogin(InstitueLogin login) {
+	public boolean verifyInstituteLogin(InstituteLogin login) {
 		try {
-			InstitueLogin i = dao.readInstituteByDise(login.getDiseCode());
+			InstituteLogin i = dao.readInstituteByDise(login.getDiseCode());
 			if (i.getInstituePassword().equals(login.getInstituePassword())) {
 				return true;
 			}
@@ -227,6 +259,8 @@ public class ScholarshipServiceImpl implements ScholarshipService {
 		return otp;
 	}
 
+	
+	
 	
 	
 
